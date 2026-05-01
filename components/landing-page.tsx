@@ -90,7 +90,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
         {/* Lighter, brighter background image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/oki/230516_DJI_0468.jpg"
+            src="/images/oki/20241112-DSC08326_隠岐旅工舎.jpg"
             alt="隠岐の美しい風景"
             fill
             priority
@@ -116,11 +116,12 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               もっと <span className="text-sky-600">豊かに</span>。
             </h1>
             
-            <div className="mb-12">
-              <p className="text-2xl md:text-3xl text-slate-700 font-bold tracking-[0.2em] mb-8">
+            <div className="mb-12 relative group">
+              <div className="absolute -inset-6 bg-white/30 backdrop-blur-md rounded-[2rem] -z-10 border border-white/40 shadow-xl opacity-80 group-hover:opacity-100 transition-opacity" />
+              <p className="text-2xl md:text-3xl text-slate-800 font-bold tracking-[0.2em] mb-6">
                 隠岐移住者コミュニティ
               </p>
-              <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-xl font-medium">
+              <p className="text-lg md:text-xl text-slate-700 leading-relaxed max-w-xl font-bold">
                 隠岐に移住した人、これから移住を考えている人、<br />
                 島での暮らしをもっと楽しみたい人のための<br />
                 つながり・情報交換の場です。
