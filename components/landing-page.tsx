@@ -100,10 +100,10 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pt-20 lg:pt-0">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl text-center md:text-left mx-auto md:mx-0">
             {/* Hand-drawn style lead */}
-            <div className="relative inline-block mb-4 md:mb-6 animate-float">
-              <span className="text-slate-700 text-lg md:text-3xl font-medium tracking-wider flex items-center gap-3 md:gap-4" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
+            <div className="relative inline-block mb-4 md:mb-6 animate-float mx-auto md:mx-0">
+              <span className="text-slate-700 text-lg md:text-3xl font-medium tracking-wider flex items-center justify-center md:justify-start gap-3 md:gap-4" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
                 <span className="opacity-40 font-serif italic text-2xl md:text-4xl">\\</span>
                 ひとりじゃない、島ぐらし。
                 <span className="opacity-40 font-serif italic text-2xl md:text-4xl">/</span>
@@ -120,14 +120,14 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               <p className="text-xl md:text-3xl text-slate-800 font-bold tracking-[0.1em] md:tracking-[0.2em] mb-4 md:mb-6" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
                 隠岐移住者コミュニティ
               </p>
-              <div className="text-base md:text-xl text-slate-700 leading-relaxed max-w-xl font-bold space-y-1" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
+              <div className="text-base md:text-xl text-slate-700 leading-relaxed max-w-xl font-bold space-y-1 mx-auto md:mx-0" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
                 <p className="md:whitespace-nowrap">隠岐に移住した人、これから移住を考えている人、</p>
                 <p className="md:whitespace-nowrap">島での暮らしをもっと楽しみたい人のための</p>
                 <p>つながり・情報交換の場です。</p>
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-6 items-center pb-20 md:pb-0">
+            <div className="flex flex-wrap justify-center md:justify-start gap-6 items-center pb-20 md:pb-0">
               <a
                 href={ctaUrl}
                 target="_blank"
@@ -160,10 +160,14 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
           </div>
         </div>
 
-        {/* Wavy Bottom Transition */}
+        {/* Wavy Bottom Transition - Organic & Smooth */}
         <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-20">
-          <svg className="relative block w-[calc(100%+1.3px)] h-[80px]" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.43,147.3,126,211.9,113.15,270.21,101.62,298.51,60.67,321.39,56.44Z" className="fill-white"></path>
+          <svg className="relative block w-[calc(100%+1.3px)] h-[60px] md:h-[100px]" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path 
+              d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5,73.84-4.36,147.54,16.88,218.2,35.26,69.27,18,138.38,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" 
+              className="fill-white"
+              transform="rotate(180 600 60)"
+            ></path>
           </svg>
         </div>
       </section>
