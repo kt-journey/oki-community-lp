@@ -120,9 +120,14 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
             </h1>
             
             <div className="mb-10 md:mb-12">
-              <p className="text-xl md:text-3xl text-slate-800 font-bold tracking-[0.1em] md:tracking-[0.2em] mb-4 md:mb-6" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
-                隠岐移住者コミュニティ <span className="text-orange-500 text-lg md:text-xl block md:inline mt-2 md:mt-0">立ち上げメンバー募集中！</span>
-              </p>
+              <div className="flex flex-col md:flex-row items-center md:items-baseline gap-4 mb-6" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
+                <p className="text-xl md:text-3xl text-slate-800 font-bold tracking-[0.1em] md:tracking-[0.2em]">
+                  隠岐移住者コミュニティ
+                </p>
+                <span className="bg-orange-100 text-orange-600 text-sm md:text-base font-black px-4 py-1.5 rounded-lg border-2 border-orange-200 shadow-sm animate-fade-in">
+                  立ち上げメンバー募集中！
+                </span>
+              </div>
               <div className="text-base md:text-xl text-slate-700 leading-relaxed max-w-xl font-bold space-y-1 mx-auto md:mx-0" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
                 <p>現在、ルール作りから一緒に参加してくれる</p>
                 <p>最初の仲間（初期メンバー）を集めています。</p>
