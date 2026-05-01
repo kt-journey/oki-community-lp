@@ -134,7 +134,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 rel="noopener noreferrer"
                 className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-orange-500 px-8 py-4 md:px-10 md:py-5 font-bold text-white transition-all hover:bg-orange-400 hover:scale-105 shadow-lg shadow-orange-200 z-30"
               >
-                <span className="text-lg">まずはLINEで先行情報を受け取る</span>
+                <span className="text-lg">LINEで先行情報を受け取る</span>
                 <svg className="h-6 w-6 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
