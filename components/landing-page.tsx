@@ -99,60 +99,61 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
           <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/20 to-transparent lg:from-white/40" />
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pt-20 lg:pt-0">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-16 md:pt-20 lg:pt-0 overflow-hidden">
           <div className="max-w-3xl text-center md:text-left mx-auto md:mx-0">
             {/* Hand-drawn style lead */}
-            <div className="relative inline-block mb-4 md:mb-6 animate-float mx-auto md:mx-0">
-              <div className="absolute -top-8 -right-12 bg-orange-500 text-white text-xs md:text-sm font-black px-4 py-1.5 rounded-full transform rotate-12 shadow-lg animate-pulse z-20 whitespace-nowrap">
+            <div className="relative inline-block mb-4 md:mb-6 animate-float mx-auto md:mx-0 px-8 md:px-0">
+              <div className="absolute -top-6 -right-4 md:-top-8 md:-right-12 bg-orange-500 text-white text-[10px] md:text-sm font-black px-3 py-1 md:px-4 md:py-1.5 rounded-full transform rotate-12 shadow-lg animate-pulse z-20 whitespace-nowrap">
                 立ち上げ準備中
               </div>
-              <span className="text-slate-700 text-lg md:text-3xl font-medium tracking-wider flex items-center justify-center md:justify-start gap-3 md:gap-4" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
-                <span className="opacity-40 font-serif italic text-2xl md:text-4xl">\\</span>
+              <span className="text-slate-700 text-base md:text-3xl font-medium tracking-wider flex items-center justify-center md:justify-start gap-2 md:gap-4" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
+                <span className="opacity-40 font-serif italic text-xl md:text-4xl">\\</span>
                 ひとりじゃない、島ぐらし。
-                <span className="opacity-40 font-serif italic text-2xl md:text-4xl">/</span>
+                <span className="opacity-40 font-serif italic text-xl md:text-4xl">/</span>
               </span>
             </div>
             
-            <h1 className="text-4xl md:text-7xl lg:text-[5.5rem] font-bold text-slate-800 mb-6 md:mb-8 leading-[1.4] md:leading-[1.3]" style={{ fontFamily: 'var(--font-handwriting)', textShadow: '0 0 30px white, 0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
+            <h1 className="text-3xl sm:text-4xl md:text-7xl lg:text-[5.5rem] font-bold text-slate-800 mb-6 md:mb-8 leading-[1.5] md:leading-[1.3] break-words" style={{ fontFamily: 'var(--font-handwriting)', textShadow: '0 0 30px white, 0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
               隠岐での暮らしを<br />
               もっと <span className="text-emerald-600">楽しく</span>、<br />
               もっと <span className="text-sky-600">豊かに</span>。
             </h1>
             
-            <div className="mb-10 md:mb-12">
-              <div className="flex flex-col md:flex-row items-center md:items-baseline gap-4 mb-6" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
-                <p className="text-xl md:text-3xl text-slate-800 font-bold tracking-[0.1em] md:tracking-[0.2em]">
+            <div className="mb-10 md:mb-12 px-2 md:px-0">
+              <div className="flex flex-col md:flex-row items-center md:items-baseline justify-center md:justify-start gap-3 md:gap-4 mb-6" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
+                <p className="text-lg md:text-3xl text-slate-800 font-bold tracking-[0.1em] md:tracking-[0.2em]">
                   隠岐移住者コミュニティ
                 </p>
-                <span className="bg-orange-100 text-orange-600 text-sm md:text-base font-black px-4 py-1.5 rounded-lg border-2 border-orange-200 shadow-sm animate-fade-in">
+                <span className="bg-orange-100 text-orange-600 text-[10px] md:text-base font-black px-3 py-1 rounded-lg border-2 border-orange-200 shadow-sm">
                   立ち上げメンバー募集中！
                 </span>
               </div>
-              <div className="text-base md:text-xl text-slate-700 leading-relaxed max-w-xl font-bold space-y-1 mx-auto md:mx-0" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
+              <div className="text-sm md:text-xl text-slate-700 leading-relaxed max-w-xl font-bold space-y-1 mx-auto md:mx-0" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
                 <p>現在、ルール作りから一緒に参加してくれる</p>
                 <p>最初の仲間（初期メンバー）を集めています。</p>
                 <p>ここから、新しい島の縁を育てていきませんか？</p>
               </div>
             </div>
 
-            <div className="flex flex-col items-center md:items-start gap-4 pb-20 md:pb-0">
+            <div className="flex flex-col items-center md:items-start gap-4 pb-16 md:pb-0 px-4 md:px-0">
               <a
                 href={ctaUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-[#06C755] px-8 py-4 md:px-10 md:py-5 font-bold text-white transition-all hover:bg-[#05b34c] hover:scale-105 shadow-lg shadow-green-200 z-30"
+                className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-3 overflow-hidden rounded-full bg-[#06C755] px-6 py-4 md:px-10 md:py-5 font-bold text-white transition-all hover:bg-[#05b34c] hover:scale-105 shadow-lg shadow-green-200 z-30"
               >
-                <span className="text-lg">LINEで先行情報を受け取る</span>
-                <svg className="h-6 w-6 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <span className="text-base md:text-lg">LINEで先行情報を受け取る</span>
+                <svg className="h-5 w-5 md:h-6 md:w-6 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </a>
-              <p className="text-sm md:text-base font-bold text-slate-700" style={{ textShadow: '0 0 10px white' }}>
-                現在 <span className="text-orange-600 text-lg md:text-xl font-black tabular-nums">
+              <p className="text-xs md:text-base font-bold text-slate-700" style={{ textShadow: '0 0 10px white' }}>
+                現在 <span className="text-orange-600 text-base md:text-xl font-black tabular-nums">
                   <Counter target={42} isVisible={isVisible('hero')} />名
                 </span> がLINEで作戦会議中！
               </p>
             </div>
+          </div>
           </div>
 
           {/* Floating Circle Badge */}
