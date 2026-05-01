@@ -116,12 +116,11 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               もっと <span className="text-sky-600">豊かに</span>。
             </h1>
             
-            <div className="mb-12 relative group">
-              <div className="absolute -inset-6 bg-white/30 backdrop-blur-md rounded-[2rem] -z-10 border border-white/40 shadow-xl opacity-80 group-hover:opacity-100 transition-opacity" />
-              <p className="text-2xl md:text-3xl text-slate-800 font-bold tracking-[0.2em] mb-6">
+            <div className="mb-12">
+              <p className="text-2xl md:text-3xl text-slate-800 font-bold tracking-[0.2em] mb-6" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
                 隠岐移住者コミュニティ
               </p>
-              <p className="text-lg md:text-xl text-slate-700 leading-relaxed max-w-xl font-bold">
+              <p className="text-lg md:text-xl text-slate-700 leading-relaxed max-w-xl font-bold" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
                 隠岐に移住した人、これから移住を考えている人、<br />
                 島での暮らしをもっと楽しみたい人のための<br />
                 つながり・情報交換の場です。
