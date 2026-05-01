@@ -90,7 +90,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
         {/* Lighter, brighter background image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/oki/20241112-DSC08326_隠岐旅工舎.jpg"
+            src="/images/oki/mainVisual.png"
             alt="隠岐の美しい風景"
             fill
             priority
@@ -111,9 +111,9 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
             </div>
             
             <h1 className="text-4xl md:text-7xl lg:text-[5.5rem] font-bold text-slate-800 mb-6 md:mb-8 leading-[1.4] md:leading-[1.3]" style={{ fontFamily: 'var(--font-handwriting)', textShadow: '0 0 30px white, 0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
-              隠岐での暮らしを<br className="hidden md:block" />
-              もっと <span className="text-emerald-600">楽しく</span>、<br className="md:hidden" />
-              もっと <span className="text-sky-600">豊かに</span>。
+              隠岐での暮らしを<br />
+              もっと楽しく、<br />
+              もっと豊かに。
             </h1>
             
             <div className="mb-10 md:mb-12">
