@@ -148,7 +148,9 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 </svg>
               </a>
               <p className="text-sm md:text-base font-bold text-slate-700" style={{ textShadow: '0 0 10px white' }}>
-                現在 <span className="text-orange-600 text-lg md:text-xl">42名</span> がLINEで作戦会議中！
+                現在 <span className="text-orange-600 text-lg md:text-xl font-black tabular-nums">
+                  <Counter target={42} isVisible={isVisible('hero')} />名
+                </span> がLINEで作戦会議中！
               </p>
             </div>
           </div>
