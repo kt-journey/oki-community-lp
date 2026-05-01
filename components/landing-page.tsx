@@ -110,7 +110,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               </span>
             </div>
             
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-slate-800 mb-8 leading-[1.3] drop-shadow-sm">
+            <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-slate-800 mb-8 leading-[1.3] drop-shadow-sm" style={{ fontFamily: 'var(--font-handwriting)' }}>
               隠岐での暮らしを<br />
               もっと <span className="text-emerald-500 relative inline-block">楽しく<span className="absolute -bottom-1 left-0 w-full h-1 bg-emerald-100 -z-10" /></span>、
               もっと <span className="text-sky-500 relative inline-block">豊かに<span className="absolute -bottom-1 left-0 w-full h-1 bg-sky-100 -z-10" /></span>。
@@ -390,7 +390,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 <p className="font-bold text-xl tracking-[0.2em] text-orange-500 uppercase">Our Concept</p>
               </div>
               
-              <h2 className="font-serif text-5xl md:text-7xl font-black text-slate-900 mb-10 leading-[1.2] tracking-tight">
+              <h2 className="text-5xl md:text-7xl font-black text-slate-900 mb-10 leading-[1.2] tracking-tight" style={{ fontFamily: 'var(--font-handwriting)' }}>
                 ゆるく繋がる、<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-400">本気で遊ぶ。</span>
               </h2>

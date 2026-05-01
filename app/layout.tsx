@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Noto_Sans_JP, Space_Mono } from "next/font/google";
+import { Noto_Sans_JP, Space_Mono, Yusei_Magic } from "next/font/google";
 import "./globals.css";
 
 const notoSansJp = Noto_Sans_JP({
@@ -20,6 +20,12 @@ const spaceMono = Space_Mono({
   weight: ["400", "700"],
 });
 
+const yuseiMagic = Yusei_Magic({
+  variable: "--font-handwriting",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
 export const metadata: Metadata = {
   title: "Okey-Dokey | 隠岐移住者コミュニティ",
   description: "隠岐移住者コミュニティのウェイトリストLP",
@@ -35,10 +41,9 @@ export default function RootLayout({
   const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 
   return (
-    <html
-      lang="ja"
-      className={`${notoSansJp.variable} ${notoSansJpHeading.variable} ${spaceMono.variable} h-full antialiased`}
-    >
+      <body
+        className={`${notoSansJp.variable} ${notoSansJpHeading.variable} ${spaceMono.variable} ${yuseiMagic.variable} h-full antialiased`}
+      >
       <head>
         {gtmId ? (
           <Script id="gtm-base" strategy="afterInteractive">
