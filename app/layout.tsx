@@ -38,6 +38,7 @@ export default function RootLayout({
     <html
       lang="ja"
       className={`${notoSansJp.variable} ${notoSansJpHeading.variable} ${spaceMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <head>
         <Script id="adobe-fonts" strategy="beforeInteractive">
