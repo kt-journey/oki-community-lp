@@ -397,9 +397,9 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 <p className="font-bold text-xl tracking-[0.2em] text-orange-500 uppercase">Our Concept</p>
               </div>
               
-              <h2 className="text-5xl md:text-7xl font-black text-slate-900 mb-10 leading-[1.2] tracking-tight" style={{ fontFamily: 'var(--font-handwriting)' }}>
+              <h2 className="text-5xl md:text-7xl font-bold text-slate-900 mb-10 leading-[1.2] tracking-tight" style={{ fontFamily: 'var(--font-handwriting)' }}>
                 ゆるく繋がる、<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-400">本気で遊ぶ。</span>
+                <span className="text-orange-500">本気で遊ぶ。</span>
               </h2>
               
               <div className="space-y-8 max-w-xl">
