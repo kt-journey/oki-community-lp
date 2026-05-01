@@ -99,7 +99,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
           <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/20 to-transparent lg:from-white/40" />
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-16 md:pt-20 lg:pt-0">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-10 lg:px-12 pt-16 md:pt-20 lg:pt-0">
           <div className="max-w-3xl text-center md:text-left mx-auto md:mx-0">
             {/* Hand-drawn style lead */}
             <div className="relative inline-block mt-4 mb-4 md:mb-6 animate-float mx-auto md:mx-0 px-8 md:px-0">
