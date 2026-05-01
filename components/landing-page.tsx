@@ -30,7 +30,7 @@ const activities = [
   {
     title: "空き家相談",
     body: "信頼を蓄積し、空き家流通の壁を越えるための下地を育てる。",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800"
+    image: "/images/oki/akiya.png"
   },
 ];
 
