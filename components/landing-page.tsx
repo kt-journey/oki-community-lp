@@ -397,7 +397,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 <p className="font-bold text-xl tracking-[0.2em] text-orange-500 uppercase">Our Concept</p>
               </div>
               
-              <h2 className="text-5xl md:text-7xl font-bold text-slate-900 mb-10 leading-[1.2] tracking-tight" style={{ fontFamily: 'var(--font-handwriting)' }}>
+              <h2 className="text-5xl md:text-7xl font-bold text-slate-900 mb-10 leading-[1.2] tracking-tight">
                 ゆるく繋がる、<br />
                 <span className="text-orange-500">本気で遊ぶ。</span>
               </h2>
@@ -528,7 +528,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 </div>
                 <div className="pb-12 pt-2">
                   <span className="text-sm font-bold tracking-widest text-orange-500 mb-1 block">STEP 01</span>
-                  <h3 className="text-2xl font-black text-slate-900 mb-3" style={{ fontFamily: 'var(--font-heading)' }}>公式LINEで先行登録</h3>
+                  <h3 className="text-2xl font-black text-slate-900 mb-3">公式LINEで先行登録</h3>
                   <p className="text-slate-600 font-medium leading-relaxed">まずはLINEを友だち追加（完全無料）。ここから、コミュニティ立ち上げの裏側や限定情報が届き始めます。</p>
                 </div>
               </div>
@@ -545,7 +545,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 </div>
                 <div className="pb-12 pt-2">
                   <span className="text-sm font-bold tracking-widest text-blue-500 mb-1 block">STEP 02</span>
-                  <h3 className="text-2xl font-black text-slate-900 mb-3" style={{ fontFamily: 'var(--font-heading)' }}>みんなで作戦会議</h3>
+                  <h3 className="text-2xl font-black text-slate-900 mb-3">みんなで作戦会議</h3>
                   <p className="text-slate-600 font-medium leading-relaxed">LINE上でアンケートを取ったり、小規模なオフラインのプレイベントを実施。みんなでやりたい事やルールを考えていきます。</p>
                 </div>
               </div>
@@ -562,7 +562,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 </div>
                 <div className="pb-2 pt-2">
                   <span className="text-sm font-bold tracking-widest text-sky-500 mb-1 block">STEP 03</span>
-                  <h3 className="text-2xl font-black text-slate-900 mb-3" style={{ fontFamily: 'var(--font-heading)' }}>初期メンバー正式募集</h3>
+                  <h3 className="text-2xl font-black text-slate-900 mb-3">初期メンバー正式募集</h3>
                   <p className="text-slate-600 font-medium leading-relaxed">意見をもとに形を作ったら、いよいよ正式ローンチ。LINE登録者には一番に優先案内をお送りします！</p>
                 </div>
               </div>
