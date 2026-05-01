@@ -18,18 +18,10 @@
   --color-surface-alt: var(--surface-alt);
   --font-sans: var(--font-body);
   --font-mono: var(--font-mono);
-  --font-handwriting: "AiharaSignPen", cursive;
+  --font-handwriting: var(--font-handwriting), cursive;
   
   --animate-fade-up: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-fade-in: fade-in 1s ease-out forwards;
-}
-
-@font-face {
-  font-family: "AiharaSignPen";
-  src: url("/fonts/AiharaSignPen_free_101.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
 }
 
 body {

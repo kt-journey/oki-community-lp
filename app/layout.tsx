@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Noto_Sans_JP, Space_Mono } from "next/font/google";
+import { Noto_Sans_JP, Space_Mono, Klee_One } from "next/font/google";
 import "./globals.css";
 
 const notoSansJp = Noto_Sans_JP({
@@ -20,6 +20,12 @@ const spaceMono = Space_Mono({
   weight: ["400", "700"],
 });
 
+const kleeOne = Klee_One({
+  variable: "--font-handwriting",
+  subsets: ["latin"],
+  weight: ["400", "600"],
+});
+
 export const metadata: Metadata = {
   title: "Okey-Dokey | 隠岐移住者コミュニティ",
   description: "隠岐移住者コミュニティのウェイトリストLP",
@@ -37,7 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${notoSansJp.variable} ${notoSansJpHeading.variable} ${spaceMono.variable} h-full antialiased`}
+      className={`${notoSansJp.variable} ${notoSansJpHeading.variable} ${spaceMono.variable} ${kleeOne.variable} h-full antialiased`}
     >
       <head>
         {gtmId ? (
