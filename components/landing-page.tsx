@@ -112,8 +112,8 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
             
             <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-slate-800 mb-8 leading-[1.3] drop-shadow-sm" style={{ fontFamily: 'var(--font-handwriting)' }}>
               隠岐での暮らしを<br />
-              もっと <span className="text-emerald-500 relative inline-block">楽しく<span className="absolute -bottom-1 left-0 w-full h-1 bg-emerald-100 -z-10" /></span>、
-              もっと <span className="text-sky-500 relative inline-block">豊かに<span className="absolute -bottom-1 left-0 w-full h-1 bg-sky-100 -z-10" /></span>。
+              もっと <span className="text-emerald-500">楽しく</span>、
+              もっと <span className="text-sky-500">豊かに</span>。
             </h1>
             
             <div className="mb-12">
