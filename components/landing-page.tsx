@@ -112,13 +112,13 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 <span className="opacity-40 font-serif italic text-xl md:text-4xl">/</span>
               </span>
             </div>
-            
+
             <h1 className="text-3xl sm:text-4xl md:text-7xl lg:text-[5.5rem] font-bold text-slate-800 mb-6 md:mb-8 leading-[1.5] md:leading-[1.3] break-words" style={{ fontFamily: 'var(--font-handwriting)', textShadow: '0 0 30px white, 0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
               隠岐での暮らしを<br />
               もっと <span className="text-emerald-600">楽しく</span>、<br />
               もっと <span className="text-sky-600">豊かに</span>。
             </h1>
-            
+
             <div className="mb-10 md:mb-12 px-2 md:px-0">
               <div className="flex flex-col md:flex-row items-center md:items-baseline justify-center md:justify-start gap-3 md:gap-4 mb-6" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
                 <p className="text-lg md:text-3xl text-slate-800 font-bold tracking-[0.1em] md:tracking-[0.2em]">
@@ -156,28 +156,28 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
           </div>
         </div>
 
-          {/* Floating Circle Badge */}
-          <div className="hidden lg:flex absolute top-1/4 right-24 w-72 h-72 bg-white/90 backdrop-blur-sm rounded-full shadow-2xl items-center justify-center text-center border-4 border-white animate-float-slow">
-            <div className="relative">
-              <p className="text-slate-700 font-bold text-3xl leading-[1.6] tracking-wider" style={{ fontFamily: 'var(--font-handwriting)' }}>
-                隠岐がもっと<br />好きになる<br />つながりを。
-              </p>
-              
-              {/* Overlapping Bird Illustration */}
-              <div className="absolute -bottom-16 -right-12 pointer-events-none">
-                <svg className="w-24 h-24 text-sky-300 transform -rotate-12 drop-shadow-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-                  <path d="M2 12s4-2 7-2 7 2 7 2 4-2 4-2" strokeLinecap="round" />
-                  <path d="M5 14s3-1 5-1 5 1 5 1 3-1 3-1" strokeLinecap="round" opacity="0.6" />
-                </svg>
-              </div>
+        {/* Floating Circle Badge */}
+        <div className="hidden lg:flex absolute top-1/4 right-24 w-72 h-72 bg-white/90 backdrop-blur-sm rounded-full shadow-2xl items-center justify-center text-center border-4 border-white animate-float-slow">
+          <div className="relative">
+            <p className="text-slate-700 font-bold text-3xl leading-[1.6] tracking-wider" style={{ fontFamily: 'var(--font-handwriting)' }}>
+              隠岐がもっと<br />好きになる<br />つながりを。
+            </p>
+
+            {/* Overlapping Bird Illustration */}
+            <div className="absolute -bottom-16 -right-12 pointer-events-none">
+              <svg className="w-24 h-24 text-sky-300 transform -rotate-12 drop-shadow-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+                <path d="M2 12s4-2 7-2 7 2 7 2 4-2 4-2" strokeLinecap="round" />
+                <path d="M5 14s3-1 5-1 5 1 5 1 3-1 3-1" strokeLinecap="round" opacity="0.6" />
+              </svg>
             </div>
           </div>
+        </div>
 
         {/* Wavy Bottom Transition - Organic & Smooth */}
         <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-20">
           <svg className="relative block w-[calc(100%+1.3px)] h-[60px] md:h-[100px]" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path 
-              d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5,73.84-4.36,147.54,16.88,218.2,35.26,69.27,18,138.38,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" 
+            <path
+              d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5,73.84-4.36,147.54,16.88,218.2,35.26,69.27,18,138.38,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
               className="fill-white"
               transform="rotate(180 600 60)"
             ></path>
@@ -186,8 +186,8 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
       </section>
 
       {/* Intro Section */}
-      <section 
-        id="intro" 
+      <section
+        id="intro"
         data-observe="section"
         className={`bg-white py-32 px-6 lg:py-48 reveal ${isVisible('intro') ? 'is-visible' : ''}`}
       >
@@ -204,7 +204,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 私たちは、気兼ねなく笑い合える「ヨコの繋がり」を再構築します。島の暮らしを、もっとオモシロク、仲間とともに広げていくために。
               </p>
             </div>
-            
+
             <div className="relative">
               <div className="aspect-[4/3] overflow-hidden rounded-3xl shadow-2xl">
                 <Image
@@ -223,8 +223,8 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
       </section>
 
       {/* Crisis Section */}
-      <section 
-        id="crisis" 
+      <section
+        id="crisis"
         data-observe="section"
         className={`relative py-32 px-6 lg:py-48 reveal overflow-hidden ${isVisible('crisis') ? 'is-visible' : ''}`}
       >
@@ -261,7 +261,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 </p>
               </div>
               <div className="relative inline-block font-sans">
-                <span 
+                <span
                   className="text-8xl md:text-[12rem] lg:text-[14rem] font-black leading-none flex items-baseline justify-center lg:justify-start text-orange-500 drop-shadow-[0_0_100px_rgba(249,115,22,0.4)]"
                   style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif', letterSpacing: '0.02em' }}
                 >
@@ -289,8 +289,8 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
       </section>
 
       {/* Recommended For Section */}
-      <section 
-        id="recommended" 
+      <section
+        id="recommended"
         data-observe="section"
         className={`relative bg-slate-50 py-32 px-6 reveal overflow-hidden ${isVisible('recommended') ? 'is-visible' : ''}`}
       >
@@ -380,7 +380,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               </div>
             </div>
           </div>
-          
+
           <div className="mt-20 text-center">
             <p className="text-lg font-bold text-slate-500 flex items-center justify-center gap-2">
               <span className="w-8 h-px bg-slate-200" />
@@ -392,8 +392,8 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
       </section>
 
       {/* Concept Section */}
-      <section 
-        id="concept" 
+      <section
+        id="concept"
         data-observe="section"
         className={`relative py-32 px-6 lg:py-48 reveal overflow-hidden ${isVisible('concept') ? 'is-visible' : ''}`}
       >
@@ -409,12 +409,12 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 <span className="w-12 h-0.5 bg-orange-500" />
                 <p className="font-bold text-xl tracking-[0.2em] text-orange-500 uppercase">Our Concept</p>
               </div>
-              
+
               <h2 className="text-5xl md:text-7xl font-bold text-slate-900 mb-10 leading-[1.2] tracking-tight">
                 ゆるく繋がる、<br />
                 <span className="text-orange-500">本気で遊ぶ。</span>
               </h2>
-              
+
               <div className="space-y-8 max-w-xl">
                 <p className="text-2xl md:text-3xl text-slate-800 leading-relaxed font-bold tracking-tight">
                   シークレット感は「排他的な暗さ」ではなく、内側に温かさがあること。
@@ -461,7 +461,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                   </div>
                 </div>
               </div>
-              
+
               {/* Floating Decorative Elements */}
               <div className="absolute -top-12 -right-12 w-32 h-32 bg-orange-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob" />
               <div className="absolute -bottom-12 -left-12 w-40 h-40 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000" />
@@ -471,8 +471,8 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
       </section>
 
       {/* Activities Section */}
-      <section 
-        id="activities" 
+      <section
+        id="activities"
         data-observe="section"
         className={`bg-gradient-premium py-32 px-6 lg:py-48 reveal ${isVisible('activities') ? 'is-visible' : ''}`}
       >
@@ -486,17 +486,17 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {activities.map((item, index) => (
-              <div 
-                key={item.title} 
+              <div
+                key={item.title}
                 className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 border-4 border-white"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="aspect-[4/3] relative overflow-hidden">
-                  <Image 
-                    src={item.image} 
-                    alt={item.title} 
-                    fill 
-                    className="object-cover transition-transform duration-500 group-hover:scale-110" 
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
                 <div className="p-8">
@@ -510,8 +510,8 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
       </section>
 
       {/* Roadmap Section */}
-      <section 
-        id="roadmap" 
+      <section
+        id="roadmap"
         data-observe="section"
         className={`bg-white py-32 px-6 lg:py-48 reveal ${isVisible('roadmap') ? 'is-visible' : ''}`}
       >
@@ -525,7 +525,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               いきなり完成したコミュニティに入るのではなく、ルールづくりから一緒に参加できるのが醍醐味です。まずはLINEに登録して、みんなで作戦会議を始めましょう！
             </p>
           </div>
-          
+
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left: Vertical Timeline */}
             <div className="relative pl-4 lg:pl-0">
@@ -599,8 +599,8 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
       </section>
 
       {/* Co-Creation Section */}
-      <section 
-        id="cocreation" 
+      <section
+        id="cocreation"
         data-observe="section"
         className={`relative py-32 px-6 lg:py-48 reveal overflow-hidden ${isVisible('cocreation') ? 'is-visible' : ''}`}
       >
