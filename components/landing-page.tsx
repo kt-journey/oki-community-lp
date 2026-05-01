@@ -149,7 +149,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               </a>
               <p className="text-xs md:text-base font-bold text-slate-700" style={{ textShadow: '0 0 10px white' }}>
                 現在 <span className="text-orange-600 text-base md:text-xl font-black tabular-nums">
-                  <Counter target={42} isVisible={isVisible('hero')} />名
+                  <Counter target={3} isVisible={isVisible('hero')} />名
                 </span> がLINEで作戦会議中！
               </p>
             </div>
