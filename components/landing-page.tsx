@@ -143,16 +143,18 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
           </div>
 
           {/* Floating Circle Badge */}
-          <div className="hidden lg:block absolute top-1/4 right-24 w-64 h-64 bg-white/90 backdrop-blur-sm rounded-full shadow-2xl flex items-center justify-center text-center p-8 border-4 border-white animate-float-slow">
-            <div className="relative">
-              <p className="text-slate-700 font-bold text-xl leading-relaxed">
+          <div className="hidden lg:flex absolute top-1/4 right-24 w-72 h-72 bg-white/90 backdrop-blur-sm rounded-full shadow-2xl items-center justify-center text-center border-4 border-white animate-float-slow">
+            <div className="relative px-10">
+              <p className="text-slate-700 font-bold text-2xl leading-[1.6] tracking-wider mb-2" style={{ fontFamily: 'var(--font-handwriting)' }}>
                 隠岐がもっと<br />好きになる<br />つながりを。
               </p>
               {/* Simple Bird Illustration (SVG path) */}
-              <svg className="absolute -bottom-12 -right-4 w-12 h-12 text-sky-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M2 12s4-2 7-2 7 2 7 2 4-2 4-2" strokeLinecap="round" />
-                <path d="M5 14s3-1 5-1 5 1 5 1 3-1 3-1" strokeLinecap="round" opacity="0.5" />
-              </svg>
+              <div className="flex justify-center mt-4">
+                <svg className="w-16 h-16 text-sky-300 transform -rotate-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M2 12s4-2 7-2 7 2 7 2 4-2 4-2" strokeLinecap="round" />
+                  <path d="M5 14s3-1 5-1 5 1 5 1 3-1 3-1" strokeLinecap="round" opacity="0.5" />
+                </svg>
+              </div>
             </div>
           </div>
         </div>

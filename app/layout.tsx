@@ -40,7 +40,7 @@ export default function RootLayout({
       className={`${notoSansJp.variable} ${notoSansJpHeading.variable} ${spaceMono.variable} h-full antialiased`}
     >
       <head>
-        <Script id="adobe-fonts" strategy="afterInteractive">
+        <Script id="adobe-fonts" strategy="beforeInteractive">
           {`(function(d) {
             var config = {
               kitId: 'gpz2vpc',
