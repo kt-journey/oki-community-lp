@@ -102,37 +102,37 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pt-20 lg:pt-0">
           <div className="max-w-3xl">
             {/* Hand-drawn style lead */}
-            <div className="relative inline-block mb-6 animate-float">
-              <span className="text-slate-700 text-xl md:text-3xl font-medium tracking-wider flex items-center gap-4" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
-                <span className="opacity-40 font-serif italic text-4xl">\\</span>
+            <div className="relative inline-block mb-4 md:mb-6 animate-float">
+              <span className="text-slate-700 text-lg md:text-3xl font-medium tracking-wider flex items-center gap-3 md:gap-4" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
+                <span className="opacity-40 font-serif italic text-2xl md:text-4xl">\\</span>
                 ひとりじゃない、島ぐらし。
-                <span className="opacity-40 font-serif italic text-4xl">/</span>
+                <span className="opacity-40 font-serif italic text-2xl md:text-4xl">/</span>
               </span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-slate-800 mb-8 leading-[1.3]" style={{ fontFamily: 'var(--font-handwriting)', textShadow: '0 0 30px white, 0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
-              隠岐での暮らしを<br />
-              もっと <span className="text-emerald-600">楽しく</span>、
+            <h1 className="text-4xl md:text-7xl lg:text-[5.5rem] font-bold text-slate-800 mb-6 md:mb-8 leading-[1.4] md:leading-[1.3]" style={{ fontFamily: 'var(--font-handwriting)', textShadow: '0 0 30px white, 0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
+              隠岐での暮らしを<br className="hidden md:block" />
+              もっと <span className="text-emerald-600">楽しく</span>、<br className="md:hidden" />
               もっと <span className="text-sky-600">豊かに</span>。
             </h1>
             
-            <div className="mb-12">
-              <p className="text-2xl md:text-3xl text-slate-800 font-bold tracking-[0.2em] mb-6" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
+            <div className="mb-10 md:mb-12">
+              <p className="text-xl md:text-3xl text-slate-800 font-bold tracking-[0.1em] md:tracking-[0.2em] mb-4 md:mb-6" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
                 隠岐移住者コミュニティ
               </p>
-              <p className="text-lg md:text-xl text-slate-700 leading-relaxed max-w-xl font-bold" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
-                隠岐に移住した人、これから移住を考えている人、<br />
-                島での暮らしをもっと楽しみたい人のための<br />
-                つながり・情報交換の場です。
-              </p>
+              <div className="text-base md:text-xl text-slate-700 leading-relaxed max-w-xl font-bold space-y-1" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
+                <p className="md:whitespace-nowrap">隠岐に移住した人、これから移住を考えている人、</p>
+                <p className="md:whitespace-nowrap">島での暮らしをもっと楽しみたい人のための</p>
+                <p>つながり・情報交換の場です。</p>
+              </div>
             </div>
 
-            <div className="flex flex-wrap gap-6 items-center">
+            <div className="flex flex-wrap gap-6 items-center pb-20 md:pb-0">
               <a
                 href={ctaUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-orange-500 px-10 py-5 font-bold text-white transition-all hover:bg-orange-400 hover:scale-105 shadow-lg shadow-orange-200"
+                className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-orange-500 px-8 py-4 md:px-10 md:py-5 font-bold text-white transition-all hover:bg-orange-400 hover:scale-105 shadow-lg shadow-orange-200 z-30"
               >
                 <span className="text-lg">まずはLINEで先行情報を受け取る</span>
                 <svg className="h-6 w-6 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
