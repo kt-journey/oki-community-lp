@@ -103,6 +103,9 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
           <div className="max-w-3xl text-center md:text-left mx-auto md:mx-0">
             {/* Hand-drawn style lead */}
             <div className="relative inline-block mb-4 md:mb-6 animate-float mx-auto md:mx-0">
+              <div className="absolute -top-8 -right-8 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full transform rotate-12 shadow-lg animate-pulse z-20">
+                Launching Soon
+              </div>
               <span className="text-slate-700 text-lg md:text-3xl font-medium tracking-wider flex items-center justify-center md:justify-start gap-3 md:gap-4" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
                 <span className="opacity-40 font-serif italic text-2xl md:text-4xl">\\</span>
                 ひとりじゃない、島ぐらし。
@@ -118,16 +121,16 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
             
             <div className="mb-10 md:mb-12">
               <p className="text-xl md:text-3xl text-slate-800 font-bold tracking-[0.1em] md:tracking-[0.2em] mb-4 md:mb-6" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
-                隠岐移住者コミュニティ
+                隠岐移住者コミュニティ <span className="text-orange-500 text-lg md:text-xl block md:inline mt-2 md:mt-0">立ち上げメンバー募集中！</span>
               </p>
               <div className="text-base md:text-xl text-slate-700 leading-relaxed max-w-xl font-bold space-y-1 mx-auto md:mx-0" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
-                <p className="md:whitespace-nowrap">隠岐に移住した人、これから移住を考えている人、</p>
-                <p className="md:whitespace-nowrap">島での暮らしをもっと楽しみたい人のための</p>
-                <p>つながり・情報交換の場です。</p>
+                <p>現在、ルール作りから一緒に参加してくれる</p>
+                <p>最初の仲間（初期メンバー）を集めています。</p>
+                <p>ここから、新しい島の縁を育てていきませんか？</p>
               </div>
             </div>
 
-            <div className="flex flex-wrap justify-center md:justify-start gap-6 items-center pb-20 md:pb-0">
+            <div className="flex flex-col items-center md:items-start gap-4 pb-20 md:pb-0">
               <a
                 href={ctaUrl}
                 target="_blank"
@@ -139,6 +142,9 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </a>
+              <p className="text-sm md:text-base font-bold text-slate-700" style={{ textShadow: '0 0 10px white' }}>
+                現在 <span className="text-orange-600 text-lg md:text-xl">42名</span> がLINEで作戦会議中！
+              </p>
             </div>
           </div>
 
