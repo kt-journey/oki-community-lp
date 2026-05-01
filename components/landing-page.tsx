@@ -132,11 +132,11 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 href={ctaUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-orange-500 px-8 py-4 md:px-10 md:py-5 font-bold text-white transition-all hover:bg-orange-400 hover:scale-105 shadow-lg shadow-orange-200 z-30"
+                className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-[#06C755] px-8 py-4 md:px-10 md:py-5 font-bold text-white transition-all hover:bg-[#05b34c] hover:scale-105 shadow-lg shadow-green-200 z-30"
               >
                 <span className="text-lg">LINEで先行情報を受け取る</span>
-                <svg className="h-6 w-6 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12c0 4.38 3.39 8.04 7.76 8.87.53.1.72-.23.72-.51 0-.25-.01-.92-.01-1.8-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.01 2.9-.01 3.29 0 .28.19.62.73.51C18.61 20.04 22 16.38 22 12c0-5.52-4.48-10-10-10z" />
                 </svg>
               </a>
             </div>
@@ -630,7 +630,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => onCtaClick("footer")}
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-full bg-orange-500 px-12 py-6 text-xl font-black text-white transition-all hover:scale-105 hover:bg-orange-400 hover:shadow-[0_0_40px_rgba(249,115,22,0.6)]"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-full bg-[#06C755] px-12 py-6 text-xl font-black text-white transition-all hover:scale-105 hover:bg-[#05b34c] hover:shadow-[0_0_40px_rgba(6,199,85,0.4)]"
               >
                 <span>{content.footerCta}</span>
                 <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
