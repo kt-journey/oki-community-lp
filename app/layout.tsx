@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Noto_Sans_JP, Space_Mono, Klee_One } from "next/font/google";
+import { Noto_Sans_JP, Space_Mono } from "next/font/google";
 import "./globals.css";
 
 const notoSansJp = Noto_Sans_JP({
@@ -20,12 +20,6 @@ const spaceMono = Space_Mono({
   weight: ["400", "700"],
 });
 
-const kleeOne = Klee_One({
-  variable: "--font-handwriting",
-  subsets: ["latin"],
-  weight: ["400", "600"],
-});
-
 export const metadata: Metadata = {
   title: "Okey-Dokey | 隠岐移住者コミュニティ",
   description: "隠岐移住者コミュニティのウェイトリストLP",
@@ -43,9 +37,19 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${notoSansJp.variable} ${notoSansJpHeading.variable} ${spaceMono.variable} ${kleeOne.variable} h-full antialiased`}
+      className={`${notoSansJp.variable} ${notoSansJpHeading.variable} ${spaceMono.variable} h-full antialiased`}
     >
       <head>
+        <Script id="adobe-fonts" strategy="afterInteractive">
+          {`(function(d) {
+            var config = {
+              kitId: 'gpz2vpc',
+              scriptTimeout: 3000,
+              async: true
+            },
+            h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\\bwf-loading\\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+          })(document);`}
+        </Script>
         {gtmId ? (
           <Script id="gtm-base" strategy="afterInteractive">
             {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
