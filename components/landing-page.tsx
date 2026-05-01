@@ -612,9 +612,19 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
             まずはLINEに追加して、コミュニティが立ち上がる過程を一緒に楽しみませんか？（※登録・参加は無料です）
           </p>
 
-          <div className="glass-dark rounded-3xl p-12 max-w-2xl mx-auto border border-white/30 relative overflow-hidden shadow-2xl">
+          <div className="glass-dark rounded-[2.5rem] p-10 md:p-16 max-w-3xl mx-auto border border-white/20 relative overflow-hidden shadow-2xl">
             <div className="relative z-10">
-              <p className="text-3xl font-black mb-10">{content.footerTitle}</p>
+              <div className="flex flex-col items-center gap-8 mb-12">
+                <div className="relative">
+                  <div className="bg-orange-500 text-white text-sm md:text-base font-black px-4 py-2 rounded-xl mb-4 inline-block animate-bounce shadow-lg after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-8 after:border-transparent after:border-t-orange-500">
+                    完全無料
+                  </div>
+                  <p className="text-3xl md:text-4xl font-black leading-tight">
+                    最初の100人！<br className="sm:hidden" />隠岐を遊び尽くす<br />初期メンバーを募集中
+                  </p>
+                </div>
+              </div>
+
               <a
                 href={ctaUrl}
                 target="_blank"
