@@ -172,7 +172,6 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               </div>
             </div>
           </div>
-        </div>
 
         {/* Wavy Bottom Transition - Organic & Smooth */}
         <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-20">
