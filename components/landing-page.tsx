@@ -103,14 +103,14 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
           <div className="max-w-3xl">
             {/* Hand-drawn style lead */}
             <div className="relative inline-block mb-6 animate-float">
-              <span className="text-slate-700 text-xl md:text-3xl font-medium tracking-wider flex items-center gap-4 drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]" style={{ textShadow: '0 0 15px white, 0 0 10px white' }}>
+              <span className="text-slate-700 text-xl md:text-3xl font-medium tracking-wider flex items-center gap-4" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
                 <span className="opacity-40 font-serif italic text-4xl">\\</span>
                 ひとりじゃない、島ぐらし。
                 <span className="opacity-40 font-serif italic text-4xl">/</span>
               </span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-slate-800 mb-8 leading-[1.3]" style={{ fontFamily: 'var(--font-handwriting)', textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white' }}>
+            <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-slate-800 mb-8 leading-[1.3]" style={{ fontFamily: 'var(--font-handwriting)', textShadow: '0 0 30px white, 0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
               隠岐での暮らしを<br />
               もっと <span className="text-emerald-600">楽しく</span>、
               もっと <span className="text-sky-600">豊かに</span>。
