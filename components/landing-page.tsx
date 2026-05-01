@@ -103,8 +103,8 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
           <div className="max-w-3xl text-center md:text-left mx-auto md:mx-0">
             {/* Hand-drawn style lead */}
             <div className="relative inline-block mb-4 md:mb-6 animate-float mx-auto md:mx-0">
-              <div className="absolute -top-8 -right-8 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full transform rotate-12 shadow-lg animate-pulse z-20">
-                Launching Soon
+              <div className="absolute -top-8 -right-12 bg-orange-500 text-white text-xs md:text-sm font-black px-4 py-1.5 rounded-full transform rotate-12 shadow-lg animate-pulse z-20 whitespace-nowrap">
+                立ち上げ準備中
               </div>
               <span className="text-slate-700 text-lg md:text-3xl font-medium tracking-wider flex items-center justify-center md:justify-start gap-3 md:gap-4" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
                 <span className="opacity-40 font-serif italic text-2xl md:text-4xl">\\</span>
