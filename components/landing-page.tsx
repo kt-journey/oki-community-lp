@@ -15,22 +15,22 @@ const activities = [
   {
     title: "魚突き・漁船体験",
     body: "海の作法と楽しさを共有し、隠岐での暮らし方を実地でつなげる。",
-    image: "/images/oki/230511_DSC03037.jpg"
+    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80&w=800"
   },
   {
     title: "BBQ・キャンプ",
     body: "共通備品をシェアし、週末を最大化。仲間づくりのハードルを下げる。",
-    image: "/images/oki/DSC01083.jpg"
+    image: "/images/oki/bbq.jpg"
   },
   {
     title: "送迎相談シャトル",
     body: "車社会ゆえの交流制限をゆるめ、安心して会える導線を確保する。",
-    image: "/images/oki/DSC04974-2.jpg"
+    image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=800"
   },
   {
-    title: "身元保証",
+    title: "空き家相談",
     body: "信頼を蓄積し、空き家流通の壁を越えるための下地を育てる。",
-    image: "/images/oki/20240610-DSC09821.jpg"
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800"
   },
 ];
 
@@ -479,9 +479,13 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-20">
             <p className="font-bold tracking-widest text-orange-600 mb-6 text-xl">ACTIVITIES</p>
-            <h2 className="font-serif text-4xl md:text-5xl font-black text-slate-900">
+            <h2 className="font-serif text-4xl md:text-5xl font-black text-slate-900 mb-6">
               体験と仕組みで、距離を縮める。
             </h2>
+            <p className="text-slate-600 font-bold max-w-2xl mx-auto text-lg leading-relaxed">
+              コミュニティでは、例えば以下のような企画を検討しています。<br className="hidden md:block" />
+              みんなの「やりたい」を持ち寄って、隠岐をもっとオモシロくしていきましょう。
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
