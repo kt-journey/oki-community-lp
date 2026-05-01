@@ -154,7 +154,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               </p>
             </div>
           </div>
-          </div>
+        </div>
 
           {/* Floating Circle Badge */}
           <div className="hidden lg:flex absolute top-1/4 right-24 w-72 h-72 bg-white/90 backdrop-blur-sm rounded-full shadow-2xl items-center justify-center text-center border-4 border-white animate-float-slow">
