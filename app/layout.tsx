@@ -41,9 +41,10 @@ export default function RootLayout({
   const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 
   return (
-      <body
-        className={`${notoSansJp.variable} ${notoSansJpHeading.variable} ${spaceMono.variable} ${yuseiMagic.variable} h-full antialiased`}
-      >
+    <html
+      lang="ja"
+      className={`${notoSansJp.variable} ${notoSansJpHeading.variable} ${spaceMono.variable} ${yuseiMagic.variable} h-full antialiased`}
+    >
       <head>
         {gtmId ? (
           <Script id="gtm-base" strategy="afterInteractive">
