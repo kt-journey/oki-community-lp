@@ -84,7 +84,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
   };
 
   return (
-    <main className="w-full">
+    <main className="w-full overflow-x-hidden">
       {/* Hero Section */}
       <section id="hero" data-observe="section" className="relative min-h-[100vh] flex items-center justify-start overflow-hidden bg-white">
         {/* Lighter, brighter background image */}
