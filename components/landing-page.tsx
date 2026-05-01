@@ -94,7 +94,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
             alt="隠岐の美しい風景"
             fill
             priority
-            className="object-cover object-center scale-110 lg:scale-100"
+            className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/20 to-transparent lg:from-white/40" />
         </div>
