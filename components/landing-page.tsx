@@ -23,9 +23,9 @@ const activities = [
     image: "/images/oki/bbq.jpg"
   },
   {
-    title: "送迎相談シャトル",
+    title: "送迎シャトル",
     body: "車社会ゆえの交流制限をゆるめ、安心して会える導線を確保する。",
-    image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=800"
+    image: "/images/oki/bus.png"
   },
   {
     title: "空き家相談",
