@@ -103,6 +103,9 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
           <div className="max-w-3xl text-center md:text-left mx-auto md:mx-0">
             {/* Subcopy Image */}
             <div className="relative mb-6 md:mb-10 max-w-[280px] md:max-w-[500px] mx-auto md:mx-0">
+              <div className="absolute -top-4 -right-2 md:-top-8 md:-right-12 bg-orange-500 text-white text-[10px] md:text-sm font-black px-3 py-1 md:px-4 md:py-1.5 rounded-full transform rotate-12 shadow-lg animate-pulse z-20 whitespace-nowrap">
+                立ち上げ準備中
+              </div>
               <Image 
                 src="/images/assets/subcopy.png" 
                 alt="ひとりじゃない、島ぐらし。" 
@@ -163,7 +166,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                </div>
             </div>
             
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 md:gap-6">
               {[
                 { 
                   title: "仲間ができる", 
