@@ -101,16 +101,16 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-10 lg:px-12 pt-16 md:pt-20 lg:pt-0">
           <div className="max-w-3xl text-center md:text-left mx-auto md:mx-0">
-            {/* Hand-drawn style lead */}
-            <div className="relative inline-block mt-4 mb-4 md:mb-6 animate-float mx-auto md:mx-0 px-8 md:px-0">
-              <div className="absolute -top-6 -right-4 md:-top-8 md:-right-12 bg-orange-500 text-white text-[10px] md:text-sm font-black px-3 py-1 md:px-4 md:py-1.5 rounded-full transform rotate-12 shadow-lg animate-pulse z-20 whitespace-nowrap">
-                立ち上げ準備中
-              </div>
-              <span className="text-slate-700 text-base md:text-3xl font-medium tracking-wider flex items-center justify-center md:justify-start gap-2 md:gap-4" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
-                <span className="opacity-40 font-serif italic text-xl md:text-4xl">\\</span>
-                ひとりじゃない、島ぐらし。
-                <span className="opacity-40 font-serif italic text-xl md:text-4xl">/</span>
-              </span>
+            {/* Subcopy Image */}
+            <div className="relative mb-6 md:mb-10 max-w-[280px] md:max-w-[500px] mx-auto md:mx-0">
+              <Image 
+                src="/images/assets/subcopy.png" 
+                alt="ひとりじゃない、島ぐらし。" 
+                width={500} 
+                height={150}
+                priority
+                className="w-full h-auto drop-shadow-md"
+              />
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-7xl lg:text-[5.5rem] font-bold text-slate-800 mb-6 md:mb-8 leading-[1.5] md:leading-[1.3] break-words" style={{ fontFamily: 'var(--font-handwriting)', textShadow: '0 0 30px white, 0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
@@ -152,6 +152,64 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                   <Counter target={3} isVisible={isVisible('hero')} />名
                 </span> がLINEで作戦会議中！
               </p>
+            </div>
+          </div>
+
+          {/* Benefits Cards Section */}
+          <div className="mt-12 md:mt-24 mb-16 md:mb-32 relative z-20 px-4 md:px-0">
+            <div className="relative mb-8 md:mb-0 text-center">
+               <div className="inline-block bg-emerald-600 text-white px-8 py-2 md:py-3 rounded-full font-bold text-sm md:text-base shadow-lg transform -translate-y-1/2 relative z-10">
+                 このコミュニティでできること
+               </div>
+            </div>
+            
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+              {[
+                { 
+                  title: "仲間ができる", 
+                  desc: "移住者・地元の人とつながり、孤独を解消。", 
+                  icon: (
+                    <svg className="w-10 h-10 md:w-12 md:h-12 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  )
+                },
+                { 
+                  title: "仕事につながる", 
+                  desc: "仕事の紹介や一緒に取り組む仲間探し。", 
+                  icon: (
+                    <svg className="w-10 h-10 md:w-12 md:h-12 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  )
+                },
+                { 
+                  title: "暮らしに役立つ", 
+                  desc: "住まい・子育て・お店などリアルな情報をシェア。", 
+                  icon: (
+                    <svg className="w-10 h-10 md:w-12 md:h-12 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                  )
+                },
+                { 
+                  title: "挑戦を応援", 
+                  desc: "やってみたいを応援する環境があります。", 
+                  icon: (
+                    <svg className="w-10 h-10 md:w-12 md:h-12 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
+                    </svg>
+                  )
+                },
+              ].map((card, i) => (
+                <div key={i} className="bg-white/95 backdrop-blur-sm rounded-3xl p-5 md:p-8 shadow-xl border border-slate-100 flex flex-col items-center text-center hover:translate-y-[-4px] transition-transform duration-300">
+                  <div className="mb-4 md:mb-6 p-3 md:p-4 bg-slate-50 rounded-2xl">
+                    {card.icon}
+                  </div>
+                  <h3 className="text-lg md:text-xl font-black text-slate-800 mb-2 md:mb-3">{card.title}</h3>
+                  <p className="text-[10px] md:text-sm text-slate-600 font-bold leading-relaxed">{card.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
