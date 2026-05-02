@@ -166,13 +166,13 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                </div>
             </div>
             
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 md:gap-6">
+            <div className="flex overflow-x-auto lg:grid lg:grid-cols-4 gap-4 md:gap-6 pb-6 lg:pb-0 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
               {[
                 { 
                   title: "仲間ができる", 
                   desc: "移住者・地元の人とつながり、孤独を解消。", 
                   icon: (
-                    <svg className="w-10 h-10 md:w-12 md:h-12 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-8 h-8 md:w-12 md:h-12 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   )
@@ -181,7 +181,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                   title: "仕事につながる", 
                   desc: "仕事の紹介や一緒に取り組む仲間探し。", 
                   icon: (
-                    <svg className="w-10 h-10 md:w-12 md:h-12 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-8 h-8 md:w-12 md:h-12 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   )
@@ -190,7 +190,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                   title: "暮らしに役立つ", 
                   desc: "住まい・子育て・お店などリアルな情報をシェア。", 
                   icon: (
-                    <svg className="w-10 h-10 md:w-12 md:h-12 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-8 h-8 md:w-12 md:h-12 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                     </svg>
                   )
@@ -199,17 +199,17 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                   title: "挑戦を応援", 
                   desc: "やってみたいを応援する環境があります。", 
                   icon: (
-                    <svg className="w-10 h-10 md:w-12 md:h-12 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-8 h-8 md:w-12 md:h-12 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
                     </svg>
                   )
                 },
               ].map((card, i) => (
-                <div key={i} className="bg-white/95 backdrop-blur-sm rounded-3xl p-5 md:p-8 shadow-xl border border-slate-100 flex flex-col items-center text-center hover:translate-y-[-4px] transition-transform duration-300">
+                <div key={i} className="flex-shrink-0 w-[180px] md:w-auto bg-white/95 backdrop-blur-sm rounded-3xl p-5 md:p-8 shadow-xl border border-slate-100 flex flex-col items-center text-center hover:translate-y-[-4px] transition-transform duration-300">
                   <div className="mb-4 md:mb-6 p-3 md:p-4 bg-slate-50 rounded-2xl">
                     {card.icon}
                   </div>
-                  <h3 className="text-lg md:text-xl font-black text-slate-800 mb-2 md:mb-3">{card.title}</h3>
+                  <h3 className="text-base md:text-xl font-black text-slate-800 mb-2 md:mb-3 whitespace-nowrap md:whitespace-normal">{card.title}</h3>
                   <p className="text-[10px] md:text-sm text-slate-600 font-bold leading-relaxed">{card.desc}</p>
                 </div>
               ))}
@@ -218,9 +218,9 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
         </div>
 
         {/* Floating Circle Badge */}
-        <div className="hidden lg:flex absolute top-1/4 right-24 w-72 h-72 bg-white/90 backdrop-blur-sm rounded-full shadow-2xl items-center justify-center text-center border-4 border-white animate-float-slow">
+        <div className="absolute top-[65%] right-4 md:top-1/4 md:right-24 w-40 h-40 md:w-72 md:h-72 bg-white/90 backdrop-blur-sm rounded-full shadow-2xl flex items-center justify-center text-center border-4 border-white animate-float-slow z-30">
           <div className="relative">
-            <p className="text-slate-700 font-bold text-3xl leading-[1.6] tracking-wider" style={{ fontFamily: 'var(--font-handwriting)' }}>
+            <p className="text-slate-700 font-bold text-lg md:text-3xl leading-[1.6] tracking-wider" style={{ fontFamily: 'var(--font-handwriting)' }}>
               隠岐がもっと<br />好きになる<br />つながりを。
             </p>
 
