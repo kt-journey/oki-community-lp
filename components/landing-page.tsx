@@ -100,140 +100,114 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-10 lg:px-12 pt-16 md:pt-20 lg:pt-16">
-          <div className="max-w-3xl text-center md:text-left mx-auto md:mx-0">
-            {/* Subcopy Image */}
-            <div className="relative mb-4 md:mb-6 max-w-[280px] md:max-w-[420px] mx-auto md:mx-0">
-              <div className="absolute -top-3 -right-1 md:-top-6 md:-right-8 bg-orange-500 text-white text-[8px] md:text-xs font-black px-2 py-0.5 md:px-3 md:py-1 rounded-full transform rotate-12 shadow-lg animate-pulse z-20 whitespace-nowrap">
-                立ち上げ準備中
+          {/* Two-column layout: Left = text, Right = badge (PC only) */}
+          <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
+            {/* Left column: Main content */}
+            <div className="flex-1 max-w-2xl text-center md:text-left mx-auto md:mx-0">
+              {/* Subcopy Image */}
+              <div className="relative mb-4 md:mb-6 max-w-[260px] md:max-w-[380px] mx-auto md:mx-0">
+                <div className="absolute -top-3 -right-1 md:-top-5 md:-right-6 bg-orange-500 text-white text-[8px] md:text-xs font-black px-2 py-0.5 md:px-3 md:py-1 rounded-full transform rotate-12 shadow-lg animate-pulse z-20 whitespace-nowrap">
+                  立ち上げ準備中
+                </div>
+                <Image
+                  src="/images/assets/subcopy.png"
+                  alt="ひとりじゃない、島ぐらし。"
+                  width={380}
+                  height={110}
+                  priority
+                  className="w-full h-auto drop-shadow-md"
+                />
               </div>
-              <Image
-                src="/images/assets/subcopy.png"
-                alt="ひとりじゃない、島ぐらし。"
-                width={420}
-                height={120}
-                priority
-                className="w-full h-auto drop-shadow-md"
-              />
-            </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-[4.5rem] font-bold text-slate-800 mb-4 md:mb-6 leading-[1.4] md:leading-[1.2] break-words" style={{ fontFamily: 'var(--font-handwriting)', textShadow: '0 0 30px white, 0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
-              隠岐での暮らしを<br />
-              もっと<span className="text-emerald-600">楽しく</span>、<br />
-              もっと<span className="text-sky-600">豊かに</span>。
-            </h1>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[4rem] font-bold text-slate-800 mb-3 md:mb-5 leading-[1.4] md:leading-[1.25] break-words" style={{ fontFamily: 'var(--font-handwriting)', textShadow: '0 0 30px white, 0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
+                隠岐での暮らしを<br />
+                もっと <span className="text-emerald-600">楽しく</span>、<br />
+                もっと <span className="text-sky-600">豊かに</span>。
+              </h1>
 
-            <div className="mb-10 md:mb-12 px-2 md:px-0">
-              <div className="flex flex-col md:flex-row items-center md:items-baseline justify-center md:justify-start gap-3 md:gap-4 mb-6" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
-                <p className="text-lg md:text-3xl text-slate-800 font-bold tracking-[0.1em] md:tracking-[0.2em]">
-                  隠岐移住者コミュニティ
+              <div className="mb-6 md:mb-8 px-2 md:px-0">
+                <div className="flex flex-col md:flex-row items-center md:items-baseline justify-center md:justify-start gap-3 md:gap-4 mb-4" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
+                  <p className="text-lg md:text-2xl text-slate-800 font-bold tracking-[0.1em] md:tracking-[0.15em]">
+                    隠岐移住者コミュニティ
+                  </p>
+                  <span className="bg-orange-100 text-orange-600 text-[10px] md:text-sm font-black px-3 py-1 rounded-lg border-2 border-orange-200 shadow-sm">
+                    立ち上げメンバー募集中！
+                  </span>
+                </div>
+                <div className="text-sm md:text-lg text-slate-700 leading-relaxed max-w-xl font-bold space-y-0.5 mx-auto md:mx-0" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
+                  <p>現在、ルール作りから一緒に参加してくれる</p>
+                  <p>最初の仲間（初期メンバー）を集めています。</p>
+                  <p>ここから、新しい島の縁を育てていきませんか？</p>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-center md:items-start gap-3 pb-6 md:pb-0 px-4 md:px-0">
+                <a
+                  href={ctaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-3 overflow-hidden rounded-full bg-[#06C755] px-6 py-4 md:px-10 md:py-5 font-bold text-white transition-all hover:bg-[#05b34c] hover:scale-105 shadow-lg shadow-green-200 z-30"
+                >
+                  <span className="text-base md:text-lg">LINEで先行情報を受け取る</span>
+                  <svg className="h-5 w-5 md:h-6 md:w-6 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </a>
+                <p className="text-xs md:text-base font-bold text-slate-700" style={{ textShadow: '0 0 10px white' }}>
+                  現在 <span className="text-orange-600 text-base md:text-xl font-black tabular-nums">
+                    <Counter target={3} isVisible={isVisible('hero')} />名
+                  </span> がLINEで作戦会議中！
                 </p>
-                <span className="bg-orange-100 text-orange-600 text-[10px] md:text-base font-black px-3 py-1 rounded-lg border-2 border-orange-200 shadow-sm">
-                  立ち上げメンバー募集中！
-                </span>
-              </div>
-              <div className="text-sm md:text-xl text-slate-700 leading-relaxed max-w-xl font-bold space-y-1 mx-auto md:mx-0" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
-                <p>現在、ルール作りから一緒に参加してくれる</p>
-                <p>最初の仲間（初期メンバー）を集めています。</p>
-                <p>ここから、新しい島の縁を育てていきませんか？</p>
               </div>
             </div>
 
-            <div className="flex flex-col items-center md:items-start gap-3 pb-8 md:pb-0 px-4 md:px-0">
-              <a
-                href={ctaUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-3 overflow-hidden rounded-full bg-[#06C755] px-6 py-4 md:px-10 md:py-5 font-bold text-white transition-all hover:bg-[#05b34c] hover:scale-105 shadow-lg shadow-green-200 z-30"
-              >
-                <span className="text-base md:text-lg">LINEで先行情報を受け取る</span>
-                <svg className="h-5 w-5 md:h-6 md:w-6 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </a>
-              <p className="text-xs md:text-base font-bold text-slate-700" style={{ textShadow: '0 0 10px white' }}>
-                現在 <span className="text-orange-600 text-base md:text-xl font-black tabular-nums">
-                  <Counter target={3} isVisible={isVisible('hero')} />名
-                </span> がLINEで作戦会議中！
-              </p>
+            {/* Right column: Circle Badge (PC only, in-flow so no overlap) */}
+            <div className="hidden lg:flex flex-shrink-0 items-center justify-center">
+              <div className="w-56 h-56 xl:w-64 xl:h-64 bg-white/90 backdrop-blur-sm rounded-full shadow-2xl flex items-center justify-center text-center border-4 border-white animate-float-slow">
+                <div className="relative">
+                  <p className="text-slate-700 font-bold text-2xl xl:text-3xl leading-[1.6] tracking-wider" style={{ fontFamily: 'var(--font-handwriting)' }}>
+                    隠岐がもっと<br />好きになる<br />つながりを。
+                  </p>
+                  <div className="absolute -bottom-10 -right-8 pointer-events-none">
+                    <svg className="w-16 h-16 text-sky-300 transform -rotate-12 drop-shadow-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+                      <path d="M2 12s4-2 7-2 7 2 7 2 4-2 4-2" strokeLinecap="round" />
+                      <path d="M5 14s3-1 5-1 5 1 5 1 3-1 3-1" strokeLinecap="round" opacity="0.6" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Benefits Cards Section */}
-          <div className="mt-8 md:mt-16 mb-12 md:mb-20 relative z-20 px-4 md:px-0">
-            <div className="relative mb-8 md:mb-0 text-center">
-              <div className="inline-block bg-emerald-600 text-white px-8 py-2 md:py-3 rounded-full font-bold text-sm md:text-base shadow-lg transform -translate-y-1/2 relative z-10">
+          {/* Benefits Cards — full width, compact */}
+          <div className="mt-6 md:mt-12 mb-8 md:mb-16 relative z-20">
+            <div className="text-center mb-3 md:mb-4">
+              <span className="inline-block bg-emerald-600 text-white px-6 py-1.5 md:px-8 md:py-2 rounded-full font-bold text-xs md:text-sm shadow-md">
                 このコミュニティでできること
-              </div>
+              </span>
             </div>
-
-            <div className="bg-white/95 backdrop-blur-md rounded-2xl md:rounded-[3rem] shadow-xl border border-slate-100 overflow-hidden grid grid-cols-4 gap-0">
+            <div className="bg-white/95 backdrop-blur-md rounded-2xl md:rounded-full shadow-lg border border-slate-100 overflow-hidden grid grid-cols-4 gap-0 max-w-4xl mx-auto">
               {[
-                { 
-                  title: "仲間ができる", 
-                  desc: "移住者・地元の人とつながり、孤独を解消。", 
-                  color: "emerald",
-                  icon: (
-                    <svg className="w-5 h-5 md:w-10 md:h-10 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                  )
-                },
-                { 
-                  title: "仕事につながる", 
-                  desc: "仕事の紹介や一緒に取り組む仲間探し。", 
-                  color: "blue",
-                  icon: (
-                    <svg className="w-5 h-5 md:w-10 md:h-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  )
-                },
-                { 
-                  title: "暮らしに役立つ", 
-                  desc: "住まい・子育て・お店などリアルな情報をシェア。", 
-                  color: "green",
-                  icon: (
-                    <svg className="w-5 h-5 md:w-10 md:h-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                    </svg>
-                  )
-                },
-                { 
-                  title: "挑戦を応援", 
-                  desc: "やってみたいを応援する環境があります。", 
-                  color: "sky",
-                  icon: (
-                    <svg className="w-5 h-5 md:w-10 md:h-10 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
-                    </svg>
-                  )
-                },
+                { title: "仲間ができる", icon: (
+                  <svg className="w-5 h-5 md:w-8 md:h-8 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                )},
+                { title: "仕事につながる", icon: (
+                  <svg className="w-5 h-5 md:w-8 md:h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                )},
+                { title: "暮らしに役立つ", icon: (
+                  <svg className="w-5 h-5 md:w-8 md:h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                )},
+                { title: "挑戦を応援", icon: (
+                  <svg className="w-5 h-5 md:w-8 md:h-8 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" /></svg>
+                )},
               ].map((card, i) => (
-                <div key={i} className={`group p-2 md:p-8 flex flex-col items-center text-center transition-all duration-500 hover:bg-slate-50/50 ${i !== 3 ? 'border-r border-slate-100' : ''}`}>
-                  <div className="mb-1 md:mb-4 p-1 md:p-4 rounded-lg md:rounded-2xl transition-transform duration-500 group-hover:scale-110">
+                <div key={i} className={`p-2 md:py-5 md:px-6 flex flex-col items-center text-center ${i !== 3 ? 'border-r border-slate-100' : ''}`}>
+                  <div className="mb-1 md:mb-2">
                     {card.icon}
                   </div>
-                  <h3 className="text-[9px] md:text-xl font-black text-slate-800 mb-0.5 md:mb-2 leading-tight whitespace-nowrap">{card.title}</h3>
-                  <p className="hidden md:block text-sm text-slate-600 font-bold leading-relaxed">{card.desc}</p>
+                  <h3 className="text-[9px] md:text-sm font-black text-slate-700 leading-tight whitespace-nowrap">{card.title}</h3>
                 </div>
               ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Floating Circle Badge */}
-        <div className="absolute top-[36%] right-2 md:top-[18%] md:right-12 w-24 h-24 md:w-64 md:h-64 bg-white/90 backdrop-blur-sm rounded-full shadow-2xl flex items-center justify-center text-center border-2 md:border-4 border-white animate-float-slow z-30">
-          <div className="relative">
-            <p className="text-slate-700 font-bold text-[10px] md:text-3xl leading-[1.6] tracking-wider" style={{ fontFamily: 'var(--font-handwriting)' }}>
-              隠岐がもっと<br />好きになる<br />つながりを。
-            </p>
-
-            {/* Overlapping Bird Illustration */}
-            <div className="absolute -bottom-16 -right-12 pointer-events-none">
-              <svg className="w-24 h-24 text-sky-300 transform -rotate-12 drop-shadow-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-                <path d="M2 12s4-2 7-2 7 2 7 2 4-2 4-2" strokeLinecap="round" />
-                <path d="M5 14s3-1 5-1 5 1 5 1 3-1 3-1" strokeLinecap="round" opacity="0.6" />
-              </svg>
             </div>
           </div>
         </div>
