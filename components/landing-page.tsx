@@ -166,7 +166,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                </div>
             </div>
             
-            <div className="flex overflow-x-auto lg:grid lg:grid-cols-4 gap-4 md:gap-6 pb-6 lg:pb-0 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
               {[
                 { 
                   title: "仲間ができる", 
