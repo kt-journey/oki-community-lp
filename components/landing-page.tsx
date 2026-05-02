@@ -103,7 +103,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
           <div className="max-w-3xl text-center md:text-left mx-auto md:mx-0">
             {/* Subcopy Image */}
             <div className="relative mb-6 md:mb-10 max-w-[280px] md:max-w-[500px] mx-auto md:mx-0">
-              <div className="absolute -top-4 -right-2 md:-top-8 md:-right-12 bg-orange-500 text-white text-[10px] md:text-sm font-black px-3 py-1 md:px-4 md:py-1.5 rounded-full transform rotate-12 shadow-lg animate-pulse z-20 whitespace-nowrap">
+              <div className="absolute -top-3 -right-1 md:-top-8 md:-right-12 bg-orange-500 text-white text-[8px] md:text-sm font-black px-2 py-0.5 md:px-4 md:py-1.5 rounded-full transform rotate-12 shadow-lg animate-pulse z-20 whitespace-nowrap">
                 立ち上げ準備中
               </div>
               <Image 
@@ -218,7 +218,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
         </div>
 
         {/* Floating Circle Badge */}
-        <div className="absolute top-[8%] right-2 md:top-[12%] md:right-12 w-32 h-32 md:w-72 md:h-72 bg-white/90 backdrop-blur-sm rounded-full shadow-2xl flex items-center justify-center text-center border-4 border-white animate-float-slow z-30">
+        <div className="absolute top-[28%] right-2 md:top-[12%] md:right-12 w-28 h-28 md:w-72 md:h-72 bg-white/90 backdrop-blur-sm rounded-full shadow-2xl flex items-center justify-center text-center border-2 md:border-4 border-white animate-float-slow z-30">
           <div className="relative">
             <p className="text-slate-700 font-bold text-sm md:text-3xl leading-[1.6] tracking-wider" style={{ fontFamily: 'var(--font-handwriting)' }}>
               隠岐がもっと<br />好きになる<br />つながりを。
