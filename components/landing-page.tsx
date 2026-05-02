@@ -106,10 +106,10 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               <div className="absolute -top-3 -right-1 md:-top-6 md:-right-8 bg-orange-500 text-white text-[8px] md:text-xs font-black px-2 py-0.5 md:px-3 md:py-1 rounded-full transform rotate-12 shadow-lg animate-pulse z-20 whitespace-nowrap">
                 立ち上げ準備中
               </div>
-              <Image 
-                src="/images/assets/subcopy.png" 
-                alt="ひとりじゃない、島ぐらし。" 
-                width={420} 
+              <Image
+                src="/images/assets/subcopy.png"
+                alt="ひとりじゃない、島ぐらし。"
+                width={420}
                 height={120}
                 priority
                 className="w-full h-auto drop-shadow-md"
@@ -118,8 +118,8 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
 
             <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-[4.5rem] font-bold text-slate-800 mb-4 md:mb-6 leading-[1.4] md:leading-[1.2] break-words" style={{ fontFamily: 'var(--font-handwriting)', textShadow: '0 0 30px white, 0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
               隠岐での暮らしを<br />
-              もっと <span className="text-emerald-600">楽しく</span>、<br />
-              もっと <span className="text-sky-600">豊かに</span>。
+              もっと<span className="text-emerald-600">楽しく</span>、<br />
+              もっと<span className="text-sky-600">豊かに</span>。
             </h1>
 
             <div className="mb-10 md:mb-12 px-2 md:px-0">
@@ -161,16 +161,16 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
           {/* Benefits Cards Section */}
           <div className="mt-8 md:mt-16 mb-12 md:mb-20 relative z-20 px-4 md:px-0">
             <div className="relative mb-8 md:mb-0 text-center">
-               <div className="inline-block bg-emerald-600 text-white px-8 py-2 md:py-3 rounded-full font-bold text-sm md:text-base shadow-lg transform -translate-y-1/2 relative z-10">
-                 このコミュニティでできること
-               </div>
+              <div className="inline-block bg-emerald-600 text-white px-8 py-2 md:py-3 rounded-full font-bold text-sm md:text-base shadow-lg transform -translate-y-1/2 relative z-10">
+                このコミュニティでできること
+              </div>
             </div>
-            
-            <div className="grid grid-cols-4 gap-2 md:gap-6 px-1 md:px-0">
+
+            <div className="grid grid-cols-4 gap-2 md:gap-2 px-1 md:px-0">
               {[
-                { 
-                  title: "仲間ができる", 
-                  desc: "移住者・地元の人とつながり、孤独を解消。", 
+                {
+                  title: "仲間ができる",
+                  desc: "移住者・地元の人とつながり、孤独を解消。",
                   color: "emerald",
                   icon: (
                     <svg className="w-6 h-6 md:w-10 md:h-10 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -178,9 +178,9 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                     </svg>
                   )
                 },
-                { 
-                  title: "仕事につながる", 
-                  desc: "仕事の紹介や一緒に取り組む仲間探し。", 
+                {
+                  title: "仕事につながる",
+                  desc: "仕事の紹介や一緒に取り組む仲間探し。",
                   color: "blue",
                   icon: (
                     <svg className="w-6 h-6 md:w-10 md:h-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -188,9 +188,9 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                     </svg>
                   )
                 },
-                { 
-                  title: "暮らしに役立つ", 
-                  desc: "住まい・子育て・お店などリアルな情報をシェア。", 
+                {
+                  title: "暮らしに役立つ",
+                  desc: "住まい・子育て・お店などリアルな情報をシェア。",
                   color: "green",
                   icon: (
                     <svg className="w-6 h-6 md:w-10 md:h-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -198,9 +198,9 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                     </svg>
                   )
                 },
-                { 
-                  title: "挑戦を応援", 
-                  desc: "やってみたいを応援する環境があります。", 
+                {
+                  title: "挑戦を応援",
+                  desc: "やってみたいを応援する環境があります。",
                   color: "sky",
                   icon: (
                     <svg className="w-6 h-6 md:w-10 md:h-10 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -218,7 +218,6 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                   <div className={`mt-auto h-0.5 w-0 group-hover:w-1/2 bg-${card.color}-400 transition-all duration-500 rounded-full`} />
                 </div>
               ))}
-            </div>
             </div>
           </div>
         </div>
