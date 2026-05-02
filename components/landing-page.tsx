@@ -99,24 +99,24 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
           <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/20 to-transparent lg:from-white/40" />
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-10 lg:px-12 pt-16 md:pt-20 lg:pt-0">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-10 lg:px-12 pt-16 md:pt-20 lg:pt-16">
           <div className="max-w-3xl text-center md:text-left mx-auto md:mx-0">
             {/* Subcopy Image */}
-            <div className="relative mb-6 md:mb-10 max-w-[280px] md:max-w-[500px] mx-auto md:mx-0">
-              <div className="absolute -top-3 -right-1 md:-top-8 md:-right-12 bg-orange-500 text-white text-[8px] md:text-sm font-black px-2 py-0.5 md:px-4 md:py-1.5 rounded-full transform rotate-12 shadow-lg animate-pulse z-20 whitespace-nowrap">
+            <div className="relative mb-4 md:mb-6 max-w-[280px] md:max-w-[420px] mx-auto md:mx-0">
+              <div className="absolute -top-3 -right-1 md:-top-6 md:-right-8 bg-orange-500 text-white text-[8px] md:text-xs font-black px-2 py-0.5 md:px-3 md:py-1 rounded-full transform rotate-12 shadow-lg animate-pulse z-20 whitespace-nowrap">
                 立ち上げ準備中
               </div>
               <Image 
                 src="/images/assets/subcopy.png" 
                 alt="ひとりじゃない、島ぐらし。" 
-                width={500} 
-                height={150}
+                width={420} 
+                height={120}
                 priority
                 className="w-full h-auto drop-shadow-md"
               />
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-7xl lg:text-[5.5rem] font-bold text-slate-800 mb-6 md:mb-8 leading-[1.5] md:leading-[1.3] break-words" style={{ fontFamily: 'var(--font-handwriting)', textShadow: '0 0 30px white, 0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-[4.5rem] font-bold text-slate-800 mb-4 md:mb-6 leading-[1.4] md:leading-[1.2] break-words" style={{ fontFamily: 'var(--font-handwriting)', textShadow: '0 0 30px white, 0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
               隠岐での暮らしを<br />
               もっと <span className="text-emerald-600">楽しく</span>、<br />
               もっと <span className="text-sky-600">豊かに</span>。
@@ -138,7 +138,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               </div>
             </div>
 
-            <div className="flex flex-col items-center md:items-start gap-4 pb-16 md:pb-0 px-4 md:px-0">
+            <div className="flex flex-col items-center md:items-start gap-3 pb-8 md:pb-0 px-4 md:px-0">
               <a
                 href={ctaUrl}
                 target="_blank"
@@ -159,7 +159,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
           </div>
 
           {/* Benefits Cards Section */}
-          <div className="mt-12 md:mt-24 mb-16 md:mb-32 relative z-20 px-4 md:px-0">
+          <div className="mt-8 md:mt-16 mb-12 md:mb-20 relative z-20 px-4 md:px-0">
             <div className="relative mb-8 md:mb-0 text-center">
                <div className="inline-block bg-emerald-600 text-white px-8 py-2 md:py-3 rounded-full font-bold text-sm md:text-base shadow-lg transform -translate-y-1/2 relative z-10">
                  このコミュニティでできること
@@ -218,7 +218,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
         </div>
 
         {/* Floating Circle Badge */}
-        <div className="absolute top-[36%] right-2 md:top-[12%] md:right-12 w-24 h-24 md:w-72 md:h-72 bg-white/90 backdrop-blur-sm rounded-full shadow-2xl flex items-center justify-center text-center border-2 md:border-4 border-white animate-float-slow z-30">
+        <div className="absolute top-[36%] right-2 md:top-[18%] md:right-12 w-24 h-24 md:w-64 md:h-64 bg-white/90 backdrop-blur-sm rounded-full shadow-2xl flex items-center justify-center text-center border-2 md:border-4 border-white animate-float-slow z-30">
           <div className="relative">
             <p className="text-slate-700 font-bold text-[10px] md:text-3xl leading-[1.6] tracking-wider" style={{ fontFamily: 'var(--font-handwriting)' }}>
               隠岐がもっと<br />好きになる<br />つながりを。
