@@ -218,7 +218,6 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 </div>
               ))}
             </div>
-            </div>
           </div>
         </div>
 
