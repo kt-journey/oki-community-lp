@@ -166,58 +166,58 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               </div>
             </div>
 
-            <div className="grid grid-cols-4 gap-2 md:gap-2 px-1 md:px-0">
+            <div className="bg-white/95 backdrop-blur-md rounded-2xl md:rounded-[3rem] shadow-xl border border-slate-100 overflow-hidden grid grid-cols-4 gap-0">
               {[
-                {
-                  title: "仲間ができる",
-                  desc: "移住者・地元の人とつながり、孤独を解消。",
+                { 
+                  title: "仲間ができる", 
+                  desc: "移住者・地元の人とつながり、孤独を解消。", 
                   color: "emerald",
                   icon: (
-                    <svg className="w-6 h-6 md:w-10 md:h-10 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-5 h-5 md:w-10 md:h-10 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   )
                 },
-                {
-                  title: "仕事につながる",
-                  desc: "仕事の紹介や一緒に取り組む仲間探し。",
+                { 
+                  title: "仕事につながる", 
+                  desc: "仕事の紹介や一緒に取り組む仲間探し。", 
                   color: "blue",
                   icon: (
-                    <svg className="w-6 h-6 md:w-10 md:h-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-5 h-5 md:w-10 md:h-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   )
                 },
-                {
-                  title: "暮らしに役立つ",
-                  desc: "住まい・子育て・お店などリアルな情報をシェア。",
+                { 
+                  title: "暮らしに役立つ", 
+                  desc: "住まい・子育て・お店などリアルな情報をシェア。", 
                   color: "green",
                   icon: (
-                    <svg className="w-6 h-6 md:w-10 md:h-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-5 h-5 md:w-10 md:h-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                     </svg>
                   )
                 },
-                {
-                  title: "挑戦を応援",
-                  desc: "やってみたいを応援する環境があります。",
+                { 
+                  title: "挑戦を応援", 
+                  desc: "やってみたいを応援する環境があります。", 
                   color: "sky",
                   icon: (
-                    <svg className="w-6 h-6 md:w-10 md:h-10 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-5 h-5 md:w-10 md:h-10 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
                     </svg>
                   )
                 },
               ].map((card, i) => (
-                <div key={i} className="group bg-white/80 backdrop-blur-md rounded-2xl md:rounded-[2rem] p-3 md:p-8 shadow-sm hover:shadow-xl border border-white/50 flex flex-col items-center text-center transition-all duration-500 hover:-translate-y-1">
-                  <div className={`mb-2 md:mb-5 p-2 md:p-5 rounded-xl md:rounded-2xl bg-${card.color}-50 group-hover:scale-110 transition-transform duration-500`}>
+                <div key={i} className={`group p-2 md:p-8 flex flex-col items-center text-center transition-all duration-500 hover:bg-slate-50/50 ${i !== 3 ? 'border-r border-slate-100' : ''}`}>
+                  <div className="mb-1 md:mb-4 p-1 md:p-4 rounded-lg md:rounded-2xl transition-transform duration-500 group-hover:scale-110">
                     {card.icon}
                   </div>
-                  <h3 className="text-[10px] md:text-xl font-black text-slate-800 mb-0.5 md:mb-3 leading-tight">{card.title}</h3>
+                  <h3 className="text-[9px] md:text-xl font-black text-slate-800 mb-0.5 md:mb-2 leading-tight whitespace-nowrap">{card.title}</h3>
                   <p className="hidden md:block text-sm text-slate-600 font-bold leading-relaxed">{card.desc}</p>
-                  <div className={`mt-auto h-0.5 w-0 group-hover:w-1/2 bg-${card.color}-400 transition-all duration-500 rounded-full`} />
                 </div>
               ))}
+            </div>
             </div>
           </div>
         </div>
