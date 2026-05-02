@@ -218,9 +218,9 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
         </div>
 
         {/* Floating Circle Badge */}
-        <div className="absolute top-[28%] right-2 md:top-[12%] md:right-12 w-28 h-28 md:w-72 md:h-72 bg-white/90 backdrop-blur-sm rounded-full shadow-2xl flex items-center justify-center text-center border-2 md:border-4 border-white animate-float-slow z-30">
+        <div className="absolute top-[36%] right-2 md:top-[12%] md:right-12 w-24 h-24 md:w-72 md:h-72 bg-white/90 backdrop-blur-sm rounded-full shadow-2xl flex items-center justify-center text-center border-2 md:border-4 border-white animate-float-slow z-30">
           <div className="relative">
-            <p className="text-slate-700 font-bold text-sm md:text-3xl leading-[1.6] tracking-wider" style={{ fontFamily: 'var(--font-handwriting)' }}>
+            <p className="text-slate-700 font-bold text-[10px] md:text-3xl leading-[1.6] tracking-wider" style={{ fontFamily: 'var(--font-handwriting)' }}>
               隠岐がもっと<br />好きになる<br />つながりを。
             </p>
 
