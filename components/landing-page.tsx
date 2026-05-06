@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import type { LandingContent } from "@/content/site";
 import { trackCtaClick } from "@/lib/analytics";
-import { Button } from "@/components/ui/button";
 
 type LandingPageProps = {
   content: LandingContent;
@@ -87,26 +86,23 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
     <main className="w-full overflow-x-hidden">
       {/* Hero Section */}
       <section id="hero" data-observe="section" className="relative min-h-[100vh] flex items-center justify-start overflow-hidden bg-white">
-        {/* Lighter, brighter background image */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/oki/mainVisual.png"
             alt="隠岐の美しい風景"
             fill
             priority
+            sizes="100vw"
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/20 to-transparent lg:from-white/40" />
+          <div className="absolute inset-0 bg-white/55 lg:bg-white/45" />
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-10 lg:px-12 pt-16 md:pt-20 lg:pt-16">
-          {/* Two-column layout: Left = text, Right = badge (PC only) */}
           <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
-            {/* Left column: Main content */}
             <div className="flex-1 max-w-2xl text-center md:text-left mx-auto md:mx-0">
-              {/* Subcopy Image */}
               <div className="relative mb-4 md:mb-6 max-w-[260px] md:max-w-[380px] mx-auto md:mx-0">
-                <div className="absolute -top-3 -right-1 md:-top-5 md:-right-6 bg-orange-500 text-white text-[8px] md:text-xs font-black px-2 py-0.5 md:px-3 md:py-1 rounded-full transform rotate-12 shadow-lg animate-pulse z-20 whitespace-nowrap">
+                <div className="absolute -top-3 -right-1 md:-top-5 md:-right-6 bg-orange-500 text-white text-[8px] md:text-xs font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-md z-20 whitespace-nowrap">
                   立ち上げ準備中
                 </div>
                 <Image
@@ -115,26 +111,27 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                   width={380}
                   height={110}
                   priority
-                  className="w-full h-auto drop-shadow-md"
+                  style={{ height: "auto" }}
+                  className="w-full h-auto"
                 />
               </div>
 
-              <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-[4rem] font-bold text-slate-800 mb-3 md:mb-5 leading-[1.4] md:leading-[1.25] break-words" style={{ fontFamily: 'var(--font-handwriting)', textShadow: '0 0 30px white, 0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
+              <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-[4rem] font-bold text-slate-900 mb-3 md:mb-5 leading-[1.4] md:leading-[1.25] break-words" style={{ fontFamily: 'var(--font-handwriting)' }}>
                 隠岐での暮らしを<br />
                 もっと <span className="text-emerald-600">楽しく</span>、<br />
                 もっと <span className="text-sky-600">豊かに</span>。
               </h1>
 
               <div className="mb-6 md:mb-8 px-2 md:px-0">
-                <div className="flex flex-col md:flex-row items-center md:items-baseline justify-center md:justify-start gap-3 md:gap-4 mb-4" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
+                <div className="flex flex-col md:flex-row items-center md:items-baseline justify-center md:justify-start gap-3 md:gap-4 mb-4">
                   <p className="text-lg md:text-2xl text-slate-800 font-bold tracking-[0.1em] md:tracking-[0.15em]">
                     隠岐移住者コミュニティ
                   </p>
-                  <span className="bg-orange-100 text-orange-600 text-[10px] md:text-sm font-black px-3 py-1 rounded-lg border-2 border-orange-200 shadow-sm">
+                  <span className="bg-orange-50 text-orange-700 text-[10px] md:text-sm font-bold px-3 py-1 rounded-md border border-orange-200">
                     立ち上げメンバー募集中！
                   </span>
                 </div>
-                <div className="text-sm md:text-lg text-slate-700 leading-relaxed max-w-xl font-bold space-y-0.5 mx-auto md:mx-0" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
+                <div className="text-sm md:text-lg text-slate-700 leading-relaxed max-w-xl font-bold space-y-0.5 mx-auto md:mx-0">
                   <p>現在、ルール作りから一緒に参加してくれる</p>
                   <p>最初の仲間（初期メンバー）を集めています。</p>
                   <p>ここから、新しい島の縁を育てていきませんか？</p>
@@ -146,14 +143,14 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                   href={ctaUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-3 overflow-hidden rounded-full bg-[#06C755] px-6 py-4 md:px-10 md:py-5 font-bold text-white transition-all hover:bg-[#05b34c] hover:scale-105 shadow-lg shadow-green-200 z-30"
+                  className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-3 overflow-hidden rounded-lg bg-[#06C755] px-6 py-4 md:px-10 md:py-5 font-bold text-white transition-colors hover:bg-[#05b34c] z-30"
                 >
                   <span className="text-base md:text-lg">LINEで先行情報を受け取る</span>
                   <svg className="h-5 w-5 md:h-6 md:w-6 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </a>
-                <p className="text-xs md:text-base font-bold text-slate-700" style={{ textShadow: '0 0 10px white' }}>
+                <p className="text-xs md:text-base font-bold text-slate-700">
                   現在 <span className="text-orange-600 text-base md:text-xl font-black tabular-nums">
                     <Counter target={3} isVisible={isVisible('hero')} />名
                   </span> がLINEで作戦会議中！
@@ -161,32 +158,15 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               </div>
             </div>
 
-            {/* Circle Badge: Floating on mobile, In-flow on PC */}
-            <div className="flex flex-shrink-0 items-center justify-center absolute top-[65%] right-4 lg:static lg:translate-x-0 z-40">
-              <div className="w-28 h-28 md:w-48 md:h-48 lg:w-64 lg:h-64 bg-white/90 backdrop-blur-sm rounded-full shadow-2xl flex items-center justify-center text-center border-2 md:border-4 border-white animate-float-slow">
-                <div className="relative">
-                  <p className="text-slate-700 font-bold text-[10px] md:text-xl lg:text-3xl leading-[1.6] tracking-wider" style={{ fontFamily: 'var(--font-handwriting)' }}>
-                    隠岐がもっと<br />好きになる<br />つながりを。
-                  </p>
-                  <div className="absolute -bottom-4 -right-4 md:-bottom-10 md:-right-8 pointer-events-none">
-                    <svg className="w-8 h-8 md:w-16 md:h-16 text-sky-300 transform -rotate-12 drop-shadow-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-                      <path d="M2 12s4-2 7-2 7 2 7 2 4-2 4-2" strokeLinecap="round" />
-                      <path d="M5 14s3-1 5-1 5 1 5 1 3-1 3-1" strokeLinecap="round" opacity="0.6" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
-          {/* Benefits Cards — full width, compact */}
           <div className="mt-6 md:mt-12 mb-8 md:mb-16 relative z-20">
             <div className="text-center mb-3 md:mb-4">
-              <span className="inline-block bg-emerald-600 text-white px-6 py-1.5 md:px-8 md:py-2 rounded-full font-bold text-xs md:text-sm shadow-md">
+              <span className="inline-block bg-emerald-700 text-white px-5 py-1.5 md:px-6 md:py-2 rounded-md font-bold text-xs md:text-sm">
                 このコミュニティでできること
               </span>
             </div>
-            <div className="bg-white/95 backdrop-blur-md rounded-2xl md:rounded-full shadow-lg border border-slate-100 overflow-hidden grid grid-cols-4 gap-0 max-w-4xl mx-auto">
+            <div className="bg-white/95 rounded-lg border border-slate-200 overflow-hidden grid grid-cols-4 gap-0 max-w-4xl mx-auto">
               {[
                 {
                   title: "仲間ができる", icon: (
@@ -220,16 +200,6 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
           </div>
         </div>
 
-        {/* Wavy Bottom Transition - Organic & Smooth */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-20">
-          <svg className="relative block w-[calc(100%+1.3px)] h-[60px] md:h-[100px]" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path
-              d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5,73.84-4.36,147.54,16.88,218.2,35.26,69.27,18,138.38,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-              className="fill-white"
-              transform="rotate(180 600 60)"
-            ></path>
-          </svg>
-        </div>
       </section>
 
       {/* Intro Section */}
@@ -253,17 +223,15 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
             </div>
 
             <div className="relative">
-              <div className="aspect-[4/3] overflow-hidden rounded-3xl shadow-2xl">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-slate-200">
                 <Image
                   src="/images/oki/island-rhythm-community.jpg"
                   alt="港沿いを歩きながら話す島の仲間たち"
                   fill
-                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
                 />
               </div>
-              {/* Decorative elements */}
-              <div className="absolute -bottom-8 -left-8 w-48 h-48 bg-orange-200/50 rounded-full blur-3xl -z-10" />
-              <div className="absolute -top-8 -right-8 w-48 h-48 bg-blue-200/50 rounded-full blur-3xl -z-10" />
             </div>
           </div>
         </div>
@@ -281,16 +249,17 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
             src="/images/oki/20240427-DSC06774.jpg"
             alt="隠岐の集いの風景"
             fill
+            sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-slate-950/85 backdrop-blur-[3px]" />
+          <div className="absolute inset-0 bg-slate-950/88" />
         </div>
 
         <div className="mx-auto max-w-7xl relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-32 items-center mb-24 lg:mb-32 text-white">
             {/* Left: Heading with Decorative Badge */}
             <div className="relative text-center lg:text-left">
-              <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-sky-300 text-sm font-black tracking-widest mb-6 backdrop-blur-md border border-white/10">SURVEY RESULTS</span>
+              <span className="inline-block px-4 py-1.5 rounded-md bg-white/10 text-sky-200 text-sm font-bold tracking-widest mb-6 border border-white/10">SURVEY RESULTS</span>
               <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-black mb-0 leading-[1.1] tracking-tighter">
                 島の暮らし、<br />
                 <span className="text-white/40">実はちょっと</span><br />
@@ -309,14 +278,12 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               </div>
               <div className="relative inline-block font-sans">
                 <span
-                  className="text-8xl md:text-[12rem] lg:text-[14rem] font-black leading-none flex items-baseline justify-center lg:justify-start text-orange-500 drop-shadow-[0_0_100px_rgba(249,115,22,0.4)]"
+                  className="text-8xl md:text-[12rem] lg:text-[14rem] font-black leading-none flex items-baseline justify-center lg:justify-start text-orange-500"
                   style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif', letterSpacing: '0.02em' }}
                 >
                   <Counter target={50} isVisible={isVisible('crisis')} />
                   <span className="text-5xl md:text-8xl lg:text-[9rem] ml-2 text-orange-200/50 font-black">%</span>
                 </span>
-                {/* Extra ambient glow */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 lg:w-64 h-48 lg:h-64 bg-orange-600 rounded-full blur-[100px] lg:blur-[150px] opacity-20 -z-10" />
               </div>
             </div>
           </div>
@@ -341,26 +308,13 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
         data-observe="section"
         className={`relative bg-slate-50 py-32 px-6 reveal overflow-hidden ${isVisible('recommended') ? 'is-visible' : ''}`}
       >
-        {/* Subtle Background Image */}
-        <div className="absolute inset-0 -z-10 opacity-30">
-          <Image
-            src="/images/oki/230516_DJI_0468.jpg"
-            alt="隠岐の風景背景"
-            fill
-            className="object-cover"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white -z-10" />
-
         <div className="mx-auto max-w-7xl relative z-10">
           <div className="max-w-4xl mb-24">
             <p className="text-lg font-bold text-orange-500 mb-8 tracking-widest">THIS COMMUNITY IS FOR...</p>
             <div className="relative inline-block mb-8">
-              <div className="bg-orange-500 text-white px-8 py-3 rounded-full text-xl md:text-2xl font-bold shadow-lg shadow-orange-200">
+              <div className="bg-orange-500 text-white px-6 py-3 rounded-md text-xl md:text-2xl font-bold">
                 このコミュニティは、
               </div>
-              {/* Triangle for Bubble */}
-              <div className="absolute -bottom-2 left-10 w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-t-[12px] border-t-orange-500" />
             </div>
             <h2 className="font-serif text-5xl md:text-6xl font-black text-slate-900 mb-8 leading-tight">
               こんな想いを抱える、<br />
@@ -373,17 +327,14 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-10">
-            {/* Card 01 */}
-            <div className="group relative bg-white p-12 pt-16 rounded-[2rem] shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 border border-slate-100">
-              {/* Overlapping Checkmark */}
-              <div className="absolute -top-6 -left-6 w-20 h-20 rounded-full bg-orange-500 flex items-center justify-center text-white shadow-xl shadow-orange-200 z-30 transform -rotate-12 group-hover:rotate-0 transition-transform duration-500">
-                <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="4">
+            <div className="relative bg-white p-10 rounded-xl border border-slate-200">
+              <div className="mb-8 w-12 h-12 rounded-lg bg-orange-50 flex items-center justify-center text-orange-600 border border-orange-100">
+                <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <div className="absolute top-0 right-0 p-8 text-8xl font-black text-slate-50 transition-colors group-hover:text-orange-50 select-none z-10">01</div>
-              <div className="relative z-20">
-                <div className="w-12 h-1.5 bg-orange-500 mb-10 rounded-full" />
+              <div className="relative z-10">
+                <div className="w-12 h-1 bg-orange-500 mb-8 rounded-sm" />
                 <h3 className="text-3xl font-black text-slate-900 mb-6">繋がりの再構築</h3>
                 <p className="text-lg text-slate-600 leading-relaxed font-medium">
                   職場やご近所以外に、気兼ねなく本音で話せる友達や、週末を一緒に過ごす仲間が欲しい方。
@@ -391,17 +342,14 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               </div>
             </div>
 
-            {/* Card 02 */}
-            <div className="group relative bg-white p-12 pt-16 rounded-[2rem] shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 border border-slate-100">
-              {/* Overlapping Checkmark */}
-              <div className="absolute -top-6 -left-6 w-20 h-20 rounded-full bg-blue-500 flex items-center justify-center text-white shadow-xl shadow-blue-200 z-30 transform -rotate-12 group-hover:rotate-0 transition-transform duration-500">
-                <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="4">
+            <div className="relative bg-white p-10 rounded-xl border border-slate-200">
+              <div className="mb-8 w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 border border-blue-100">
+                <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <div className="absolute top-0 right-0 p-8 text-8xl font-black text-slate-50 transition-colors group-hover:text-blue-50 select-none z-10">02</div>
-              <div className="relative z-20">
-                <div className="w-12 h-1.5 bg-blue-500 mb-10 rounded-full" />
+              <div className="relative z-10">
+                <div className="w-12 h-1 bg-blue-500 mb-8 rounded-sm" />
                 <h3 className="text-3xl font-black text-slate-900 mb-6">遊びの最大化</h3>
                 <p className="text-lg text-slate-600 leading-relaxed font-medium">
                   隠岐の豊かな海や山を、一人ではなく誰かと共有し、新しい体験へと広げていきたい方。
@@ -409,17 +357,14 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               </div>
             </div>
 
-            {/* Card 03 */}
-            <div className="group relative bg-white p-12 pt-16 rounded-[2rem] shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 border border-slate-100">
-              {/* Overlapping Checkmark */}
-              <div className="absolute -top-6 -left-6 w-20 h-20 rounded-full bg-sky-500 flex items-center justify-center text-white shadow-xl shadow-sky-200 z-30 transform -rotate-12 group-hover:rotate-0 transition-transform duration-500">
-                <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="4">
+            <div className="relative bg-white p-10 rounded-xl border border-slate-200">
+              <div className="mb-8 w-12 h-12 rounded-lg bg-sky-50 flex items-center justify-center text-sky-600 border border-sky-100">
+                <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <div className="absolute top-0 right-0 p-8 text-8xl font-black text-slate-50 transition-colors group-hover:text-sky-50 select-none z-10">03</div>
-              <div className="relative z-20">
-                <div className="w-12 h-1.5 bg-sky-500 mb-10 rounded-full" />
+              <div className="relative z-10">
+                <div className="w-12 h-1 bg-sky-500 mb-8 rounded-sm" />
                 <h3 className="text-3xl font-black text-slate-900 mb-6">情報の共有</h3>
                 <p className="text-lg text-slate-600 leading-relaxed font-medium">
                   ガイドブックには載っていない、島でのリアルな生活の知恵や情報を交換し合いたい方。
@@ -444,10 +389,6 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
         data-observe="section"
         className={`relative py-32 px-6 lg:py-48 reveal overflow-hidden ${isVisible('concept') ? 'is-visible' : ''}`}
       >
-        {/* Organic Background Elements */}
-        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-orange-100 rounded-full blur-[100px] -z-10 opacity-60" />
-        <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-blue-50 rounded-full blur-[80px] -z-10 opacity-40" />
-
         <div className="mx-auto max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             {/* Left: Content Card */}
@@ -466,7 +407,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 <p className="text-2xl md:text-3xl text-slate-800 leading-relaxed font-bold tracking-tight">
                   シークレット感は「排他的な暗さ」ではなく、内側に温かさがあること。
                 </p>
-                <div className="h-px w-full bg-gradient-to-r from-slate-200 to-transparent" />
+                <div className="h-px w-full bg-slate-200" />
                 <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-medium">
                   まずは一緒に遊ぶ。そこから、ガイドブックには載っていない島のリアルな縁を育てていこう。都会の流儀とは違う、隠岐ならではの「信頼という通貨」で繋がる場所。
                 </p>
@@ -477,41 +418,40 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
             <div className="relative">
               <div className="grid grid-cols-2 gap-4 md:gap-8">
                 <div className="space-y-4 md:space-y-8 mt-12">
-                  <div className="relative aspect-[3/4] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-700">
+                  <div className="relative aspect-[3/4] rounded-xl overflow-hidden border border-slate-200">
                     <Image
                       src="/images/oki/230516_DJI_0468.jpg"
                       alt="隠岐の絶景"
                       fill
+                      sizes="(max-width: 768px) 50vw, 25vw"
                       className="object-cover"
                     />
                   </div>
-                  <div className="relative aspect-square rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl bg-orange-500 p-8 flex items-end">
+                  <div className="relative aspect-square rounded-xl overflow-hidden bg-orange-500 p-8 flex items-end">
                     <p className="text-white font-serif text-2xl font-bold leading-tight">遊びが、<br />縁になる。</p>
                   </div>
                 </div>
                 <div className="space-y-4 md:space-y-8">
-                  <div className="relative aspect-[3/4] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-700 border-8 border-white">
+                  <div className="relative aspect-[3/4] rounded-xl overflow-hidden border border-slate-200">
                     <Image
                       src="/images/oki/island-activity-community.jpg"
                       alt="海辺で島の時間を分かち合う仲間たち"
                       fill
+                      sizes="(max-width: 768px) 50vw, 25vw"
                       className="object-cover"
                     />
                   </div>
-                  <div className="relative aspect-square rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-700">
+                  <div className="relative aspect-square rounded-xl overflow-hidden border border-slate-200">
                     <Image
                       src="/images/oki/island-culture-detail.jpg"
                       alt="隠岐の文化"
                       fill
+                      sizes="(max-width: 768px) 50vw, 25vw"
                       className="object-cover"
                     />
                   </div>
                 </div>
               </div>
-
-              {/* Floating Decorative Elements */}
-              <div className="absolute -top-12 -right-12 w-32 h-32 bg-orange-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob" />
-              <div className="absolute -bottom-12 -left-12 w-40 h-40 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000" />
             </div>
           </div>
         </div>
@@ -521,7 +461,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
       <section
         id="activities"
         data-observe="section"
-        className={`bg-gradient-premium py-32 px-6 lg:py-48 reveal ${isVisible('activities') ? 'is-visible' : ''}`}
+        className={`bg-[#fff8ee] py-32 px-6 lg:py-48 reveal ${isVisible('activities') ? 'is-visible' : ''}`}
       >
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-20">
@@ -539,7 +479,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
             {activities.map((item, index) => (
               <div
                 key={item.title}
-                className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 border-4 border-white"
+                className="group relative bg-white rounded-xl overflow-hidden border border-orange-100"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="aspect-[4/3] relative overflow-hidden">
@@ -547,7 +487,8 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover"
                   />
                 </div>
                 <div className="p-8">
@@ -583,12 +524,12 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               {/* Step 1 */}
               <div className="flex gap-6 relative group">
                 <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center text-orange-500 shadow-sm z-10 transition-transform group-hover:scale-110">
+                  <div className="w-14 h-14 bg-orange-100 rounded-lg flex items-center justify-center text-orange-500 z-10">
                     <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <div className="w-1.5 h-full bg-blue-50 my-2 rounded-full transition-colors group-hover:bg-orange-100" />
+                  <div className="w-px h-full bg-slate-200 my-2" />
                 </div>
                 <div className="pb-12 pt-2">
                   <span className="text-sm font-bold tracking-widest text-orange-500 mb-1 block">STEP 01</span>
@@ -600,12 +541,12 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               {/* Step 2 */}
               <div className="flex gap-6 relative group">
                 <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center text-blue-500 shadow-sm z-10 transition-transform group-hover:scale-110">
+                  <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center text-blue-500 z-10">
                     <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
                     </svg>
                   </div>
-                  <div className="w-1.5 h-full bg-blue-50 my-2 rounded-full transition-colors group-hover:bg-blue-100" />
+                  <div className="w-px h-full bg-slate-200 my-2" />
                 </div>
                 <div className="pb-12 pt-2">
                   <span className="text-sm font-bold tracking-widest text-blue-500 mb-1 block">STEP 02</span>
@@ -617,7 +558,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               {/* Step 3 */}
               <div className="flex gap-6 relative group">
                 <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 bg-sky-100 rounded-full flex items-center justify-center text-sky-500 shadow-sm z-10 transition-transform group-hover:scale-110">
+                  <div className="w-14 h-14 bg-sky-100 rounded-lg flex items-center justify-center text-sky-500 z-10">
                     <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                     </svg>
@@ -634,16 +575,15 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
 
             {/* Right: Oki Life Image */}
             <div className="relative w-full max-w-sm mx-auto lg:max-w-md hidden md:block">
-              <div className="aspect-[3/4] relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white transform rotate-2 hover:rotate-0 transition-transform duration-500">
+              <div className="aspect-[3/4] relative rounded-xl overflow-hidden border border-slate-200">
                 <Image
                   src="/images/oki/230224-9.jpg"
                   alt="隠岐での島暮らしの様子"
                   fill
+                  sizes="(max-width: 1024px) 50vw, 33vw"
                   className="object-cover"
                 />
               </div>
-              {/* Decorative Blur */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-orange-200/40 to-blue-300/40 blur-2xl -z-10 rounded-full" />
             </div>
           </div>
         </div>
@@ -658,12 +598,13 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 -z-10">
           <Image
-            src="/images/oki/20241112-DSC09331_隠岐旅工舎.jpg"
+            src="/images/oki/20241112-DSC09331.jpg"
             alt="隠岐の風景"
             fill
+            sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-slate-900/80 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-slate-900/84" />
         </div>
 
         <div className="mx-auto max-w-4xl text-center text-white relative z-10">
@@ -676,11 +617,11 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
             まずはLINEに追加して、コミュニティが立ち上がる過程を一緒に楽しみませんか？（※登録・参加は無料です）
           </p>
 
-          <div className="glass-dark rounded-[2.5rem] p-10 md:p-16 max-w-3xl mx-auto border border-white/20 relative overflow-hidden shadow-2xl">
+          <div className="bg-white/10 rounded-xl p-10 md:p-16 max-w-3xl mx-auto border border-white/20 relative overflow-hidden">
             <div className="relative z-10">
               <div className="flex flex-col items-center gap-8 mb-12">
                 <div className="relative">
-                  <div className="bg-orange-500 text-white text-sm md:text-base font-black px-4 py-2 rounded-xl mb-4 inline-block animate-bounce shadow-lg after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-8 after:border-transparent after:border-t-orange-500">
+                  <div className="bg-orange-500 text-white text-sm md:text-base font-black px-4 py-2 rounded-md mb-4 inline-block">
                     完全無料
                   </div>
                   <p className="text-3xl md:text-4xl font-black leading-tight">
@@ -694,7 +635,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => onCtaClick("footer")}
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-full bg-[#06C755] px-12 py-6 text-xl font-black text-white transition-all hover:scale-105 hover:bg-[#05b34c] hover:shadow-[0_0_40px_rgba(6,199,85,0.4)]"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-lg bg-[#06C755] px-12 py-6 text-xl font-black text-white transition-colors hover:bg-[#05b34c]"
               >
                 <span>{content.footerCta}</span>
                 <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
