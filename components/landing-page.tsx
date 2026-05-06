@@ -236,34 +236,35 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
       <section
         id="intro"
         data-observe="section"
-        className={`bg-white py-32 px-6 lg:py-48 reveal ${isVisible('intro') ? 'is-visible' : ''}`}
+        className={`bg-white py-32 px-6 lg:py-48 reveal overflow-x-hidden ${isVisible('intro') ? 'is-visible' : ''}`}
       >
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-16 lg:grid-cols-2 lg:gap-24 items-center">
-            <div>
+        <div className="mx-auto max-w-7xl min-w-0">
+          <div className="grid min-w-0 gap-16 lg:grid-cols-2 lg:gap-24 items-center">
+            <div className="min-w-0">
               <p className="font-bold text-xl text-orange-500 mb-4 tracking-widest">ISLAND RHYTHM</p>
-              <h2 className="font-serif text-4xl font-black text-slate-900 md:text-5xl leading-tight mb-8 break-keep">
+              <h2 className="font-serif text-4xl font-black text-slate-900 md:text-5xl leading-tight mb-8 break-words md:break-keep">
                 都会の「お金」より、<br className="hidden md:block" />島の「信頼」で遊ぼう。
               </h2>
               <div className="h-2 w-20 bg-blue-500 mb-8 rounded-full" />
-              <p className="text-lg leading-relaxed text-slate-700 font-medium break-keep">
+              <p className="text-lg leading-relaxed text-slate-700 font-medium break-words md:break-keep">
                 都会の流儀は「お金で解決」。<br className="md:hidden" />隠岐の流儀は「信頼が通貨」。<br /><br />
                 私たちは、気兼ねなく笑い合える「ヨコの繋がり」を再構築します。島の暮らしを、もっとオモシロク、仲間とともに広げていくために。
               </p>
             </div>
 
-            <div className="relative">
-              <div className="aspect-[4/3] overflow-hidden rounded-3xl shadow-2xl">
+            <div className="relative min-w-0 overflow-x-clip">
+              <div className="aspect-[4/3] overflow-hidden rounded-3xl shadow-2xl relative">
                 <Image
                   src="/images/oki/island-rhythm-community.jpg"
                   alt="港沿いを歩きながら話す島の仲間たち"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover transition-transform duration-700 hover:scale-105"
                 />
               </div>
-              {/* Decorative elements */}
-              <div className="absolute -bottom-8 -left-8 w-48 h-48 bg-orange-200/50 rounded-full blur-3xl -z-10" />
-              <div className="absolute -top-8 -right-8 w-48 h-48 bg-blue-200/50 rounded-full blur-3xl -z-10" />
+              {/* Decorative elements — inset on mobile so blur radius does not widen layout */}
+              <div className="absolute -bottom-8 left-0 md:-left-8 w-40 md:w-48 h-40 md:h-48 bg-orange-200/50 rounded-full blur-3xl -z-10 pointer-events-none" />
+              <div className="absolute -top-8 right-0 md:-right-8 w-40 md:w-48 h-40 md:h-48 bg-blue-200/50 rounded-full blur-3xl -z-10 pointer-events-none" />
             </div>
           </div>
         </div>
