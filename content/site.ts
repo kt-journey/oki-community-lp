@@ -9,9 +9,9 @@ export type LandingContent = {
 };
 
 const waitlistContent: LandingContent = {
-  heroTitle: "隠岐へ移住した同世代で、\n最高にオモシロイ島暮らしを！",
+  heroTitle: "隠岐へ移住した仲間と、\n最高にオモシロイ島暮らしを！",
   heroSubTitle:
-    "ここは隠岐の島へ移住してきた20〜30代のための、ゼロからつくる新しいコミュニティ。まずは一緒に遊ぶところから始めない？",
+    "ここは隠岐の島へ移住してきた方のための、ゼロからつくる新しいコミュニティ。まずは一緒に遊ぶところから始めない？",
   heroCta: "まずはLINEで先行情報を受け取る",
   footerTitle: "【完全無料】最初の100人！隠岐を遊び尽くす初期メンバーを募集中",
   footerCta: "公式LINEを追加して案内を受け取る",
