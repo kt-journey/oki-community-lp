@@ -500,7 +500,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                   </div>
                   <div className="relative aspect-square rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-700">
                     <Image
-                      src="/images/oki/oki-sozai/oki-marugoto-38.jpg"
+                      src="/images/oki/island-culture-detail.jpg"
                       alt="隠岐の文化"
                       fill
                       className="object-cover"
