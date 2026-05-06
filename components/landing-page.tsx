@@ -255,8 +255,8 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
             <div className="relative">
               <div className="aspect-[4/3] overflow-hidden rounded-3xl shadow-2xl">
                 <Image
-                  src="/images/oki/ijusyakoryukai.jpg"
-                  alt="笑い合う移住者の仲間たち"
+                  src="/images/oki/island-rhythm-community.jpg"
+                  alt="港沿いを歩きながら話す島の仲間たち"
                   fill
                   className="object-cover transition-transform duration-700 hover:scale-105"
                 />
@@ -492,8 +492,8 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 <div className="space-y-4 md:space-y-8">
                   <div className="relative aspect-[3/4] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-700 border-8 border-white">
                     <Image
-                      src="/images/oki/ijusyakoryukai.jpg"
-                      alt="集う仲間たち"
+                      src="/images/oki/island-activity-community.jpg"
+                      alt="海辺で島の時間を分かち合う仲間たち"
                       fill
                       className="object-cover"
                     />
