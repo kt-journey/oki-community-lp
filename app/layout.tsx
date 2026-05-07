@@ -22,7 +22,7 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
   title: "Okey-Dokey | 隠岐移住者コミュニティ",
-  description: "隠岐移住者コミュニティのウェイトリストLP",
+  description: "隠岐移住者ためのコミュニティを作るプロジェクト",
 };
 
 export default function RootLayout({
