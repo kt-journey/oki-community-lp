@@ -114,17 +114,17 @@ const waitlistContent: LandingContent = {
     "週末が豊かになる",
     "挑戦を応援する",
   ],
-  introLabel: "ISLAND RHYTHM",
+  introLabel: "島のリズム",
   introTitle: "都会の「お金」より、\n島の「信頼」でつながる。",
   introBody:
     "都会の流儀は「お金で解決」。隠岐の流儀は「信頼が通貨」。\n\n私たちは、職場やご近所以外に、気兼ねなく本音で話せる「ヨコのつながり」を育てます。島の暮らしを、ひとりで抱え込まず、仲間と広げていくために。",
-  crisisBadge: "SURVEY RESULTS",
+  crisisBadge: "調査から見えたこと",
   crisisTitle: "島の暮らし、\n実はちょっと\n孤独？",
   crisisStatLead:
     "隠岐には年間 約450人が転入。\nしかし、新しい生活を始めた人の\n3年以内の定着率は、わずか——",
   crisisCause: "「移住者同士のつながり不足」",
   crisisSourceNote: "※数値は独自調査に基づく",
-  recommendedLabel: "THIS COMMUNITY IS FOR...",
+  recommendedLabel: "こんな方へ",
   recommendedBubble: "このコミュニティは、",
   recommendedTitle: "こんな想いを抱える、\nあなたのための場所です。",
   recommendedLead:
@@ -144,40 +144,40 @@ const waitlistContent: LandingContent = {
     },
   ],
   recommendedClosing: "ひとつでも当てはまるなら、ぜひご参加ください",
-  conceptLabel: "Our Concept",
+  conceptLabel: "考え方",
   conceptTitle: "ゆるくつながる、\n本気で遊ぶ。",
   conceptLead:
     "「秘密」は排他ではなく、仲間の中にだけ広がる温かさのこと。",
   conceptBody:
     "まずは一緒に遊ぶ。そこから、ガイドブックには載らない島の縁を育てていく。都会とは違う、隠岐ならではの「信頼」でつながる場所です。",
   conceptImageCaption: "遊びが、\n縁になる。",
-  activitiesLabel: "ACTIVITIES",
+  activitiesLabel: "活動の例",
   activitiesTitle: "体験と仕組みで、距離を縮める。",
   activitiesLead:
     "コミュニティでは、例えば以下のような企画を検討しています。\nみんなの「やりたい」を持ち寄って、隠岐をもっと楽しくしていきましょう。",
   activities: waitlistActivities,
-  roadmapLabel: "ROADMAP",
+  roadmapLabel: "これから",
   roadmapTitle: "正式オープンまでの流れ",
   roadmapLead:
     "完成品を待つのではなく、ルールづくりから一緒に参加できるのがこのプロジェクトの醍醐味です。まずはLINEに登録して、作戦会議から始めましょう。",
   roadmapSteps: [
     {
-      step: "STEP 01",
+      step: "01",
       title: "公式LINEで先行登録",
       body: "LINEを友だち追加（完全無料）。立ち上げの裏側や限定情報が届き始めます。",
     },
     {
-      step: "STEP 02",
+      step: "02",
       title: "みんなで作戦会議",
       body: "LINE上でアンケートや小規模なオフラインイベントを通じ、やりたいことやルールを一緒に考えます。",
     },
     {
-      step: "STEP 03",
+      step: "03",
       title: "初期メンバー正式募集",
       body: "みんなの声を形にしたら正式ローンチ。LINE登録者には、いち早く優先案内をお送りします。",
     },
   ],
-  cocreationLabel: "CO-CREATION",
+  cocreationLabel: "一緒につくる",
   cocreationTitle: "まだ決まっていないから、\n一緒に決められる。",
   cocreationBody:
     "名前も、会費も、ルールも——これからみんなで決めていきます。\nまずはLINEに追加して、コミュニティが立ち上がる過程を一緒に楽しみませんか？（登録・参加は無料です）",

@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Noto_Sans_JP, Space_Mono } from "next/font/google";
+import { Noto_Sans_JP, Shippori_Mincho, Space_Mono } from "next/font/google";
 import "./globals.css";
 
 const notoSansJp = Noto_Sans_JP({
   variable: "--font-body",
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
 });
 
-const notoSansJpHeading = Noto_Sans_JP({
+const shipporiMincho = Shippori_Mincho({
   variable: "--font-heading",
   subsets: ["latin"],
-  weight: ["500", "700", "900"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const spaceMono = Space_Mono({
@@ -37,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${notoSansJp.variable} ${notoSansJpHeading.variable} ${spaceMono.variable} h-full antialiased`}
+      className={`${notoSansJp.variable} ${shipporiMincho.variable} ${spaceMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>

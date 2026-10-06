@@ -9,17 +9,17 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <LandingPage content={content} ctaUrl={ctaUrl} />
-      <footer className="border-t border-white/10 bg-[#161d2e] px-5 py-8 text-sm text-white/65 md:px-10">
+      <footer className="border-t border-slate-200 bg-white px-5 py-8 text-sm text-muted md:px-10">
         <div className="mx-auto flex max-w-[460px] flex-col gap-2 md:max-w-5xl md:flex-row md:items-center md:justify-between">
-          <p className="tracking-wide text-white/80">Okey-Dokey</p>
+          <p className="font-serif tracking-wide text-foreground">Okey-Dokey</p>
           <div className="flex flex-wrap gap-4">
-            <a href="/privacy" className="transition-colors hover:text-white">
+            <a href="/privacy" className="transition-colors hover:text-foreground">
               プライバシーポリシー
             </a>
-            <a href="/legal" className="transition-colors hover:text-white">
+            <a href="/legal" className="transition-colors hover:text-foreground">
               特定商取引法表記
             </a>
-            <a href="/about" className="transition-colors hover:text-white">
+            <a href="/about" className="transition-colors hover:text-foreground">
               運営者情報
             </a>
           </div>
