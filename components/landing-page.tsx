@@ -4,35 +4,34 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import type { LandingContent } from "@/content/site";
 import { trackCtaClick } from "@/lib/analytics";
-import { Button } from "@/components/ui/button";
 
 type LandingPageProps = {
   content: LandingContent;
   ctaUrl: string;
 };
 
-const activities = [
-  {
-    title: "魚突き・漁船体験",
-    body: "海の作法と楽しさを共有し、隠岐での暮らし方を実地でつなげる。",
-    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    title: "BBQ・キャンプ",
-    body: "共通備品をシェアし、週末を最大化。仲間づくりのハードルを下げる。",
-    image: "/images/oki/bbq.jpg"
-  },
-  {
-    title: "送迎シャトル",
-    body: "シャトルを利用し、コミュニティ内で帰る人を探す。その対話が新しい絆を生む文化になります。",
-    image: "/images/oki/bus.png"
-  },
-  {
-    title: "空き家相談",
-    body: "信頼を蓄積し、空き家流通の壁を越えるための下地を育てる。",
-    image: "/images/oki/akiya.png"
-  },
+const activityImages = [
+  "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80&w=800",
+  "/images/oki/bbq.jpg",
+  "/images/oki/bus.png",
+  "/images/oki/akiya.png",
 ];
+
+const benefitIcons = [
+  <svg key="0" className="w-5 h-5 md:w-8 md:h-8 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>,
+  <svg key="1" className="w-5 h-5 md:w-8 md:h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>,
+  <svg key="2" className="w-5 h-5 md:w-8 md:h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>,
+  <svg key="3" className="w-5 h-5 md:w-8 md:h-8 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" /></svg>,
+];
+
+function renderLines(text: string, className?: string) {
+  return text.split("\n").map((line, index, lines) => (
+    <span key={`${line}-${index}`} className={className}>
+      {line}
+      {index < lines.length - 1 ? <br /> : null}
+    </span>
+  ));
+}
 
 function Counter({ target, duration = 2000, isVisible }: { target: number; duration?: number; isVisible: boolean }) {
   const [count, setCount] = useState(0);
@@ -86,7 +85,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
   return (
     <main className="w-full overflow-x-hidden">
       {/* Hero Section */}
-      <section id="hero" data-observe="section" className="relative min-h-[100vh] flex items-center justify-start overflow-hidden bg-white">
+      <section id="hero" data-observe="section" className="relative min-h-[100dvh] flex items-center justify-start overflow-hidden bg-white">
         {/* Lighter, brighter background image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -99,7 +98,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
           <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/20 to-transparent lg:from-white/40" />
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-10 lg:px-12 pt-16 md:pt-20 lg:pt-16">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 pt-14 sm:pt-16 md:pt-20 lg:pt-16">
           {/* Two-column layout: Left = text, Right = badge (PC only) */}
           <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
             {/* Left column: Main content */}
@@ -107,7 +106,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               {/* Subcopy Image */}
               <div className="relative mb-4 md:mb-6 max-w-[260px] md:max-w-[380px] mx-auto md:mx-0">
                 <div className="absolute -top-3 -right-1 md:-top-5 md:-right-6 bg-orange-500 text-white text-[8px] md:text-xs font-black px-2 py-0.5 md:px-3 md:py-1 rounded-full transform rotate-12 shadow-lg animate-pulse z-20 whitespace-nowrap">
-                  立ち上げ準備中
+                  {content.heroBadge}
                 </div>
                 <Image
                   src="/images/assets/subcopy.png"
@@ -119,25 +118,30 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 />
               </div>
 
-              <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-[4rem] font-bold text-slate-800 mb-3 md:mb-5 leading-[1.4] md:leading-[1.25] break-words" style={{ fontFamily: 'var(--font-handwriting)', textShadow: '0 0 30px white, 0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
-                隠岐での暮らしを<br />
-                もっと<span className="text-emerald-600">楽しく</span>、<br />
-                もっと<span className="text-sky-600">豊かに</span>。
+              <h1 className="font-handwriting text-on-photo-strong text-4xl sm:text-4xl md:text-5xl lg:text-[4rem] font-bold text-slate-800 mb-3 md:mb-5 leading-[1.35] md:leading-[1.25] break-words">
+                {content.heroH1.line1}<br />
+                {content.heroH1.line2Before}
+                <span className="text-emerald-600">{content.heroH1.line2Highlight}</span>
+                {content.heroH1.line2Before ? "、" : ""}
+                <br />
+                {content.heroH1.line3Before}
+                <span className="text-sky-600">{content.heroH1.line3Highlight}</span>
+                {content.heroH1.line3After}
               </h1>
 
               <div className="mb-6 md:mb-8 px-2 md:px-0">
-                <div className="flex flex-col md:flex-row items-center md:items-baseline justify-center md:justify-start gap-3 md:gap-4 mb-4" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
+                <div className="text-on-photo flex flex-col md:flex-row items-center md:items-baseline justify-center md:justify-start gap-3 md:gap-4 mb-4">
                   <p className="text-lg md:text-2xl text-slate-800 font-bold tracking-[0.1em] md:tracking-[0.15em]">
-                    隠岐移住者コミュニティ
+                    {content.heroCommunityLabel}
                   </p>
                   <span className="bg-orange-100 text-orange-600 text-[10px] md:text-sm font-black px-3 py-1 rounded-lg border-2 border-orange-200 shadow-sm">
-                    立ち上げメンバー募集中！
+                    {content.heroRecruitBadge}
                   </span>
                 </div>
-                <div className="text-sm md:text-lg text-slate-700 leading-relaxed max-w-xl font-bold space-y-0.5 mx-auto md:mx-0" style={{ textShadow: '0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white' }}>
-                  <p>現在、ルール作りから一緒に参加してくれる</p>
-                  <p>最初の仲間（初期メンバー）を集めています。</p>
-                  <p>ここから、新しい島の縁を育てていきませんか？</p>
+                <div className="text-on-photo text-sm md:text-lg text-slate-700 leading-relaxed max-w-xl font-bold space-y-0.5 mx-auto md:mx-0">
+                  {content.heroSubcopyLines.map((line) => (
+                    <p key={line}>{line}</p>
+                  ))}
                 </div>
               </div>
 
@@ -146,27 +150,28 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                   href={ctaUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-3 overflow-hidden rounded-full bg-[#06C755] px-6 py-4 md:px-10 md:py-5 font-bold text-white transition-all hover:bg-[#05b34c] hover:scale-105 shadow-lg shadow-green-200 z-30"
+                  onClick={() => onCtaClick("hero")}
+                  className="cta-line cta-line--lg group relative z-30"
                 >
-                  <span className="text-base md:text-lg">LINEで先行情報を受け取る</span>
-                  <svg className="h-5 w-5 md:h-6 md:w-6 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <span>{content.heroCta}</span>
+                  <svg className="h-5 w-5 md:h-6 md:w-6 shrink-0 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </a>
-                <p className="text-xs md:text-base font-bold text-slate-700" style={{ textShadow: '0 0 10px white' }}>
+                <p className="text-on-photo-subtle text-xs md:text-base font-bold text-slate-700">
                   現在 <span className="text-orange-600 text-base md:text-xl font-black tabular-nums">
                     <Counter target={3} isVisible={isVisible('hero')} />名
-                  </span> がLINEで作戦会議中！
+                  </span>{content.heroLineCounterSuffix}
                 </p>
               </div>
             </div>
 
-            {/* Circle Badge: Floating on mobile, In-flow on PC */}
-            <div className="flex flex-shrink-0 items-center justify-center absolute top-[65%] right-4 lg:static lg:translate-x-0 z-40">
-              <div className="w-28 h-28 md:w-48 md:h-48 lg:w-64 lg:h-64 bg-white/90 backdrop-blur-sm rounded-full shadow-2xl flex items-center justify-center text-center border-2 md:border-4 border-white animate-float-slow">
+            {/* Circle Badge: in-flow on mobile, beside copy on desktop */}
+            <div className="mt-6 flex flex-shrink-0 items-center justify-center sm:absolute sm:top-[56%] sm:right-3 sm:mt-0 lg:static lg:translate-x-0 z-40">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 bg-white/95 rounded-full shadow-lg flex items-center justify-center text-center border-2 md:border-4 border-white animate-float-slow px-2">
                 <div className="relative">
-                  <p className="text-slate-700 font-bold text-[10px] md:text-xl lg:text-3xl leading-[1.6] tracking-wider" style={{ fontFamily: 'var(--font-handwriting)' }}>
-                    隠岐がもっと<br />好きになる<br />つながりを。
+                  <p className="font-handwriting text-slate-700 font-bold text-[11px] sm:text-sm md:text-xl lg:text-3xl leading-[1.5] tracking-wide">
+                    {renderLines(content.heroCircleBadge)}
                   </p>
                   <div className="absolute -bottom-4 -right-4 md:-bottom-10 md:-right-8 pointer-events-none">
                     <svg className="w-8 h-8 md:w-16 md:h-16 text-sky-300 transform -rotate-12 drop-shadow-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
@@ -183,37 +188,17 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
           <div className="mt-6 md:mt-12 mb-16 md:mb-28 relative z-20">
             <div className="text-center mb-3 md:mb-4">
               <span className="inline-block bg-emerald-600 text-white px-6 py-1.5 md:px-8 md:py-2 rounded-full font-bold text-xs md:text-sm shadow-md">
-                このコミュニティでできること
+                {content.heroBenefitsHeading}
               </span>
             </div>
-            <div className="bg-white/95 backdrop-blur-md rounded-2xl md:rounded-full shadow-lg border border-slate-100 overflow-hidden grid grid-cols-4 gap-0 max-w-4xl mx-auto">
-              {[
-                {
-                  title: "仲間ができる", icon: (
-                    <svg className="w-5 h-5 md:w-8 md:h-8 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                  )
-                },
-                {
-                  title: "仕事につながる", icon: (
-                    <svg className="w-5 h-5 md:w-8 md:h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                  )
-                },
-                {
-                  title: "暮らしに役立つ", icon: (
-                    <svg className="w-5 h-5 md:w-8 md:h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-                  )
-                },
-                {
-                  title: "挑戦を応援", icon: (
-                    <svg className="w-5 h-5 md:w-8 md:h-8 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" /></svg>
-                  )
-                },
-              ].map((card, i) => (
-                <div key={i} className={`p-2 md:py-5 md:px-6 flex flex-col items-center text-center ${i !== 3 ? 'border-r border-slate-100' : ''}`}>
-                  <div className="mb-1 md:mb-2">
-                    {card.icon}
-                  </div>
-                  <h3 className="text-[9px] md:text-sm font-black text-slate-700 leading-tight whitespace-nowrap">{card.title}</h3>
+            <div className="bg-white/95 rounded-2xl sm:rounded-3xl md:rounded-full shadow-md border border-slate-100 overflow-hidden grid grid-cols-2 sm:grid-cols-4 gap-0 max-w-4xl mx-auto">
+              {content.heroBenefits.map((title, i) => (
+                <div
+                  key={title}
+                  className={`p-3 sm:p-2 md:py-5 md:px-6 flex flex-col items-center text-center ${i % 2 === 0 ? "border-r border-slate-100" : ""} ${i < 2 ? "border-b sm:border-b-0 border-slate-100" : ""} sm:[&:not(:nth-child(4n))]:border-r sm:border-b-0`}
+                >
+                  <div className="mb-1.5 md:mb-2">{benefitIcons[i]}</div>
+                  <h3 className="text-[11px] sm:text-xs md:text-sm font-black text-slate-700 leading-snug">{title}</h3>
                 </div>
               ))}
             </div>
@@ -236,19 +221,19 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
       <section
         id="intro"
         data-observe="section"
-        className={`bg-white py-32 px-6 lg:py-48 reveal overflow-x-hidden ${isVisible('intro') ? 'is-visible' : ''}`}
+        className={`bg-white section-pad reveal overflow-x-hidden ${isVisible('intro') ? 'is-visible' : ''}`}
       >
         <div className="mx-auto max-w-7xl min-w-0">
           <div className="grid min-w-0 gap-16 lg:grid-cols-2 lg:gap-24 items-center">
             <div className="min-w-0">
               <p className="font-bold text-xl text-orange-500 mb-4 tracking-widest">ISLAND RHYTHM</p>
               <h2 className="font-serif text-4xl font-black text-slate-900 md:text-5xl leading-tight mb-8 break-words md:break-keep">
-                都会の「お金」より、<br className="hidden md:block" />島の「信頼」で遊ぼう。
+                都会の「お金」より、<br className="hidden md:block" />島の「信頼」でつながる。
               </h2>
               <div className="h-2 w-20 bg-blue-500 mb-8 rounded-full" />
               <p className="text-lg leading-relaxed text-slate-700 font-medium break-words md:break-keep">
                 都会の流儀は「お金で解決」。<br className="md:hidden" />隠岐の流儀は「信頼が通貨」。<br /><br />
-                私たちは、気兼ねなく笑い合える「ヨコの繋がり」を再構築します。島の暮らしを、もっとオモシロク、仲間とともに広げていくために。
+                私たちは、職場やご近所以外に、気兼ねなく本音で話せる「ヨコのつながり」を育てます。島の暮らしを、ひとりで抱え込まず、仲間と広げていくために。
               </p>
             </div>
 
@@ -274,7 +259,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
       <section
         id="crisis"
         data-observe="section"
-        className={`relative py-32 px-6 lg:py-48 reveal overflow-hidden ${isVisible('crisis') ? 'is-visible' : ''}`}
+        className={`relative section-pad reveal overflow-hidden ${isVisible('crisis') ? 'is-visible' : ''}`}
       >
         {/* Full-width Background Image with Sophisticated Overlay */}
         <div className="absolute inset-0 -z-10">
@@ -284,7 +269,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-slate-950/85 backdrop-blur-[3px]" />
+          <div className="absolute inset-0 bg-slate-950/88" />
         </div>
 
         <div className="mx-auto max-w-7xl relative z-10">
@@ -302,22 +287,17 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
             {/* Right: Giant 50% Stat with Cinematic Glow */}
             <div className="relative text-center lg:text-left px-4 lg:px-0">
               <div className="space-y-2 mb-8 lg:mb-10">
-                <p className="text-lg md:text-2xl text-slate-300 font-medium leading-relaxed">
-                  隠岐には年間 約450人が転入。<br />
-                  しかし、新しい生活を始めた人たちの<br />
-                  3年以内の定着率は、わずか...
+                <p className="text-lg md:text-2xl text-slate-200 font-medium leading-relaxed">
+                  {renderLines(content.crisisStatLead)}
                 </p>
               </div>
               <div className="relative inline-block font-sans">
-                <span
-                  className="text-8xl md:text-[12rem] lg:text-[14rem] font-black leading-none flex items-baseline justify-center lg:justify-start text-orange-500 drop-shadow-[0_0_100px_rgba(249,115,22,0.4)]"
-                  style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif', letterSpacing: '0.02em' }}
-                >
+                <span className="font-stat text-8xl md:text-[12rem] lg:text-[14rem] font-black leading-none flex items-baseline justify-center lg:justify-start text-orange-500 drop-shadow-[0_0_60px_rgba(249,115,22,0.35)]">
                   <Counter target={50} isVisible={isVisible('crisis')} />
                   <span className="text-5xl md:text-8xl lg:text-[9rem] ml-2 text-orange-200/50 font-black">%</span>
                 </span>
                 {/* Extra ambient glow */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 lg:w-64 h-48 lg:h-64 bg-orange-600 rounded-full blur-[100px] lg:blur-[150px] opacity-20 -z-10" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 lg:w-64 h-48 lg:h-64 bg-orange-600 rounded-full blur-[80px] lg:blur-[120px] opacity-15 -z-10 pointer-events-none" />
               </div>
             </div>
           </div>
@@ -325,13 +305,15 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
           <div className="max-w-5xl mx-auto text-center px-6">
             <p className="text-2xl md:text-5xl text-white leading-tight font-black mb-12">
               一番の原因は、仕事でも家でもなく<br />
-              <span className={`relative inline-block mt-4 px-2 group ${isVisible('crisis') ? 'animate-marker' : ''}`}>
-                <span className="relative z-10">「移住者同士の繋がり不足」</span>
-                <span className="absolute bottom-1 lg:bottom-2 left-0 w-full h-[60%] bg-orange-500/60 -z-0 origin-left transition-transform duration-[1.5s] ease-out scale-x-0 group-[.animate-marker]:scale-x-100" />
+              <span className="relative inline-block mt-4 px-2">
+                <span className="relative z-10">{content.crisisCause}</span>
+                <span
+                  className={`absolute bottom-1 lg:bottom-2 left-0 w-full h-[60%] bg-orange-500/70 -z-0 origin-left transition-transform duration-[1.5s] ease-out ${isVisible("crisis") ? "scale-x-100" : "scale-x-0"}`}
+                />
               </span>
               <br className="lg:hidden" /><span className="inline-block mt-2 lg:mt-0">だった。</span>
             </p>
-            <p className="text-xs text-white/40 font-bold tracking-widest mt-8">※数値は独自調査に基づく</p>
+            <p className="text-xs text-white/55 font-bold tracking-widest mt-8">{content.crisisSourceNote}</p>
           </div>
         </div>
       </section>
@@ -340,7 +322,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
       <section
         id="recommended"
         data-observe="section"
-        className={`relative bg-slate-50 py-32 px-6 reveal overflow-hidden ${isVisible('recommended') ? 'is-visible' : ''}`}
+        className={`relative bg-slate-50 section-pad reveal overflow-hidden ${isVisible('recommended') ? 'is-visible' : ''}`}
       >
         {/* Subtle Background Image */}
         <div className="absolute inset-0 -z-10 opacity-30">
@@ -369,7 +351,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
             </h2>
             <p className="text-xl md:text-2xl text-slate-600 font-medium leading-relaxed">
               隠岐での暮らしを、ただの「日常」で終わらせたくない。<br className="hidden md:block" />
-              そんな方々に、新しい繋がりを提案します。
+              そんな方に、新しいつながりの入り口を用意します。
             </p>
           </div>
 
@@ -385,7 +367,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               <div className="absolute top-0 right-0 p-8 text-8xl font-black text-slate-50 transition-colors group-hover:text-orange-50 select-none z-10">01</div>
               <div className="relative z-20">
                 <div className="w-12 h-1.5 bg-orange-500 mb-10 rounded-full" />
-                <h3 className="text-3xl font-black text-slate-900 mb-6">繋がりの再構築</h3>
+                <h3 className="text-3xl font-black text-slate-900 mb-6">ヨコのつながりが欲しい</h3>
                 <p className="text-lg text-slate-600 leading-relaxed font-medium">
                   職場やご近所以外に、気兼ねなく本音で話せる友達や、週末を一緒に過ごす仲間が欲しい方。
                 </p>
@@ -403,9 +385,9 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               <div className="absolute top-0 right-0 p-8 text-8xl font-black text-slate-50 transition-colors group-hover:text-blue-50 select-none z-10">02</div>
               <div className="relative z-20">
                 <div className="w-12 h-1.5 bg-blue-500 mb-10 rounded-full" />
-                <h3 className="text-3xl font-black text-slate-900 mb-6">遊びの最大化</h3>
+                <h3 className="text-3xl font-black text-slate-900 mb-6">島の遊びを共有したい</h3>
                 <p className="text-lg text-slate-600 leading-relaxed font-medium">
-                  隠岐の豊かな海や山を、一人ではなく誰かと共有し、新しい体験へと広げていきたい方。
+                  海や山の豊かさを、ひとりではなく誰かと分かち合い、暮らしの幅を広げていきたい方。
                 </p>
               </div>
             </div>
@@ -421,9 +403,9 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               <div className="absolute top-0 right-0 p-8 text-8xl font-black text-slate-50 transition-colors group-hover:text-sky-50 select-none z-10">03</div>
               <div className="relative z-20">
                 <div className="w-12 h-1.5 bg-sky-500 mb-10 rounded-full" />
-                <h3 className="text-3xl font-black text-slate-900 mb-6">情報の共有</h3>
+                <h3 className="text-3xl font-black text-slate-900 mb-6">島のリアルを知りたい</h3>
                 <p className="text-lg text-slate-600 leading-relaxed font-medium">
-                  ガイドブックには載っていない、島でのリアルな生活の知恵や情報を交換し合いたい方。
+                  ガイドブックには載っていない、暮らしの知恵や情報を、信頼できる仲間と交換したい方。
                 </p>
               </div>
             </div>
@@ -443,7 +425,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
       <section
         id="concept"
         data-observe="section"
-        className={`relative py-32 px-6 lg:py-48 reveal overflow-hidden ${isVisible('concept') ? 'is-visible' : ''}`}
+        className={`relative section-pad reveal overflow-hidden ${isVisible('concept') ? 'is-visible' : ''}`}
       >
         {/* Organic Background Elements */}
         <div className="absolute top-1/4 -left-20 w-96 h-96 bg-orange-100 rounded-full blur-[100px] -z-10 opacity-60" />
@@ -459,17 +441,17 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               </div>
 
               <h2 className="text-5xl md:text-7xl font-bold text-slate-900 mb-10 leading-[1.2] tracking-tight">
-                ゆるく繋がる、<br />
+                ゆるくつながる、<br />
                 <span className="text-orange-500">本気で遊ぶ。</span>
               </h2>
 
               <div className="space-y-8 max-w-xl">
                 <p className="text-2xl md:text-3xl text-slate-800 leading-relaxed font-bold tracking-tight">
-                  シークレット感は「排他的な暗さ」ではなく、内側に温かさがあること。
+                  「秘密」は排他ではなく、仲間の中にだけ広がる温かさのこと。
                 </p>
                 <div className="h-px w-full bg-gradient-to-r from-slate-200 to-transparent" />
                 <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-medium">
-                  まずは一緒に遊ぶ。そこから、ガイドブックには載っていない島のリアルな縁を育てていこう。都会の流儀とは違う、隠岐ならではの「信頼という通貨」で繋がる場所。
+                  まずは一緒に遊ぶ。そこから、ガイドブックには載らない島の縁を育てていく。都会とは違う、隠岐ならではの「信頼」でつながる場所です。
                 </p>
               </div>
             </div>
@@ -522,7 +504,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
       <section
         id="activities"
         data-observe="section"
-        className={`bg-gradient-premium py-32 px-6 lg:py-48 reveal ${isVisible('activities') ? 'is-visible' : ''}`}
+        className={`bg-gradient-premium section-pad reveal ${isVisible('activities') ? 'is-visible' : ''}`}
       >
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-20">
@@ -532,20 +514,19 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
             </h2>
             <p className="text-slate-600 font-bold max-w-2xl mx-auto text-lg leading-relaxed">
               コミュニティでは、例えば以下のような企画を検討しています。<br className="hidden md:block" />
-              みんなの「やりたい」を持ち寄って、隠岐をもっとオモシロくしていきましょう。
+              みんなの「やりたい」を持ち寄って、隠岐をもっと楽しくしていきましょう。
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {activities.map((item, index) => (
+            {content.activities.map((item, index) => (
               <div
                 key={item.title}
-                className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 border-4 border-white"
-                style={{ transitionDelay: `${index * 100}ms` }}
+                className={`group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-4 border-white focus-within:ring-2 focus-within:ring-orange-400/40 ${["stagger-hover-0", "stagger-hover-1", "stagger-hover-2", "stagger-hover-3"][index] ?? "stagger-hover-0"}`}
               >
                 <div className="aspect-[4/3] relative overflow-hidden">
                   <Image
-                    src={item.image}
+                    src={activityImages[index]}
                     alt={item.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -565,7 +546,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
       <section
         id="roadmap"
         data-observe="section"
-        className={`bg-white py-32 px-6 lg:py-48 reveal ${isVisible('roadmap') ? 'is-visible' : ''}`}
+        className={`bg-white section-pad reveal ${isVisible('roadmap') ? 'is-visible' : ''}`}
       >
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-16">
@@ -574,7 +555,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               正式オープンまでの流れ
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-medium">
-              いきなり完成したコミュニティに入るのではなく、ルールづくりから一緒に参加できるのが醍醐味です。まずはLINEに登録して、みんなで作戦会議を始めましょう！
+              {content.roadmapLead}
             </p>
           </div>
 
@@ -654,7 +635,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
       <section
         id="cocreation"
         data-observe="section"
-        className={`relative py-32 px-6 lg:py-48 reveal overflow-hidden ${isVisible('cocreation') ? 'is-visible' : ''}`}
+        className={`relative section-pad reveal overflow-hidden ${isVisible('cocreation') ? 'is-visible' : ''}`}
       >
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 -z-10">
@@ -670,11 +651,10 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
         <div className="mx-auto max-w-4xl text-center text-white relative z-10">
           <p className="font-bold tracking-widest text-orange-400 mb-6 text-xl">CO-CREATION</p>
           <h2 className="font-serif text-4xl md:text-6xl font-black mb-10 leading-tight">
-            まだ決まっていないから、<br />一緒に決められる。
+            {renderLines(content.cocreationTitle)}
           </h2>
           <p className="text-xl text-sky-100 leading-relaxed mb-16 max-w-2xl mx-auto font-bold">
-            名前も、ルールも、これからみんなで決めていきます。<br />
-            まずはLINEに追加して、コミュニティが立ち上がる過程を一緒に楽しみませんか？（※登録・参加は無料です）
+            {renderLines(content.cocreationBody)}
           </p>
 
           <div className="glass-dark rounded-[2.5rem] p-10 md:p-16 max-w-3xl mx-auto border border-white/20 relative overflow-hidden shadow-2xl">
@@ -682,10 +662,10 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               <div className="flex flex-col items-center gap-8 mb-12">
                 <div className="relative">
                   <div className="bg-orange-500 text-white text-sm md:text-base font-black px-4 py-2 rounded-xl mb-4 inline-block animate-bounce shadow-lg after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-8 after:border-transparent after:border-t-orange-500">
-                    完全無料
+                    {content.cocreationBadge}
                   </div>
                   <p className="text-3xl md:text-4xl font-black leading-tight">
-                    最初の100人！<br className="sm:hidden" />隠岐を遊び尽くす<br />初期メンバーを募集中
+                    {renderLines(content.footerTitle)}
                   </p>
                 </div>
               </div>
@@ -695,10 +675,10 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => onCtaClick("footer")}
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-full bg-[#06C755] px-12 py-6 text-xl font-black text-white transition-all hover:scale-105 hover:bg-[#05b34c] hover:shadow-[0_0_40px_rgba(6,199,85,0.4)]"
+                className="cta-line cta-line--footer group"
               >
                 <span>{content.footerCta}</span>
-                <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-7 w-7 shrink-0 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </a>
