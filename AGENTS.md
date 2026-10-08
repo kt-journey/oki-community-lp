@@ -5,7 +5,8 @@
 - 目的: 隠岐の島町における移住者の孤独を減らし、信頼を起点にした移住者コミュニティへの参加導線を作る
 - 対象ユーザー: 隠岐の島町に住む既存移住者、または隠岐での暮らしに横のつながりを求める人
 - LPの主要ゴール: 公式LINEへのウェイトリスト登録、正式ローンチ後はサービス申込
-- 技術スタック: Next.js 16.2.4、React 19.2.4、TypeScript、Tailwind CSS v4、ESLint
+- 技術スタック: Next.js 16.4.0、React 19.2.4、TypeScript、Tailwind CSS v4、ESLint
+- 有料会員機能の仕様: `/Users/kota/Library/Mobile Documents/iCloud~md~obsidian/Documents/Vault/03_Projects/隠岐移住者コミュニティ/入会管理システム_実装用技術仕様書.md`。会員機能を変更する前にこのVault版と `docs/membership-setup.md` を確認する。現行の無料LINE先行登録を有料申込と混同しない。
 
 ## Development Rules
 - 変更は最小差分にする
