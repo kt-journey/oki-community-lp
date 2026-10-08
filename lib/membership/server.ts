@@ -2,6 +2,9 @@ import { createClient } from "@supabase/supabase-js";
 import Stripe from "stripe";
 
 export const membershipEnabled = process.env.MEMBERSHIP_FEATURE_ENABLED === "true";
+export const membershipBillingEnabled = membershipEnabled
+  && process.env.MEMBERSHIP_BILLING_ENABLED === "true"
+  && process.env.MEMBERSHIP_TERMS_PUBLISHED === "true";
 
 function required(name: string): string {
   const value = process.env[name];
@@ -20,7 +23,13 @@ export function memberDatabase() {
 }
 
 export function stripeClient() {
-  return new Stripe(required("STRIPE_SECRET_KEY"));
+  return new Stripe(required("STRIPE_SECRET_KEY"), {
+    apiVersion: "2026-09-30.endive",
+  });
+}
+
+export function stripeWebhookSecret(): string {
+  return required("STRIPE_WEBHOOK_SECRET");
 }
 
 export function membershipBaseUrl(): URL {

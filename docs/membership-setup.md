@@ -4,10 +4,10 @@
 
 ## 現在の状態
 
-- DB初期マイグレーション、LINE Login、会員セッション、`/join`の準備画面まで実装。
-- Stripe Checkout、Webhook、資格更新、OpenChat申請コード、管理画面は未実装。
-- 既存LPの無料LINE先行登録には変更を加えていない。会員機能は`MEMBERSHIP_FEATURE_ENABLED=true`のときだけ利用可能。実運用の入会受付には使わない。
-- Supabase本番DBへのマイグレーション適用、LINEチャンネル連携、決済テストは未実施。
+- DB初期・課金マイグレーション、LINE Login、会員セッション、Stripe Checkout、Webhook、支払済み期限の更新、Stripe Customer Portal、`/join`の状態表示まで実装。
+- OpenChat申請コード、管理画面、期限切れの退出待ち登録・日次照合、公式アカウントからの通知は未実装。決済後もOpenChatには参加できない。
+- 既存LPの無料LINE先行登録には変更を加えていない。会員機能は`MEMBERSHIP_FEATURE_ENABLED=true`、新規申込はさらに`MEMBERSHIP_BILLING_ENABLED=true`かつ`MEMBERSHIP_TERMS_PUBLISHED=true`のときだけ利用可能。既存契約のPortal導線は新規申込停止中も使える。現時点では課金フラグを有効にしない。
+- Supabase本番DBへのマイグレーション適用、LINE・Stripeの実接続、決済テストは未実施。販売条件・プライバシーの既存ページはひな形であり、公開前の確定が必要。
 
 ## 設定値
 
@@ -21,12 +21,29 @@
 | `LINE_LOGIN_CHANNEL_SECRET` | LINE Loginチャンネルsecret。 |
 | `SUPABASE_URL` | SupabaseプロジェクトURL。 |
 | `SUPABASE_SECRET_KEY` | サーバー専用secret key。ブラウザーには公開しない。 |
-| `STRIPE_SECRET_KEY` | Stripeサーバー秘密鍵。Checkout実装時に使用。 |
+| `STRIPE_SECRET_KEY` | Stripeサーバー秘密鍵。テスト環境と本番で分離。 |
+| `STRIPE_WEBHOOK_SECRET` | この環境のWebhook endpoint署名秘密値。 |
+| `STRIPE_PRICE_MONTHLY` | 税込/税務取扱い確定後のJPY 300・月次Price ID。 |
+| `STRIPE_PRICE_YEARLY` | 年額導入時のJPY 3,000・年次Price ID。 |
+| `STRIPE_PORTAL_CONFIGURATION_ID` | カード更新と期間末解約だけを許可したCustomer Portal設定ID。 |
+| `MEMBERSHIP_BILLING_ENABLED` | `true`で新規CheckoutのUI/APIを有効化。通常は未設定。 |
+| `MEMBERSHIP_TERMS_PUBLISHED` | 販売条件・解約条件・プライバシー文面を公開し運営者が確認した場合のみ`true`。 |
+| `MEMBERSHIP_YEARLY_ENABLED` | 年額の提供が決定した場合のみ`true`。通常は未設定。 |
 
 ## セットアップ順
 
 1. LINE Loginと公式アカウントのMessaging APIチャンネルを同一プロバイダー配下に設定し、友だち追加オプションを連携する。
-2. Supabaseで`supabase/migrations/20261008000000_membership_foundation.sql`をレビューして適用する。RLSと権限撤回を確認する。
+2. Supabaseで`supabase/migrations/20261008000000_membership_foundation.sql`、続けて`20261008010000_membership_billing.sql`をレビューして適用する。RLS・関数の実行権限を確認する。
 3. LINE LoginのCallback URLを`{MEMBERSHIP_APP_URL}/api/auth/line/callback`に登録する。
 4. テスト環境の秘密値を設定してフラグを有効化し、ログイン・ログアウト・セッション期限を検証する。
-5. 決済や有料会員向け公開導線は、仕様書の決定待ちと残りの実装が完了してから有効化する。
+5. Stripe Priceを月額300円で作成する。年額を提供する場合のみ年額3,000円のPriceも作成する。通貨JPY、繰り返し間隔、数量1、カード決済、税額・手数料の設定を確認する。
+6. Customer Portalを作成し、期間末解約とカード更新のみを有効にする。Stripe Webhookには`/api/stripe/webhook`を登録し、`checkout.session.completed`、`checkout.session.expired`、`invoice.paid`、`invoice.payment_failed`、`customer.subscription.created/updated/deleted`、`charge.refunded`、`charge.dispute.created`を購読する。SDKとWebhookイベントのAPIバージョンを`2026-09-30.endive`に合わせる。
+7. テストモードで初回決済、二重送信、更新支払、失敗、期間末解約、全額・部分返金、Dispute、Webhookの重複・順不同を確認する。`checkout.session.completed`だけでは資格が付かず、正しい`invoice.paid`のみで`access_paid_until`が延びることを確認する。
+8. 販売条件・プライバシー文面、OpenChat承認体制、期限切れ処理、問い合わせ先、運用監視を完成させた後に課金フラグを有効化する。
+
+## 現段階の運用上の制約
+
+- Webhookは署名検証後にDBへ保存し、イベントIDの行ロックで同期処理する。処理失敗はHTTP 503としてStripe再送を受ける。`stripe_events`の`failed`や長時間`processing`の行を運営者が監視・再実行する仕組みは次フェーズで必要。
+- 返金・Dispute・即時解約では資格を保留にし、未使用コードを失効、承認済みのOpenChat台帳を退出待ちにする。ただしLINE上での退出は手動。解除も管理者による審査が必要。
+- 期限切れの資格判定は読み取り時に即時反映されるが、OpenChat台帳を退出待ちへ移す定期ジョブは未実装。
+- CheckoutとPortalは同一Origin、会員セッション、セッションに結び付いたCSRF tokenを要求する。会員ごとのDBレート制限はCheckoutが10分に6回、Portalが1時間に12回。
