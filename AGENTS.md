@@ -7,6 +7,7 @@
 - LPの主要ゴール: 公式LINEへのウェイトリスト登録、正式ローンチ後はサービス申込
 - 技術スタック: Next.js 16.4.0、React 19.2.4、TypeScript、Tailwind CSS v4、ESLint
 - 有料会員機能の仕様: `/Users/kota/Library/Mobile Documents/iCloud~md~obsidian/Documents/Vault/03_Projects/隠岐移住者コミュニティ/入会管理システム_実装用技術仕様書.md`。会員機能を変更する前にこのVault版と `docs/membership-setup.md` を確認する。現行の無料LINE先行登録を有料申込と混同しない。
+- 全体の進捗と次のTODO: `TASKS.md`。着手前と完了後に状態を確認・更新し、コード実装と実環境検証を分けて記録する。
 
 ## Development Rules
 - 変更は最小差分にする
