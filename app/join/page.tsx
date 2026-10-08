@@ -1,8 +1,9 @@
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { currentMember } from "@/lib/membership/session";
-import { membershipBillingEnabled, membershipEnabled } from "@/lib/membership/server";
+import { membershipBillingEnabled, membershipEnabled, membershipOpenChatEnabled } from "@/lib/membership/server";
 import { BillingAction } from "@/components/membership/billing-action";
+import { OpenChatCodeAction } from "@/components/membership/openchat-code-action";
 import { billingCsrfToken } from "@/lib/membership/csrf";
 
 export const dynamic = "force-dynamic";
@@ -28,7 +29,12 @@ export default async function JoinPage() {
                 <h2 className="text-xl font-semibold">会員資格は有効です</h2>
                 <p className="mt-2">お支払い済みの利用期限：{new Intl.DateTimeFormat("ja-JP", { timeZone: "Asia/Tokyo", dateStyle: "long" }).format(new Date(member.paidUntil!))}</p>
                 {member.cancelAtPeriodEnd && <p>期間末で解約予定です。</p>}
-                <p className="mt-4 text-sm text-muted">オープンチャットの参加申請は準備中です。開始時にご案内します。</p>
+                {membershipOpenChatEnabled ? (
+                  member.openchatStatus === "approved" ? <p className="mt-4">運営記録では参加承認済みです。</p>
+                    : member.openchatStatus === "pending" ? <p className="mt-4">参加申請は運営の確認待ちです。</p>
+                      : member.openchatStatus === "removal_due" ? <p className="mt-4">参加状態を運営が確認中です。</p>
+                        : <OpenChatCodeAction csrfToken={csrfToken} />
+                ) : <p className="mt-4 text-sm text-muted">オープンチャットの参加申請は準備中です。開始時にご案内します。</p>}
                 <div className="mt-6"><BillingAction action="portal" csrfToken={csrfToken} label="お支払い方法・解約を管理" /></div>
               </section>
             ) : member.hasOpenHold ? (

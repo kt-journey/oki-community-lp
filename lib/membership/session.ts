@@ -15,6 +15,7 @@ export type MemberSnapshot = {
   cancelAtPeriodEnd: boolean;
   hasOpenHold: boolean;
   accessActive: boolean;
+  openchatStatus: "pending" | "approved" | "removal_due" | null;
 };
 
 export async function currentMember(token: string | undefined): Promise<MemberSnapshot | null> {
@@ -33,6 +34,10 @@ export async function currentMember(token: string | undefined): Promise<MemberSn
   const { data: hold, error: holdError } = await db.from("membership_holds")
     .select("id").eq("member_id", member.id).is("closed_at", null).limit(1).maybeSingle();
   if (holdError) throw holdError;
+  const { data: openchat, error: openchatError } = await db.from("openchat_memberships")
+    .select("status").eq("member_id", member.id)
+    .in("status", ["pending", "approved", "removal_due"]).maybeSingle();
+  if (openchatError) throw openchatError;
   const hasOpenHold = Boolean(hold);
   return {
     id: member.id,
@@ -43,6 +48,7 @@ export async function currentMember(token: string | undefined): Promise<MemberSn
     cancelAtPeriodEnd: member.cancel_at_period_end,
     hasOpenHold,
     accessActive: isMembershipAccessActive(member.access_paid_until, hasOpenHold),
+    openchatStatus: openchat?.status ?? null,
   };
 }
 

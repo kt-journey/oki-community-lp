@@ -5,6 +5,8 @@ export const membershipEnabled = process.env.MEMBERSHIP_FEATURE_ENABLED === "tru
 export const membershipBillingEnabled = membershipEnabled
   && process.env.MEMBERSHIP_BILLING_ENABLED === "true"
   && process.env.MEMBERSHIP_TERMS_PUBLISHED === "true";
+export const membershipOpenChatEnabled = membershipEnabled
+  && process.env.MEMBERSHIP_OPENCHAT_ENABLED === "true";
 
 function required(name: string): string {
   const value = process.env[name];
