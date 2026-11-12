@@ -1,40 +1,32 @@
 # デザインシステム: Okey-Dokey LP
 
 ## 1. デザインコンセプト
-- テーマ: **Island Meadow & Sun（島の緑と陽だまり — ブライト・エディトリアル）**
+- テーマ: **隠岐の風土と余白（日本のローカル・エディトリアル）**
 - トーン:
-  - 明るく風通しがよい（黒ベタや重苦しい暗色ブロックを使わない）
-  - 誠実で親しみやすい（20〜50代のUIターン者がフラットに馴染める空気感）
-  - カルチャー・ライフスタイル誌のような整理された紙面（余白と1px罫線）
-- 引き算のルール（禁止事項）:
-  - 白フチ多重シャドウ文字（`text-on-photo`）や手書き風フォントは使わない
-  - 点滅・バウンス（`animate-pulse` / `animate-bounce`）、背景のぼかしカラーブロブ（`blur-3xl`）は使わない
-  - 極端な角丸（`rounded-[3rem]`）、強いドロップシャドウ、カードから飛び出す巨大アイコンは使わない
+  - ファーストビューと巻末は隠岐の風景写真を画面全面（フルブリード）に配し、島のスケール感と空気感を伝える
+  - 本文セクションは明るい白（`#FFFFFF`）と淡いセージホワイト（`#F4F8F6`）の2色のみで構成し、風通しよく読ませる
+- 「脱AI」の徹底ルール（禁止事項）:
+  - `01 / SECTION`、`Fig. 01`、`REASON 01`、`STEP 01`、緯度経度などの英語メタラベルや連番は一切使わない
+  - 要素を何でも角丸枠線カード（Bento Box）で囲むのをやめ、広い余白・写真の比率・細い水平線（`border-t`）だけで組む
+  - 見出しの単語ごとに色を変える装飾（緑＋オレンジの混在など）や、ピル型バッジ・ステータスドットは使わない
+  - 白フチ多重シャドウ文字、点滅・バウンス、背景のぼかしカラーブロブは使わない
 
 ## 2. カラーパレット
 - **Base Background**: `#FFFFFF`（Pure White / 基本紙面）
-- **Sub Surface (Mint Tint)**: `#F0FDF4`（Pale Meadow / セクション背景・強調ボックス）
-- **Card Surface**: `#F8FAF9`（Soft Sage White / カード・枠内の背景）
-- **Primary Ink (Text)**: `#1E2D28`（Deep Forest Charcoal / 真っ黒を避けた柔らかいチャコール文字）
-- **Muted Ink (Sub Text)**: `#4B635B`（Muted Sage / 補足・リード文・キャプション）
-- **Border / Rule**: `#D1E5DD`（Hairline Sage / 1pxの区切り罫線・グリッド線）
-- **Primary Accent**: `#0D9488`（Island Teal / 隠岐の海と森をつなぐティールグリーン）
-- **Sun Point**: `#F97316`（Sun Orange / 陽だまりの温かさを添えるポイントカラー）
+- **Sub Surface**: `#F4F8F6`（Soft Sage Tint / セクションの緩やかな切り替え）
+- **Primary Ink (Text)**: `#1E2D28`（Deep Forest Charcoal / 見出し・主要テキスト）
+- **Muted Ink (Sub Text)**: `#4B635B`（Muted Sage / 補足・本文）
+- **Border / Rule**: `#CBDAD3` / `#D1E5DD`（Hairline Rule / 1pxの水平区切り線）
+- **Accent**: `#0D9488`（Island Teal / 日本語の小見出し・50%数値の強調のみに限定使用）
 - **CTA Action**: `#06C755`（LINE Green / 公式LINE登録ボタン）
 
 ## 3. タイポグラフィ
-- **Headings**: `Noto Sans JP`（Bold / Black, `letter-spacing: -0.02em`, `line-height: 1.35`）
-  - 明朝体ではなく、力強くクリーンなゴシック体で見出しを組み、アクティブで開かれた印象にする
-- **Body**: `Noto Sans JP`（Regular / Medium, `line-height: 1.85`）
-  - 20〜50代がスマートフォンでも読み疲れしない広めの行間を確保する
-- **Index / Meta**: `Space Mono`
-  - `01 / PLAY`、`Fig. 01`、`50%`、`¥500 / MONTH` などの番号・数値・メタデータに使用し、エディトリアルなリズムを作る
+- **Headings**: `Noto Sans JP`（Bold, `letter-spacing: -0.02em`, `line-height: 1.35〜1.4`）
+  - 単語の色分けをせず、単色で力強く組む
+- **Body**: `Noto Sans JP`（Regular, `line-height: 1.9〜1.95`）
+  - 20〜50代がスマートフォンでもゆったり読める行間を確保する
 
-## 4. コンポーネント・レイアウト指針
-- モバイルファーストの12カラム・エディトリアルグリッド
-- 写真と文字の分離:
-  - 写真の上に無理に文字を重ねて白フチで読ませるのではなく、余白と1px枠線（`border-[#D1E5DD]`）で写真とテキストを美しく並置する
-- 角丸と境界線:
-  - 角丸は控えめ（`rounded-md` 〜 `rounded-xl` / `6px〜12px`）に統一し、影ではなく1pxの罫線と淡い面塗りで情報をグループ化する
-- アセット運用:
-  - 外部ストックフォト（Unsplash等）は使用せず、`public/images/oki/` の隠岐の実写素材で統一する
+## 4. レイアウト方針
+- ファーストビューは全面背景写真（`min-h-[92dvh]`）＋下部配置の白文字タイポグラフィ
+- セクション見出しは左カラム（5列）、本文は右カラム（7列）の非対称2カラム組版を基本とし、雑誌の見開きのようなリズムを作る
+- 活動紹介（Activities）や特徴（Recommended）は枠線カードで囲まず、角のない写真（`aspect-[16/10]`）または上部の水平線（`border-t`）のみで端正に並べる
