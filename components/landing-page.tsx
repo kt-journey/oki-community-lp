@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import type { LandingContent } from "@/content/site";
 import { trackCtaClick } from "@/lib/analytics";
 
@@ -10,678 +9,461 @@ type LandingPageProps = {
   ctaUrl: string;
 };
 
-const activityImages = [
-  "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80&w=800",
-  "/images/oki/bbq.jpg",
-  "/images/oki/bus.png",
-  "/images/oki/akiya.png",
-];
-
-const benefitIcons = [
-  <svg key="0" className="w-5 h-5 md:w-8 md:h-8 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>,
-  <svg key="1" className="w-5 h-5 md:w-8 md:h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>,
-  <svg key="2" className="w-5 h-5 md:w-8 md:h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>,
-  <svg key="3" className="w-5 h-5 md:w-8 md:h-8 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" /></svg>,
-];
-
-function renderLines(text: string, className?: string) {
+function renderLines(text: string) {
   return text.split("\n").map((line, index, lines) => (
-    <span key={`${line}-${index}`} className={className}>
+    <span key={`${line}-${index}`}>
       {line}
       {index < lines.length - 1 ? <br /> : null}
     </span>
   ));
 }
 
-function Counter({ target, duration = 2000, isVisible }: { target: number; duration?: number; isVisible: boolean }) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!isVisible) return;
-
-    let startTime: number | null = null;
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      setCount(Math.floor(progress * target));
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-    requestAnimationFrame(animate);
-  }, [isVisible, target, duration]);
-
-  return <>{count}</>;
-}
-
 export function LandingPage({ content, ctaUrl }: LandingPageProps) {
-  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisibleSections((prev) => new Set(prev).add(entry.target.id));
-          }
-        });
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" },
-    );
-
-    document.querySelectorAll("[data-observe='section']").forEach((el) => {
-      observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const isVisible = (id: string) => visibleSections.has(id);
-
   const onCtaClick = (location: "hero" | "footer") => {
     trackCtaClick(location, ctaUrl);
   };
 
   return (
-    <main className="w-full overflow-x-hidden">
-      {/* Hero Section */}
-      <section id="hero" data-observe="section" className="relative min-h-[100dvh] flex items-center justify-start overflow-hidden bg-white">
-        {/* Lighter, brighter background image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/oki/mainVisual.png"
-            alt="隠岐の美しい風景"
-            fill
-            priority
-            className="object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/20 to-transparent lg:from-white/40" />
+    <main className="w-full overflow-x-hidden bg-white text-[#1E2D28]">
+      {/* Editorial Masthead Bar */}
+      <header className="border-b border-[#D1E5DD] bg-white px-5 py-3.5 md:px-8">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 text-xs md:text-sm">
+          <div className="flex items-center gap-2.5">
+            <span className="rounded-sm bg-[#0D9488] px-2 py-0.5 font-mono-editorial text-xs font-bold tracking-wider text-white">
+              Okey-Dokey
+            </span>
+            <span className="font-bold text-[#1E2D28]">{content.mastheadTitle}</span>
+          </div>
+          <span className="font-medium text-[#4B635B]">{content.mastheadTarget}</span>
         </div>
+      </header>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 pt-14 sm:pt-16 md:pt-20 lg:pt-16">
-          {/* Two-column layout: Left = text, Right = badge (PC only) */}
-          <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
-            {/* Left column: Main content */}
-            <div className="flex-1 max-w-2xl text-center md:text-left mx-auto md:mx-0">
-              {/* Subcopy Image */}
-              <div className="relative mb-4 md:mb-6 max-w-[260px] md:max-w-[380px] mx-auto md:mx-0">
-                <div className="absolute -top-3 -right-1 md:-top-5 md:-right-6 bg-orange-500 text-white text-[8px] md:text-xs font-black px-2 py-0.5 md:px-3 md:py-1 rounded-full transform rotate-12 shadow-lg animate-pulse z-20 whitespace-nowrap">
-                  {content.heroBadge}
-                </div>
-                <Image
-                  src="/images/assets/subcopy.png"
-                  alt="ひとりじゃない、島ぐらし。"
-                  width={380}
-                  height={110}
-                  priority
-                  className="w-full h-auto drop-shadow-md"
-                />
+      {/* 00: Hero Section */}
+      <section id="hero" className="border-b border-[#D1E5DD] bg-white px-5 py-10 md:px-8 md:py-16 lg:py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12">
+            {/* Left Column: Editorial Copy & Spec Box */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className=" rounded-full bg-[#CCFBF1] px-3.5 py-1 text-xs font-bold text-[#0D9488]">
+                  {content.heroTag}
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#F97316]">
+                  <span className="h-2 w-2 rounded-full bg-[#F97316]" aria-hidden />
+                  {content.heroStatusDot}
+                </span>
               </div>
 
-              <h1 className="font-handwriting text-on-photo-strong text-4xl sm:text-4xl md:text-5xl lg:text-[4rem] font-bold text-slate-800 mb-3 md:mb-5 leading-[1.35] md:leading-[1.25] break-words">
-                {content.heroH1.line1}<br />
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black leading-[1.32] tracking-tight text-[#1E2D28]">
+                {content.heroH1.line1}
+                <br />
                 {content.heroH1.line2Before}
-                <span className="text-emerald-600">{content.heroH1.line2Highlight}</span>
+                <span className="text-[#0D9488]">{content.heroH1.line2Highlight}</span>
                 {content.heroH1.line2Before ? "、" : ""}
                 <br />
                 {content.heroH1.line3Before}
-                <span className="text-sky-600">{content.heroH1.line3Highlight}</span>
+                <span className="text-[#F97316]">{content.heroH1.line3Highlight}</span>
                 {content.heroH1.line3After}
               </h1>
 
-              <div className="mb-6 md:mb-8 px-2 md:px-0">
-                <div className="text-on-photo flex flex-col md:flex-row items-center md:items-baseline justify-center md:justify-start gap-3 md:gap-4 mb-4">
-                  <p className="text-lg md:text-2xl text-slate-800 font-bold tracking-[0.1em] md:tracking-[0.15em]">
-                    {content.heroCommunityLabel}
-                  </p>
-                  <span className="bg-orange-100 text-orange-600 text-[10px] md:text-sm font-black px-3 py-1 rounded-lg border-2 border-orange-200 shadow-sm">
-                    {content.heroRecruitBadge}
-                  </span>
+              <p className="max-w-xl text-base md:text-lg leading-[1.85] text-[#4B635B] font-medium">
+                {content.heroLead}
+              </p>
+
+              {/* Editorial Membership Spec Box */}
+              <div className="max-w-xl rounded-lg border border-[#D1E5DD] bg-[#F0FDF4] p-4 sm:p-5 space-y-3 text-sm">
+                <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-[#D1E5DD] pb-3">
+                  <span className="font-bold text-[#4B635B]">{content.heroSpecFeeLabel}</span>
+                  <div>
+                    <span className="text-lg sm:text-xl font-black text-[#1E2D28]">{content.heroSpecFeeValue}</span>
+                    <span className="ml-1 text-xs text-[#4B635B]">{content.heroSpecFeeNote}</span>
+                  </div>
                 </div>
-                <div className="text-on-photo text-sm md:text-lg text-slate-700 leading-relaxed max-w-xl font-bold space-y-0.5 mx-auto md:mx-0">
-                  {content.heroSubcopyLines.map((line) => (
-                    <p key={line}>{line}</p>
-                  ))}
+                <div className="flex flex-wrap items-baseline justify-between gap-2 pt-0.5">
+                  <span className="font-bold text-[#4B635B]">{content.heroSpecStatusLabel}</span>
+                  <span className="font-bold text-[#0D9488]">{content.heroSpecStatusValue}</span>
                 </div>
               </div>
 
-              <div className="flex flex-col items-center md:items-start gap-3 pb-6 md:pb-0 px-4 md:px-0">
+              {/* CTA */}
+              <div className="space-y-2.5 pt-1">
                 <a
                   href={ctaUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => onCtaClick("hero")}
-                  className="cta-line cta-line--lg group relative z-30"
+                  className="cta-line cta-line--lg group"
                 >
                   <span>{content.heroCta}</span>
-                  <svg className="h-5 w-5 md:h-6 md:w-6 shrink-0 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
+                  <svg
+                    className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-0.5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </a>
-                <p className="text-on-photo-subtle text-xs md:text-base font-bold text-slate-700">
-                  現在 <span className="text-orange-600 text-base md:text-xl font-black tabular-nums">
-                    <Counter target={3} isVisible={isVisible('hero')} />名
-                  </span>{content.heroLineCounterSuffix}
-                </p>
+                <p className="text-xs text-[#4B635B]">{content.heroCtaSub}</p>
               </div>
             </div>
 
-            {/* Circle Badge: in-flow on mobile, beside copy on desktop */}
-            <div className="mt-6 flex flex-shrink-0 items-center justify-center sm:absolute sm:top-[56%] sm:right-3 sm:mt-0 lg:static lg:translate-x-0 z-40">
-              <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 bg-white/95 rounded-full shadow-lg flex items-center justify-center text-center border-2 md:border-4 border-white animate-float-slow px-2">
-                <div className="relative">
-                  <p className="font-handwriting text-slate-700 font-bold text-[11px] sm:text-sm md:text-xl lg:text-3xl leading-[1.5] tracking-wide">
-                    {renderLines(content.heroCircleBadge)}
-                  </p>
-                  <div className="absolute -bottom-4 -right-4 md:-bottom-10 md:-right-8 pointer-events-none">
-                    <svg className="w-8 h-8 md:w-16 md:h-16 text-sky-300 transform -rotate-12 drop-shadow-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-                      <path d="M2 12s4-2 7-2 7 2 7 2 4-2 4-2" strokeLinecap="round" />
-                      <path d="M5 14s3-1 5-1 5 1 5 1 3-1 3-1" strokeLinecap="round" opacity="0.6" />
-                    </svg>
-                  </div>
+            {/* Right Column: Framed Oki Photography */}
+            <div className="lg:col-span-5">
+              <div className="rounded-lg border border-[#D1E5DD] bg-[#F8FAF9] p-3 sm:p-4 space-y-3">
+                <div className="flex items-center justify-between text-xs font-mono-editorial text-[#4B635B]">
+                  <span>OKI-NO-SHIMA ISLAND</span>
+                  <span>36°12&apos;N 133°19&apos;E</span>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Benefits Cards — full width, compact */}
-          <div className="mt-6 md:mt-12 mb-16 md:mb-28 relative z-20">
-            <div className="text-center mb-3 md:mb-4">
-              <span className="inline-block bg-emerald-600 text-white px-6 py-1.5 md:px-8 md:py-2 rounded-full font-bold text-xs md:text-sm shadow-md">
-                {content.heroBenefitsHeading}
-              </span>
-            </div>
-            <div className="bg-white/95 rounded-2xl sm:rounded-3xl md:rounded-full shadow-md border border-slate-100 overflow-hidden grid grid-cols-2 sm:grid-cols-4 gap-0 max-w-4xl mx-auto">
-              {content.heroBenefits.map((title, i) => (
-                <div
-                  key={title}
-                  className={`p-3 sm:p-2 md:py-5 md:px-6 flex flex-col items-center text-center ${i % 2 === 0 ? "border-r border-slate-100" : ""} ${i < 2 ? "border-b sm:border-b-0 border-slate-100" : ""} sm:[&:not(:nth-child(4n))]:border-r sm:border-b-0`}
-                >
-                  <div className="mb-1.5 md:mb-2">{benefitIcons[i]}</div>
-                  <h3 className="text-[11px] sm:text-xs md:text-sm font-black text-slate-700 leading-snug">{title}</h3>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Wavy Bottom Transition - Organic & Smooth */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-20">
-          <svg className="relative block w-[calc(100%+1.3px)] h-[60px] md:h-[100px]" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path
-              d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5,73.84-4.36,147.54,16.88,218.2,35.26,69.27,18,138.38,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-              className="fill-white"
-              transform="rotate(180 600 60)"
-            ></path>
-          </svg>
-        </div>
-      </section>
-
-      {/* Intro Section */}
-      <section
-        id="intro"
-        data-observe="section"
-        className={`bg-white section-pad reveal overflow-x-hidden ${isVisible('intro') ? 'is-visible' : ''}`}
-      >
-        <div className="mx-auto max-w-7xl min-w-0">
-          <div className="grid min-w-0 gap-16 lg:grid-cols-2 lg:gap-24 items-center">
-            <div className="min-w-0">
-              <p className="font-bold text-xl text-orange-500 mb-4 tracking-widest">ISLAND RHYTHM</p>
-              <h2 className="font-serif text-4xl font-black text-slate-900 md:text-5xl leading-tight mb-8 break-words md:break-keep">
-                都会の「お金」より、<br className="hidden md:block" />島の「信頼」でつながる。
-              </h2>
-              <div className="h-2 w-20 bg-blue-500 mb-8 rounded-full" />
-              <p className="text-lg leading-relaxed text-slate-700 font-medium break-words md:break-keep">
-                都会の流儀は「お金で解決」。<br className="md:hidden" />隠岐の流儀は「信頼が通貨」。<br /><br />
-                私たちは、職場やご近所以外に、気兼ねなく本音で話せる「ヨコのつながり」を育てます。島の暮らしを、ひとりで抱え込まず、仲間と広げていくために。
-              </p>
-            </div>
-
-            <div className="relative min-w-0 overflow-x-clip">
-              <div className="aspect-[4/3] overflow-hidden rounded-3xl shadow-2xl relative">
-                <Image
-                  src="/images/oki/island-rhythm-community.jpg"
-                  alt="港沿いを歩きながら話す島の仲間たち"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 hover:scale-105"
-                />
-              </div>
-              {/* Decorative elements — inset on mobile so blur radius does not widen layout */}
-              <div className="absolute -bottom-8 left-0 md:-left-8 w-40 md:w-48 h-40 md:h-48 bg-orange-200/50 rounded-full blur-3xl -z-10 pointer-events-none" />
-              <div className="absolute -top-8 right-0 md:-right-8 w-40 md:w-48 h-40 md:h-48 bg-blue-200/50 rounded-full blur-3xl -z-10 pointer-events-none" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Crisis Section */}
-      <section
-        id="crisis"
-        data-observe="section"
-        className={`relative section-pad reveal overflow-hidden ${isVisible('crisis') ? 'is-visible' : ''}`}
-      >
-        {/* Full-width Background Image with Sophisticated Overlay */}
-        <div className="absolute inset-0 -z-10">
-          <Image
-            src="/images/oki/20240427-DSC06774.jpg"
-            alt="隠岐の集いの風景"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-slate-950/88" />
-        </div>
-
-        <div className="mx-auto max-w-7xl relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-32 items-center mb-24 lg:mb-32 text-white">
-            {/* Left: Heading with Decorative Badge */}
-            <div className="relative text-center lg:text-left">
-              <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-sky-300 text-sm font-black tracking-widest mb-6 backdrop-blur-md border border-white/10">SURVEY RESULTS</span>
-              <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-black mb-0 leading-[1.1] tracking-tighter">
-                島の暮らし、<br />
-                <span className="text-white/40">実はちょっと</span><br />
-                孤独？
-              </h2>
-            </div>
-
-            {/* Right: Giant 50% Stat with Cinematic Glow */}
-            <div className="relative text-center lg:text-left px-4 lg:px-0">
-              <div className="space-y-2 mb-8 lg:mb-10">
-                <p className="text-lg md:text-2xl text-slate-200 font-medium leading-relaxed">
-                  {renderLines(content.crisisStatLead)}
-                </p>
-              </div>
-              <div className="relative inline-block font-sans">
-                <span className="font-stat text-8xl md:text-[12rem] lg:text-[14rem] font-black leading-none flex items-baseline justify-center lg:justify-start text-orange-500 drop-shadow-[0_0_60px_rgba(249,115,22,0.35)]">
-                  <Counter target={50} isVisible={isVisible('crisis')} />
-                  <span className="text-5xl md:text-8xl lg:text-[9rem] ml-2 text-orange-200/50 font-black">%</span>
-                </span>
-                {/* Extra ambient glow */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 lg:w-64 h-48 lg:h-64 bg-orange-600 rounded-full blur-[80px] lg:blur-[120px] opacity-15 -z-10 pointer-events-none" />
-              </div>
-            </div>
-          </div>
-
-          <div className="max-w-5xl mx-auto text-center px-6">
-            <p className="text-2xl md:text-5xl text-white leading-tight font-black mb-12">
-              一番の原因は、仕事でも家でもなく<br />
-              <span className="relative inline-block mt-4 px-2">
-                <span className="relative z-10">{content.crisisCause}</span>
-                <span
-                  className={`absolute bottom-1 lg:bottom-2 left-0 w-full h-[60%] bg-orange-500/70 -z-0 origin-left transition-transform duration-[1.5s] ease-out ${isVisible("crisis") ? "scale-x-100" : "scale-x-0"}`}
-                />
-              </span>
-              <br className="lg:hidden" /><span className="inline-block mt-2 lg:mt-0">だった。</span>
-            </p>
-            <p className="text-xs text-white/55 font-bold tracking-widest mt-8">{content.crisisSourceNote}</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Recommended For Section */}
-      <section
-        id="recommended"
-        data-observe="section"
-        className={`relative bg-slate-50 section-pad reveal overflow-hidden ${isVisible('recommended') ? 'is-visible' : ''}`}
-      >
-        {/* Subtle Background Image */}
-        <div className="absolute inset-0 -z-10 opacity-30">
-          <Image
-            src="/images/oki/230516_DJI_0468.jpg"
-            alt="隠岐の風景背景"
-            fill
-            className="object-cover"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white -z-10" />
-
-        <div className="mx-auto max-w-7xl relative z-10">
-          <div className="max-w-4xl mb-24">
-            <p className="text-lg font-bold text-orange-500 mb-8 tracking-widest">THIS COMMUNITY IS FOR...</p>
-            <div className="relative inline-block mb-8">
-              <div className="bg-orange-500 text-white px-8 py-3 rounded-full text-xl md:text-2xl font-bold shadow-lg shadow-orange-200">
-                このコミュニティは、
-              </div>
-              {/* Triangle for Bubble */}
-              <div className="absolute -bottom-2 left-10 w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-t-[12px] border-t-orange-500" />
-            </div>
-            <h2 className="font-serif text-5xl md:text-6xl font-black text-slate-900 mb-8 leading-tight">
-              こんな想いを抱える、<br />
-              <span className="text-orange-500">あなたのための</span>場所です。
-            </h2>
-            <p className="text-xl md:text-2xl text-slate-600 font-medium leading-relaxed">
-              隠岐での暮らしを、ただの「日常」で終わらせたくない。<br className="hidden md:block" />
-              そんな方に、新しいつながりの入り口を用意します。
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-10">
-            {/* Card 01 */}
-            <div className="group relative bg-white p-12 pt-16 rounded-[2rem] shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 border border-slate-100">
-              {/* Overlapping Checkmark */}
-              <div className="absolute -top-6 -left-6 w-20 h-20 rounded-full bg-orange-500 flex items-center justify-center text-white shadow-xl shadow-orange-200 z-30 transform -rotate-12 group-hover:rotate-0 transition-transform duration-500">
-                <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="4">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <div className="absolute top-0 right-0 p-8 text-8xl font-black text-slate-50 transition-colors group-hover:text-orange-50 select-none z-10">01</div>
-              <div className="relative z-20">
-                <div className="w-12 h-1.5 bg-orange-500 mb-10 rounded-full" />
-                <h3 className="text-3xl font-black text-slate-900 mb-6">ヨコのつながりが欲しい</h3>
-                <p className="text-lg text-slate-600 leading-relaxed font-medium">
-                  職場やご近所以外に、気兼ねなく本音で話せる友達や、週末を一緒に過ごす仲間が欲しい方。
-                </p>
-              </div>
-            </div>
-
-            {/* Card 02 */}
-            <div className="group relative bg-white p-12 pt-16 rounded-[2rem] shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 border border-slate-100">
-              {/* Overlapping Checkmark */}
-              <div className="absolute -top-6 -left-6 w-20 h-20 rounded-full bg-blue-500 flex items-center justify-center text-white shadow-xl shadow-blue-200 z-30 transform -rotate-12 group-hover:rotate-0 transition-transform duration-500">
-                <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="4">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <div className="absolute top-0 right-0 p-8 text-8xl font-black text-slate-50 transition-colors group-hover:text-blue-50 select-none z-10">02</div>
-              <div className="relative z-20">
-                <div className="w-12 h-1.5 bg-blue-500 mb-10 rounded-full" />
-                <h3 className="text-3xl font-black text-slate-900 mb-6">島の遊びを共有したい</h3>
-                <p className="text-lg text-slate-600 leading-relaxed font-medium">
-                  海や山の豊かさを、ひとりではなく誰かと分かち合い、暮らしの幅を広げていきたい方。
-                </p>
-              </div>
-            </div>
-
-            {/* Card 03 */}
-            <div className="group relative bg-white p-12 pt-16 rounded-[2rem] shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 border border-slate-100">
-              {/* Overlapping Checkmark */}
-              <div className="absolute -top-6 -left-6 w-20 h-20 rounded-full bg-sky-500 flex items-center justify-center text-white shadow-xl shadow-sky-200 z-30 transform -rotate-12 group-hover:rotate-0 transition-transform duration-500">
-                <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="4">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <div className="absolute top-0 right-0 p-8 text-8xl font-black text-slate-50 transition-colors group-hover:text-sky-50 select-none z-10">03</div>
-              <div className="relative z-20">
-                <div className="w-12 h-1.5 bg-sky-500 mb-10 rounded-full" />
-                <h3 className="text-3xl font-black text-slate-900 mb-6">島のリアルを知りたい</h3>
-                <p className="text-lg text-slate-600 leading-relaxed font-medium">
-                  ガイドブックには載っていない、暮らしの知恵や情報を、信頼できる仲間と交換したい方。
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-20 text-center">
-            <p className="text-lg font-bold text-slate-500 flex items-center justify-center gap-2">
-              <span className="w-8 h-px bg-slate-200" />
-              ひとつでも当てはまるなら、ぜひご参加ください
-              <span className="w-8 h-px bg-slate-200" />
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Concept Section */}
-      <section
-        id="concept"
-        data-observe="section"
-        className={`relative section-pad reveal overflow-hidden ${isVisible('concept') ? 'is-visible' : ''}`}
-      >
-        {/* Organic Background Elements */}
-        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-orange-100 rounded-full blur-[100px] -z-10 opacity-60" />
-        <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-blue-50 rounded-full blur-[80px] -z-10 opacity-40" />
-
-        <div className="mx-auto max-w-7xl">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            {/* Left: Content Card */}
-            <div className="relative z-10">
-              <div className="inline-flex items-center gap-4 mb-8">
-                <span className="w-12 h-0.5 bg-orange-500" />
-                <p className="font-bold text-xl tracking-[0.2em] text-orange-500 uppercase">Our Concept</p>
-              </div>
-
-              <h2 className="text-5xl md:text-7xl font-bold text-slate-900 mb-10 leading-[1.2] tracking-tight">
-                ゆるくつながる、<br />
-                <span className="text-orange-500">本気で遊ぶ。</span>
-              </h2>
-
-              <div className="space-y-8 max-w-xl">
-                <p className="text-2xl md:text-3xl text-slate-800 leading-relaxed font-bold tracking-tight">
-                  「秘密」は排他ではなく、仲間の中にだけ広がる温かさのこと。
-                </p>
-                <div className="h-px w-full bg-gradient-to-r from-slate-200 to-transparent" />
-                <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-medium">
-                  まずは一緒に遊ぶ。そこから、ガイドブックには載らない島の縁を育てていく。都会とは違う、隠岐ならではの「信頼」でつながる場所です。
-                </p>
-              </div>
-            </div>
-
-            {/* Right: Asymmetrical Image Grid */}
-            <div className="relative">
-              <div className="grid grid-cols-2 gap-4 md:gap-8">
-                <div className="space-y-4 md:space-y-8 mt-12">
-                  <div className="relative aspect-[3/4] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-700">
-                    <Image
-                      src="/images/oki/230516_DJI_0468.jpg"
-                      alt="隠岐の絶景"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="relative aspect-square rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl bg-orange-500 p-8 flex items-end">
-                    <p className="text-white font-serif text-2xl font-bold leading-tight">遊びが、<br />縁になる。</p>
-                  </div>
-                </div>
-                <div className="space-y-4 md:space-y-8">
-                  <div className="relative aspect-[3/4] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-700 border-8 border-white">
-                    <Image
-                      src="/images/oki/island-activity-community.jpg"
-                      alt="海辺で島の時間を分かち合う仲間たち"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="relative aspect-square rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-700">
-                    <Image
-                      src="/images/oki/island-culture-detail.jpg"
-                      alt="隠岐の文化"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating Decorative Elements */}
-              <div className="absolute -top-12 -right-12 w-32 h-32 bg-orange-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob" />
-              <div className="absolute -bottom-12 -left-12 w-40 h-40 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Activities Section */}
-      <section
-        id="activities"
-        data-observe="section"
-        className={`bg-gradient-premium section-pad reveal ${isVisible('activities') ? 'is-visible' : ''}`}
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-20">
-            <p className="font-bold tracking-widest text-orange-600 mb-6 text-xl">ACTIVITIES</p>
-            <h2 className="font-serif text-4xl md:text-5xl font-black text-slate-900 mb-6">
-              体験と仕組みで、距離を縮める。
-            </h2>
-            <p className="text-slate-600 font-bold max-w-2xl mx-auto text-lg leading-relaxed">
-              コミュニティでは、例えば以下のような企画を検討しています。<br className="hidden md:block" />
-              みんなの「やりたい」を持ち寄って、隠岐をもっと楽しくしていきましょう。
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {content.activities.map((item, index) => (
-              <div
-                key={item.title}
-                className={`group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-4 border-white focus-within:ring-2 focus-within:ring-orange-400/40 ${["stagger-hover-0", "stagger-hover-1", "stagger-hover-2", "stagger-hover-3"][index] ?? "stagger-hover-0"}`}
-              >
-                <div className="aspect-[4/3] relative overflow-hidden">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded border border-[#D1E5DD]">
                   <Image
-                    src={activityImages[index]}
-                    alt={item.title}
+                    src="/images/oki/mainVisual.png"
+                    alt="隠岐の海と暮らしの風景"
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 42vw"
+                    className="object-cover"
                   />
                 </div>
-                <div className="p-8">
-                  <h3 className="text-2xl font-black text-slate-900 mb-4">{item.title}</h3>
-                  <p className="text-slate-600 leading-relaxed font-medium">{item.body}</p>
-                </div>
+                <p className="text-xs leading-relaxed text-[#4B635B]">
+                  職場やご近所とは違う、利害関係のない「ヨコのつながり」を隠岐の島町につくります。
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* 4 Editorial Benefit Strip */}
+          <div className="mt-10 md:mt-14 grid grid-cols-2 lg:grid-cols-4 border border-[#D1E5DD] divide-y lg:divide-y-0 sm:divide-x divide-[#D1E5DD] rounded-lg bg-[#F8FAF9] overflow-hidden">
+            {content.heroBenefits.map((benefit, index) => (
+              <div key={benefit} className="p-4 sm:p-5 flex items-start gap-3">
+                <span className="font-mono-editorial text-xs font-bold text-[#0D9488] mt-0.5">
+                  0{index + 1}
+                </span>
+                <p className="text-xs sm:text-sm font-bold text-[#1E2D28] leading-snug">{benefit}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Roadmap Section */}
-      <section
-        id="roadmap"
-        data-observe="section"
-        className={`bg-white section-pad reveal ${isVisible('roadmap') ? 'is-visible' : ''}`}
-      >
+      {/* 01: The Issue Section (Bright Mint Editorial, No Dark Background) */}
+      <section id="issue" className="border-b border-[#D1E5DD] bg-[#F0FDF4] section-pad">
         <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <p className="font-bold tracking-widest text-orange-500 mb-4 text-xl">ROADMAP</p>
-            <h2 className="font-serif text-4xl md:text-5xl font-black text-slate-900 mb-6">
-              正式オープンまでの流れ
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-medium">
-              {content.roadmapLead}
-            </p>
+          <div className="mb-8 border-b border-[#D1E5DD] pb-3 flex flex-wrap items-center justify-between gap-2">
+            <span className="font-mono-editorial text-xs font-bold tracking-wider text-[#0D9488]">
+              {content.issueLabel}
+            </span>
+            <span className="text-xs text-[#4B635B]">{content.issueSourceNote}</span>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left: Vertical Timeline */}
-            <div className="relative pl-4 lg:pl-0">
-              {/* Step 1 */}
-              <div className="flex gap-6 relative group">
-                <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center text-orange-500 shadow-sm z-10 transition-transform group-hover:scale-110">
-                    <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <div className="w-1.5 h-full bg-blue-50 my-2 rounded-full transition-colors group-hover:bg-orange-100" />
-                </div>
-                <div className="pb-12 pt-2">
-                  <span className="text-sm font-bold tracking-widest text-orange-500 mb-1 block">STEP 01</span>
-                  <h3 className="text-2xl font-black text-slate-900 mb-3">公式LINEで先行登録</h3>
-                  <p className="text-slate-600 font-medium leading-relaxed">まずはLINEを友だち追加（完全無料）。ここから、コミュニティ立ち上げの裏側や限定情報が届き始めます。</p>
-                </div>
-              </div>
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12 items-center">
+            <div className="lg:col-span-5 space-y-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black leading-[1.35] text-[#1E2D28]">
+                {renderLines(content.issueTitle)}
+              </h2>
+              <p className="text-sm sm:text-base leading-[1.85] text-[#4B635B]">
+                {content.issueStatLead}
+              </p>
+            </div>
 
-              {/* Step 2 */}
-              <div className="flex gap-6 relative group">
-                <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center text-blue-500 shadow-sm z-10 transition-transform group-hover:scale-110">
-                    <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-                    </svg>
-                  </div>
-                  <div className="w-1.5 h-full bg-blue-50 my-2 rounded-full transition-colors group-hover:bg-blue-100" />
-                </div>
-                <div className="pb-12 pt-2">
-                  <span className="text-sm font-bold tracking-widest text-blue-500 mb-1 block">STEP 02</span>
-                  <h3 className="text-2xl font-black text-slate-900 mb-3">みんなで作戦会議</h3>
-                  <p className="text-slate-600 font-medium leading-relaxed">LINE上でアンケートを取ったり、小規模なオフラインのプレイベントを実施。みんなでやりたい事やルールを考えていきます。</p>
-                </div>
-              </div>
-
-              {/* Step 3 */}
-              <div className="flex gap-6 relative group">
-                <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 bg-sky-100 rounded-full flex items-center justify-center text-sky-500 shadow-sm z-10 transition-transform group-hover:scale-110">
-                    <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                    </svg>
-                  </div>
-                  {/* No line after the last step */}
-                </div>
-                <div className="pb-2 pt-2">
-                  <span className="text-sm font-bold tracking-widest text-sky-500 mb-1 block">STEP 03</span>
-                  <h3 className="text-2xl font-black text-slate-900 mb-3">初期メンバー正式募集</h3>
-                  <p className="text-slate-600 font-medium leading-relaxed">意見をもとに形を作ったら、いよいよ正式ローンチ。LINE登録者には一番に優先案内をお送りします！</p>
-                </div>
+            <div className="lg:col-span-3 rounded-lg border border-[#D1E5DD] bg-white p-6 text-center lg:text-left">
+              <p className="text-xs font-bold text-[#4B635B] mb-2">{content.issueStatCaption}</p>
+              <div className="flex items-baseline justify-center lg:justify-start gap-1">
+                <span className="font-mono-editorial text-6xl sm:text-7xl font-bold text-[#F97316] leading-none">
+                  {content.issueStatNumber}
+                </span>
+                <span className="font-mono-editorial text-2xl font-bold text-[#1E2D28]">
+                  {content.issueStatUnit}
+                </span>
               </div>
             </div>
 
-            {/* Right: Oki Life Image */}
-            <div className="relative w-full max-w-sm mx-auto lg:max-w-md hidden md:block">
-              <div className="aspect-[3/4] relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white transform rotate-2 hover:rotate-0 transition-transform duration-500">
-                <Image
-                  src="/images/oki/230224-9.jpg"
-                  alt="隠岐での島暮らしの様子"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              {/* Decorative Blur */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-orange-200/40 to-blue-300/40 blur-2xl -z-10 rounded-full" />
+            <div className="lg:col-span-4 border-l-4 border-[#0D9488] bg-white p-5 sm:p-6 rounded-r-lg space-y-2.5">
+              <p className="text-base sm:text-lg font-bold leading-snug text-[#1E2D28]">
+                {content.issueCauseTitle}
+              </p>
+              <p className="text-xs sm:text-sm leading-[1.8] text-[#4B635B]">
+                {content.issueCauseBody}
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Co-Creation Section */}
-      <section
-        id="cocreation"
-        data-observe="section"
-        className={`relative section-pad reveal overflow-hidden ${isVisible('cocreation') ? 'is-visible' : ''}`}
-      >
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 -z-10">
-          <Image
-            src="/images/oki/20241112-DSC09331_隠岐旅工舎.jpg"
-            alt="隠岐の風景"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-slate-900/80 backdrop-blur-[2px]" />
-        </div>
+      {/* 02: Philosophy Section */}
+      <section id="philosophy" className="border-b border-[#D1E5DD] bg-white section-pad">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-8 border-b border-[#D1E5DD] pb-3">
+            <span className="font-mono-editorial text-xs font-bold tracking-wider text-[#0D9488]">
+              {content.philosophyLabel}
+            </span>
+          </div>
 
-        <div className="mx-auto max-w-4xl text-center text-white relative z-10">
-          <p className="font-bold tracking-widest text-orange-400 mb-6 text-xl">CO-CREATION</p>
-          <h2 className="font-serif text-4xl md:text-6xl font-black mb-10 leading-tight">
-            {renderLines(content.cocreationTitle)}
-          </h2>
-          <p className="text-xl text-sky-100 leading-relaxed mb-16 max-w-2xl mx-auto font-bold">
-            {renderLines(content.cocreationBody)}
-          </p>
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12 items-center">
+            <div className="lg:col-span-6 space-y-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black leading-[1.35] text-[#1E2D28]">
+                {renderLines(content.philosophyTitle)}
+              </h2>
+              <p className="text-base sm:text-lg font-bold leading-[1.75] text-[#0D9488]">
+                {content.philosophyLead}
+              </p>
+              <p className="text-sm sm:text-base leading-[1.9] text-[#4B635B]">
+                {content.philosophyBody}
+              </p>
+            </div>
 
-          <div className="glass-dark rounded-[2.5rem] p-10 md:p-16 max-w-3xl mx-auto border border-white/20 relative overflow-hidden shadow-2xl">
-            <div className="relative z-10">
-              <div className="flex flex-col items-center gap-8 mb-12">
-                <div className="relative">
-                  <div className="bg-orange-500 text-white text-sm md:text-base font-black px-4 py-2 rounded-xl mb-4 inline-block animate-bounce shadow-lg after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-8 after:border-transparent after:border-t-orange-500">
-                    {content.cocreationBadge}
-                  </div>
-                  <p className="text-3xl md:text-4xl font-black leading-tight">
-                    {renderLines(content.footerTitle)}
-                  </p>
+            <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="rounded-lg border border-[#D1E5DD] bg-[#F8FAF9] p-2.5">
+                <div className="relative aspect-[4/3] overflow-hidden rounded">
+                  <Image
+                    src="/images/oki/island-rhythm-community.jpg"
+                    alt="港沿いを歩きながら話す島の仲間たち"
+                    fill
+                    sizes="(max-width: 640px) 100vw, 30vw"
+                    className="object-cover"
+                  />
                 </div>
+                <p className="mt-2 text-xs text-[#4B635B]">肩書きや年齢を外して、同じ目線で話す時間</p>
+              </div>
+              <div className="rounded-lg border border-[#D1E5DD] bg-[#F8FAF9] p-2.5">
+                <div className="relative aspect-[4/3] overflow-hidden rounded">
+                  <Image
+                    src="/images/oki/230516_DJI_0468.jpg"
+                    alt="隠岐の豊かな海と風景"
+                    fill
+                    sizes="(max-width: 640px) 100vw, 30vw"
+                    className="object-cover"
+                  />
+                </div>
+                <p className="mt-2 text-xs text-[#4B635B]">ひとりでは味わいきれない島の自然をシェアする</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 03: For Whom Section (1px Hairline Grid) */}
+      <section id="recommended" className="border-b border-[#D1E5DD] bg-[#F8FAF9] section-pad">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-8 border-b border-[#D1E5DD] pb-3">
+            <span className="font-mono-editorial text-xs font-bold tracking-wider text-[#0D9488]">
+              {content.recommendedLabel}
+            </span>
+          </div>
+
+          <div className="max-w-3xl mb-10 space-y-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black leading-[1.35] text-[#1E2D28]">
+              {renderLines(content.recommendedTitle)}
+            </h2>
+            <p className="text-sm sm:text-base leading-[1.85] text-[#4B635B]">
+              {content.recommendedLead}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 border border-[#D1E5DD] divide-y md:divide-y-0 md:divide-x divide-[#D1E5DD] rounded-lg bg-white overflow-hidden">
+            {content.recommendedCards.map((card) => (
+              <div key={card.num} className="p-6 sm:p-8 space-y-3">
+                <span className="inline-block font-mono-editorial text-sm font-bold text-[#F97316]">
+                  {card.num}
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold text-[#1E2D28] leading-snug">
+                  {card.title}
+                </h3>
+                <p className="text-sm leading-[1.85] text-[#4B635B]">{card.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 04: Activities Section (4 Editorial Figure Cards) */}
+      <section id="activities" className="border-b border-[#D1E5DD] bg-white section-pad">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-8 border-b border-[#D1E5DD] pb-3">
+            <span className="font-mono-editorial text-xs font-bold tracking-wider text-[#0D9488]">
+              {content.activitiesLabel}
+            </span>
+          </div>
+
+          <div className="max-w-3xl mb-10 space-y-3">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black leading-[1.35] text-[#1E2D28]">
+              {content.activitiesTitle}
+            </h2>
+            <p className="text-sm sm:text-base leading-[1.85] text-[#4B635B]">
+              {content.activitiesLead}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {content.activities.map((item) => (
+              <article
+                key={item.fig}
+                className="flex flex-col rounded-lg border border-[#D1E5DD] bg-[#F8FAF9] overflow-hidden"
+              >
+                <div className="flex items-center justify-between border-b border-[#D1E5DD] px-4 py-2 text-xs font-mono-editorial text-[#4B635B] bg-white">
+                  <span className="font-bold text-[#0D9488]">{item.fig}</span>
+                  <span>{item.category}</span>
+                </div>
+                <div className="relative aspect-[4/3] w-full border-b border-[#D1E5DD]">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-5 space-y-2 flex-1">
+                  <h3 className="text-base sm:text-lg font-bold text-[#1E2D28]">{item.title}</h3>
+                  <p className="text-xs sm:text-sm leading-[1.8] text-[#4B635B]">{item.body}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 05: Membership Fee (¥500) & Roadmap Section */}
+      <section id="membership" className="border-b border-[#D1E5DD] bg-[#F0FDF4] section-pad">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-8 border-b border-[#D1E5DD] pb-3">
+            <span className="font-mono-editorial text-xs font-bold tracking-wider text-[#0D9488]">
+              {content.membershipLabel}
+            </span>
+          </div>
+
+          <div className="max-w-3xl mb-10 space-y-3">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black leading-[1.35] text-[#1E2D28]">
+              {renderLines(content.membershipTitle)}
+            </h2>
+            <p className="text-sm sm:text-base leading-[1.85] text-[#4B635B]">
+              {content.membershipLead}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 items-start">
+            {/* Left: ¥500 Fee Card & 2 Reasons */}
+            <div className="lg:col-span-7 rounded-lg border border-[#0D9488] bg-white p-6 sm:p-8 space-y-6">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#D1E5DD] pb-4">
+                <span className="text-base sm:text-lg font-bold text-[#1E2D28]">
+                  {content.membershipFeeHeading}
+                </span>
+                <span className="rounded bg-[#CCFBF1] px-3 py-1 text-xs font-bold text-[#0D9488]">
+                  {content.membershipFeeBadge}
+                </span>
               </div>
 
+              <div className="flex items-baseline gap-2">
+                <span className="text-sm font-bold text-[#4B635B]">月額</span>
+                <span className="font-mono-editorial text-5xl sm:text-6xl font-bold text-[#1E2D28]">
+                  {content.membershipFeeAmount}
+                </span>
+                <span className="text-sm font-bold text-[#4B635B]">{content.membershipFeeTax}</span>
+              </div>
+
+              <div className="grid grid-cols-1 gap-4 border-t border-[#D1E5DD] pt-5">
+                {content.membershipReasons.map((reason) => (
+                  <div key={reason.num} className="rounded border border-[#D1E5DD] bg-[#F8FAF9] p-4 space-y-1.5">
+                    <span className="font-mono-editorial text-xs font-bold text-[#F97316]">
+                      {reason.num}
+                    </span>
+                    <h3 className="text-sm sm:text-base font-bold text-[#1E2D28]">{reason.title}</h3>
+                    <p className="text-xs sm:text-sm leading-[1.8] text-[#4B635B]">{reason.body}</p>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-xs leading-relaxed text-[#4B635B]">{content.membershipFeeNotice}</p>
+            </div>
+
+            {/* Right: 3-Step Roadmap */}
+            <div className="lg:col-span-5 rounded-lg border border-[#D1E5DD] bg-white p-6 sm:p-8 space-y-6">
+              <h3 className="text-lg sm:text-xl font-bold text-[#1E2D28] border-b border-[#D1E5DD] pb-3">
+                {content.roadmapHeading}
+              </h3>
+
+              <div className="divide-y divide-[#D1E5DD]">
+                {content.roadmapSteps.map((step) => (
+                  <div key={step.step} className="py-4 first:pt-0 last:pb-0 space-y-1.5">
+                    <span className="font-mono-editorial text-xs font-bold text-[#0D9488]">
+                      {step.step}
+                    </span>
+                    <h4 className="text-base font-bold text-[#1E2D28]">{step.title}</h4>
+                    <p className="text-xs sm:text-sm leading-[1.8] text-[#4B635B]">{step.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 06: FAQ Section */}
+      <section id="faq" className="border-b border-[#D1E5DD] bg-white section-pad">
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-8 border-b border-[#D1E5DD] pb-3">
+            <span className="font-mono-editorial text-xs font-bold tracking-wider text-[#0D9488]">
+              {content.faqLabel}
+            </span>
+          </div>
+
+          <h2 className="text-2xl sm:text-3xl font-black text-[#1E2D28] mb-8">
+            {content.faqTitle}
+          </h2>
+
+          <div className="divide-y divide-[#D1E5DD] border-t border-b border-[#D1E5DD]">
+            {content.faqItems.map((item, idx) => (
+              <div key={idx} className="py-6 space-y-2.5">
+                <h3 className="text-base sm:text-lg font-bold text-[#1E2D28] flex items-start gap-3">
+                  <span className="font-mono-editorial text-[#0D9488] font-bold shrink-0">Q.</span>
+                  <span>{item.question}</span>
+                </h3>
+                <p className="text-sm sm:text-base leading-[1.85] text-[#4B635B] pl-7">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 07: Epilogue / Footer CTA Section */}
+      <section id="cta" className="bg-[#F0FDF4] section-pad">
+        <div className="mx-auto max-w-4xl">
+          <div className="rounded-xl border border-[#D1E5DD] bg-white p-8 sm:p-12 text-center space-y-6">
+            <span className="inline-block font-mono-editorial text-xs font-bold tracking-wider text-[#0D9488]">
+              {content.footerLabel}
+            </span>
+
+            <h2 className="text-2xl sm:text-4xl font-black leading-[1.35] text-[#1E2D28]">
+              {renderLines(content.footerTitle)}
+            </h2>
+
+            <p className="max-w-xl mx-auto text-sm sm:text-base leading-[1.85] text-[#4B635B]">
+              {renderLines(content.footerBody)}
+            </p>
+
+            <div className="pt-2 space-y-3">
               <a
                 href={ctaUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => onCtaClick("footer")}
-                className="cta-line cta-line--footer group"
+                className="cta-line cta-line--lg group"
               >
                 <span>{content.footerCta}</span>
-                <svg className="h-7 w-7 shrink-0 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                <svg
+                  className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-0.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </a>
+              <p className="text-xs text-[#4B635B]">{content.footerNote}</p>
             </div>
           </div>
         </div>
