@@ -18,6 +18,14 @@ export type FaqItemCopy = {
   answer: string;
 };
 
+export type StepCopy = {
+  num: string;
+  badge: string;
+  title: string;
+  desc: string;
+  note: string;
+};
+
 export type LandingContent = {
   heroTag: string;
   heroTitle: string;
@@ -58,11 +66,7 @@ export type LandingContent = {
   stepHeading: string;
   stepTitle: string;
   stepLead: string;
-  steps: [
-    { num: string; title: string; desc: string; note: string },
-    { num: string; title: string; desc: string; note: string },
-    { num: string; title: string; desc: string; note: string },
-  ];
+  steps: [StepCopy, StepCopy, StepCopy];
   stepCta: string;
   stepCtaNote: string;
   faqHeading: string;
@@ -169,30 +173,33 @@ const waitlistContent: LandingContent = {
     },
   ],
   stepHeading: "入会方法",
-  stepTitle: "公式LINEから3ステップで参加",
-  stepLead: "正式オープンまでは完全無料で立ち上げの裏側やプレ企画に参加できます。",
+  stepTitle: "参加の流れ（3ステップ）",
+  stepLead: "公式LINEから安心・安全な決済を経て、限定オープンチャットへご案内します。",
   steps: [
     {
       num: "1",
+      badge: "STEP 1：公式LINE",
       title: "公式LINEを友だち追加",
-      desc: "スマホからQRコードまたは下のボタンをタップして、Okey-Dokey公式LINEを友だち追加します（無料）。",
-      note: "※完全無料・いつでもブロック可能",
+      desc: "LPから公式LINEを追加（無料）。コミュニティの最新情報や、入会フォームの案内が届きます。",
+      note: "※登録無料・いつでも解除可能",
     },
     {
       num: "2",
-      title: "作戦会議やアンケートに参加",
-      desc: "LINEトークに届く案内から、やりたい企画のアンケートに回答したり、少人数プレ交流会（任意）に参加できます。",
-      note: "※見るだけの参加でもOK",
+      badge: "STEP 2：フォーム ＆ 決済",
+      title: "入会フォーム入力 ＆ Stripe決済",
+      desc: "LINEに届く専用フォームから基本情報を入力し、月額500円（税込）のStripe安全オンライン決済を行います。",
+      note: "※クレジットカード対応・いつでも解約可能",
     },
     {
       num: "3",
-      title: "初期メンバー正式募集のご案内",
-      desc: "コミュニティが形になったら正式ローンチ。LINE先行登録者に最優先で月額500円の本登録案内が届きます。",
-      note: "※納得した方のみ本登録へ",
+      badge: "STEP 3：コミュニティ参加",
+      title: "限定オープンチャットへご招待",
+      desc: "決済完了後、メンバー限定の「LINEオープンチャット」の参加リンクをお届け。その日からすぐに交流・情報交換が楽しめます。",
+      note: "※ニックネーム参加・見るだけでもOK",
     },
   ],
   stepCta: "公式LINEで先行案内を受け取る",
-  stepCtaNote: "※LINEへ遷移します（登録・参加は完全無料）",
+  stepCtaNote: "※LINEへ遷移します（先行登録は完全無料）",
   faqHeading: "よくあるご質問",
   faqTitle: "参加前のよくあるご質問",
   faqItems: [
@@ -207,14 +214,19 @@ const waitlistContent: LandingContent = {
         "ご安心ください。若者だけの飲み会サークルではなく、20代から50代までが心地よい距離感で関われる場として設計しています。ご家族連れでの参加も大歓迎です。",
     },
     {
-      question: "毎回イベントに参加しないといけませんか？",
+      question: "LINEオープンチャットでの会話は実名ですか？",
       answer:
-        "いいえ。暮らしの情報交換用として見るだけの方や、数ヶ月に一度気が向いた企画だけ顔を出すスタイルでも全く問題ありません。",
+        "オープンチャットはLINEの通常アカウント名や友だち関係とは切り離され、コミュニティ用のニックネームとプロフィール画像で安心してご参加いただけます。",
+    },
+    {
+      question: "途中で退会することはできますか？",
+      answer:
+        "はい。StripeのマイページまたはLINEからいつでも簡単に月額解約が可能です。縛りや解約金などは一切ありません。",
     },
     {
       question: "今LINEに登録すると、すぐに月額500円がかかりますか？",
       answer:
-        "いいえ、現在のLINE先行登録および立ち上げ準備期間の参加はすべて無料です。勝手に課金されることはありませんので、安心してお気軽にご登録ください。",
+        "いいえ、現在のLINE先行登録および立ち上げ準備期間の参加はすべて無料です。正式オープン時に改めてご案内し、納得した方のみフォームと決済へ進んでいただきます。",
     },
   ],
   closingHeading: "最後に",

@@ -1,15 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0e6496;
+  --background: #0b332c;
   --foreground: #ffffff;
-  --amacho-blue: #0082c4;
+  --brand-teal: #0f766e;
+  --brand-teal-light: #14b8a6;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-amacho: var(--amacho-blue);
+  --color-brand: var(--brand-teal);
   --font-sans: var(--font-zen);
   --font-heading: var(--font-zen);
   --font-en: var(--font-jakarta);
@@ -19,7 +20,7 @@ body {
   font-family: var(--font-zen), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: #ffffff;
   overflow-x: hidden;
-  background-color: #0e6496;
+  background-color: #0b332c;
 }
 
 h1,
@@ -36,29 +37,29 @@ h6 {
   font-family: var(--font-jakarta), sans-serif;
 }
 
-/* Glassmorphism Card (Amanowa Style) */
+/* Glassmorphism Card (Deep Forest & Ocean Edition) */
 .glassmorphism {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 4px solid #ffffff;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 3px solid rgba(255, 255, 255, 0.85);
   border-radius: 1.5rem;
 }
 
 .glassmorphism-sm {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 2px solid #ffffff;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.8);
   border-radius: 1rem;
 }
 
 /* White Solid Card */
 .card-white {
   background: #ffffff;
-  color: #0082c4;
+  color: #0f766e;
   border-radius: 1.5rem;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
 }
 
 /* Section Spacing */
@@ -67,20 +68,20 @@ h6 {
   padding-inline: clamp(1.25rem, 5vw, 2.5rem);
 }
 
-/* Primary Amanowa-Style CTA Button */
+/* Primary Okey-Dokey CTA Button */
 .cta-amanowa {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
   background-color: #ffffff;
-  color: #0082c4;
-  border: 4px solid #ffffff;
+  color: #0f766e;
+  border: 3px solid #ffffff;
   border-radius: 1rem;
   padding: 1rem 2.25rem;
   font-weight: 700;
   font-size: 1.125rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   transition: all 0.25s ease;
 }
 

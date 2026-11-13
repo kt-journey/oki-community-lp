@@ -11,7 +11,7 @@ export default function Home() {
       <LandingPage content={content} ctaUrl={ctaUrl} />
       
       {/* Footer */}
-      <footer className="relative z-10 border-t border-white/20 bg-[#0e6496]/70 backdrop-blur-md px-6 py-10 text-xs sm:text-sm text-white/80">
+      <footer className="relative z-10 border-t border-white/20 bg-[#072420]/80 backdrop-blur-md px-6 py-10 text-xs sm:text-sm text-white/80">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 md:flex-row md:items-center md:justify-between text-center md:text-left">
           <p className="font-bold tracking-wide text-white">
             Okey-Dokey｜隠岐の島町 UIターン者コミュニティ

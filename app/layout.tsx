@@ -74,18 +74,18 @@ export default function RootLayout({
           </Script>
         ) : null}
       </head>
-      <body className="min-h-full flex flex-col bg-[#0e6496] text-white">
-        {/* Fixed Background Video Layer (Amanowa Style) */}
+      <body className="min-h-full flex flex-col bg-[#0b332c] text-white">
+        {/* Fixed Background Video Layer with Color Transformation */}
         <video
-          className="fixed top-0 left-0 w-screen h-screen object-cover -z-20 pointer-events-none"
+          className="fixed top-0 left-0 w-screen h-screen object-cover -z-20 pointer-events-none filter hue-rotate-45 saturate-125"
           src="/video/background.webm"
           loop
           autoPlay
           muted
           playsInline
         />
-        {/* Overlay Color & Brightness Filter */}
-        <div className="fixed top-0 left-0 w-screen h-screen -z-10 bg-[#1a7b6a]/20 backdrop-brightness-125 pointer-events-none" />
+        {/* Dual-Tone Deep Forest & Ocean Overlay (隠岐独自の深みあるティールエメラルド) */}
+        <div className="fixed top-0 left-0 w-screen h-screen -z-10 bg-gradient-to-b from-[#0b332c]/80 via-[#0d4a46]/70 to-[#072420]/85 backdrop-blur-[1px] pointer-events-none" />
         
         {children}
       </body>

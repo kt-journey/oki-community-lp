@@ -26,7 +26,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
   return (
     <main className="w-full relative z-10">
       {/* Header Bar */}
-      <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-[#0e6496]/40 border-b border-white/20 px-5 py-4 md:px-10">
+      <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-[#0b332c]/50 border-b border-white/20 px-5 py-4 md:px-10">
         <div className="mx-auto flex max-w-6xl items-center justify-between text-white">
           <div className="flex items-center gap-3">
             <span className="font-en text-xl md:text-2xl font-black tracking-wider">Okey-Dokey</span>
@@ -39,7 +39,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => onCtaClick("hero")}
-            className="text-xs md:text-sm font-bold bg-white text-[#0082c4] border-2 border-white px-4 py-2 rounded-xl hover:bg-transparent hover:text-white transition duration-300"
+            className="text-xs md:text-sm font-bold bg-white text-[#0f766e] border-2 border-white px-4 py-2 rounded-xl hover:bg-transparent hover:text-white transition duration-300"
           >
             LINE先行登録
           </a>
@@ -135,8 +135,8 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
             </div>
 
             <div className="lg:col-span-4 card-white p-6 sm:p-8 text-center space-y-2">
-              <p className="text-xs font-bold tracking-wider text-[#0082c4]">{content.issueStatLabel}</p>
-              <div className="text-6xl sm:text-7xl font-en font-black text-[#0082c4] leading-none">
+              <p className="text-xs font-bold tracking-wider text-[#0f766e]">{content.issueStatLabel}</p>
+              <div className="text-6xl sm:text-7xl font-en font-black text-[#0f766e] leading-none">
                 {content.issueStatNumber}
               </div>
               <p className="text-xs text-slate-500 pt-2">※転入者の約半数が3年以内に離島</p>
@@ -216,7 +216,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
         </div>
       </section>
 
-      {/* 05: Rules (３箇条 / 海士町スタイル) */}
+      {/* 05: Rules (３箇条 / 心構え) */}
       <section id="rules" className="section-pad max-w-5xl mx-auto space-y-10">
         <div className="text-center space-y-3">
           <span className="font-en text-xs font-bold tracking-widest uppercase border-b-2 border-white pb-1">
@@ -228,7 +228,6 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
           <p className="text-sm sm:text-base text-white/85">{content.rulesLead}</p>
         </div>
 
-        {/* 3箇条の白枠すりガラスボード */}
         <div className="glassmorphism divide-y-2 divide-white overflow-hidden shadow-2xl">
           {content.rules.map((rule) => (
             <div key={rule.num} className="p-6 sm:p-8 flex items-start gap-5 sm:gap-8">
@@ -262,14 +261,14 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
         <div className="glassmorphism p-6 sm:p-10 space-y-8">
           <div className="card-white p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="space-y-1 text-center sm:text-left">
-              <span className="inline-block px-3 py-1 rounded-full bg-[#0082c4] text-white text-xs font-bold">
+              <span className="inline-block px-3 py-1 rounded-full bg-[#0f766e] text-white text-xs font-bold">
                 {content.planBadge}
               </span>
               <p className="text-xl sm:text-2xl font-bold text-slate-800">正式オープン後の月額会費</p>
               <p className="text-xs text-slate-500">{content.planNote}</p>
             </div>
             <div className="flex items-baseline gap-1">
-              <span className="font-en text-5xl sm:text-6xl font-black text-[#0082c4] leading-none">
+              <span className="font-en text-5xl sm:text-6xl font-black text-[#0f766e] leading-none">
                 {content.planFeeAmount}
               </span>
               <span className="text-sm sm:text-base font-bold text-slate-600">
@@ -294,7 +293,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
         </div>
       </section>
 
-      {/* 07: Membership Process (入会方法 / 海士町スタイル) */}
+      {/* 07: Membership Process (入会方法 / LP→LINE→フォーム・Stripe決済→オプチャ) */}
       <section id="step" className="section-pad max-w-6xl mx-auto space-y-10">
         <div className="text-center space-y-3">
           <span className="font-en text-xs font-bold tracking-widest uppercase border-b-2 border-white pb-1">
@@ -318,7 +317,10 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
               }`}
             >
               {/* Top: STEP + 丸囲み数字 */}
-              <div className="w-full space-y-4">
+              <div className="w-full space-y-3">
+                <span className="inline-block px-3 py-0.5 rounded-full bg-white/20 text-white font-en text-xs font-bold">
+                  {step.badge}
+                </span>
                 <div className="flex items-center justify-center gap-3">
                   <span className="font-en text-base sm:text-lg font-bold tracking-widest text-white">
                     STEP
@@ -330,36 +332,56 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
                 <div className="w-full border-t border-white/60" />
               </div>
 
-              {/* Middle: スマホ画面モックアップ風グラフィック */}
-              <div className="w-full max-w-[210px] aspect-[9/14] rounded-[26px] border-4 border-white bg-white/20 p-4 flex flex-col justify-between shadow-inner">
-                <div className="w-10 h-1.5 bg-white/60 rounded-full mx-auto" />
+              {/* Middle: スマホ画面モックアップ（実導線グラフィック） */}
+              <div className="w-full max-w-[220px] aspect-[9/14] rounded-[28px] border-4 border-white bg-white/20 p-3.5 flex flex-col justify-between shadow-inner">
+                {/* Speaker bar */}
+                <div className="w-10 h-1.5 bg-white/70 rounded-full mx-auto" />
+
+                {/* Screen Content */}
                 <div className="my-auto space-y-3">
                   {idx === 0 && (
-                    <div className="space-y-2">
-                      <div className="w-16 h-16 mx-auto bg-white rounded-lg flex items-center justify-center text-[#0082c4] font-bold text-xs p-1">
-                        LINE QR
+                    <div className="space-y-2.5">
+                      <div className="w-14 h-14 mx-auto bg-[#06c755] rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-md">
+                        LINE
                       </div>
-                      <span className="inline-block px-3 py-1 bg-white text-[#0082c4] text-xs font-bold rounded-full">
-                        友だち追加
-                      </span>
+                      <div className="bg-white text-[#0f766e] text-[11px] font-bold py-1 px-3 rounded-full shadow-sm">
+                        ＋ 友だち追加
+                      </div>
+                      <p className="text-[10px] text-white/90">案内を受け取る（無料）</p>
                     </div>
                   )}
+
                   {idx === 1 && (
-                    <div className="space-y-2 text-left bg-white/85 text-[#0082c4] p-2.5 rounded-xl text-xs">
-                      <p className="font-bold">トーク画面</p>
-                      <p className="text-[10px] text-slate-600">アンケート・作戦会議のご案内</p>
+                    <div className="bg-white text-[#0f766e] p-3 rounded-2xl space-y-2 shadow-md text-left">
+                      <div className="flex items-center justify-between border-b border-slate-100 pb-1.5">
+                        <span className="text-[10px] font-bold text-slate-700">入会申込フォーム</span>
+                        <span className="text-[9px] bg-emerald-100 text-[#0f766e] font-bold px-1.5 py-0.5 rounded">安全決済</span>
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-[11px] font-black text-slate-800">月額 500円（税込）</p>
+                        <div className="flex items-center gap-1.5 text-[9px] text-slate-500 bg-slate-50 p-1 rounded">
+                          <span>💳 Stripe</span>
+                          <span>クレカ対応</span>
+                        </div>
+                      </div>
                     </div>
                   )}
+
                   {idx === 2 && (
                     <div className="space-y-2">
-                      <span className="inline-block px-3 py-1 bg-white text-[#0082c4] text-xs font-bold rounded-lg shadow-sm">
-                        月額500円
-                      </span>
-                      <p className="text-[11px] font-bold text-white">初期メンバー本登録</p>
+                      <div className="w-14 h-14 mx-auto bg-[#06c755] rounded-full flex items-center justify-center text-white font-bold text-xs shadow-md border-2 border-white">
+                        オプチャ
+                      </div>
+                      <div className="bg-white/90 text-[#0f766e] p-2 rounded-xl text-[10px] font-bold space-y-0.5">
+                        <p>限定チャットへ参加</p>
+                        <p className="text-[9px] text-slate-500 font-normal">ニックネームで交流開始</p>
+                      </div>
                     </div>
                   )}
                 </div>
-                <div className="w-7 h-7 rounded-full border border-white/60 mx-auto" />
+
+                {/* Home Indicator */}
+                <div className="w-12 h-1 bg-white/70 rounded-full mx-auto" />
               </div>
 
               {/* Bottom: テキスト説明 */}
@@ -418,7 +440,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
         </div>
       </section>
 
-      {/* 09: Closing (最後に / 海士町スタイル) */}
+      {/* 09: Closing (最後に) */}
       <section id="closing" className="section-pad max-w-6xl mx-auto">
         <div className="glassmorphism p-6 sm:p-10 md:p-14 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div className="lg:col-span-5">
