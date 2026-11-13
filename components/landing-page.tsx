@@ -26,7 +26,7 @@ export function LandingPage({ content, ctaUrl }: LandingPageProps) {
   return (
     <main className="w-full relative z-10">
       {/* Header Bar */}
-      <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-[#0b332c]/50 border-b border-white/20 px-5 py-4 md:px-10">
+      <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-[#0d9488]/40 border-b border-white/25 px-5 py-4 md:px-10">
         <div className="mx-auto flex max-w-6xl items-center justify-between text-white">
           <div className="flex items-center gap-3">
             <span className="font-en text-xl md:text-2xl font-black tracking-wider">Okey-Dokey</span>

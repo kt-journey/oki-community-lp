@@ -74,18 +74,18 @@ export default function RootLayout({
           </Script>
         ) : null}
       </head>
-      <body className="min-h-full flex flex-col bg-[#0b332c] text-white">
-        {/* Fixed Background Video Layer with Color Transformation */}
+      <body className="min-h-full flex flex-col bg-[#0d9488] text-white">
+        {/* Fixed Background Video Layer (Bright Emerald-Teal Shift) */}
         <video
-          className="fixed top-0 left-0 w-screen h-screen object-cover -z-20 pointer-events-none filter hue-rotate-45 saturate-125"
+          className="fixed top-0 left-0 w-screen h-screen object-cover -z-20 pointer-events-none [filter:hue-rotate(-38deg)_brightness(1.15)_saturate(1.05)]"
           src="/video/background.webm"
           loop
           autoPlay
           muted
           playsInline
         />
-        {/* Dual-Tone Deep Forest & Ocean Overlay (隠岐独自の深みあるティールエメラルド) */}
-        <div className="fixed top-0 left-0 w-screen h-screen -z-10 bg-gradient-to-b from-[#0b332c]/80 via-[#0d4a46]/70 to-[#072420]/85 backdrop-blur-[1px] pointer-events-none" />
+        {/* Light Emerald Overlay (海士町と差別化した明るいエメラルドティール) */}
+        <div className="fixed top-0 left-0 w-screen h-screen -z-10 bg-gradient-to-b from-[#14b8a6]/20 via-[#10b981]/15 to-[#0d9488]/25 backdrop-brightness-125 pointer-events-none" />
         
         {children}
       </body>
