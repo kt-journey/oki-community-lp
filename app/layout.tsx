@@ -1,28 +1,22 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Noto_Sans_JP, Space_Mono } from "next/font/google";
+import { Zen_Kaku_Gothic_New, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const notoSansJp = Noto_Sans_JP({
-  variable: "--font-body",
+const zenKaku = Zen_Kaku_Gothic_New({
+  variable: "--font-zen",
+  weight: ["400", "500", "700", "900"],
   subsets: ["latin"],
 });
 
-const notoSansJpHeading = Noto_Sans_JP({
-  variable: "--font-heading",
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
-  weight: ["500", "700", "900"],
-});
-
-const spaceMono = Space_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Okey-Dokey | 隠岐移住者コミュニティ",
-  description: "隠岐移住者ためのコミュニティを作るプロジェクト！",
+  title: "Okey-Dokey | 隠岐の島町 UIターン者コミュニティ",
+  description: "隠岐の島町に暮らす20〜50代のIターン・Uターン者のための、職場でもご近所でもない第3の居場所。",
 };
 
 export default function RootLayout({
@@ -37,20 +31,10 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${notoSansJp.variable} ${notoSansJpHeading.variable} ${spaceMono.variable} h-full antialiased`}
+      className={`${zenKaku.variable} ${plusJakarta.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
-        <Script id="adobe-fonts" strategy="beforeInteractive">
-          {`(function(d) {
-            var config = {
-              kitId: 'gpz2vpc',
-              scriptTimeout: 3000,
-              async: true
-            },
-            h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\\bwf-loading\\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-          })(document);`}
-        </Script>
         {gtmId ? (
           <Script id="gtm-base" strategy="afterInteractive">
             {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -90,7 +74,21 @@ export default function RootLayout({
           </Script>
         ) : null}
       </head>
-      <body className="min-h-full flex flex-col bg-background text-foreground">{children}</body>
+      <body className="min-h-full flex flex-col bg-[#0e6496] text-white">
+        {/* Fixed Background Video Layer (Amanowa Style) */}
+        <video
+          className="fixed top-0 left-0 w-screen h-screen object-cover -z-20 pointer-events-none"
+          src="/video/background.webm"
+          loop
+          autoPlay
+          muted
+          playsInline
+        />
+        {/* Overlay Color & Brightness Filter */}
+        <div className="fixed top-0 left-0 w-screen h-screen -z-10 bg-[#1a7b6a]/20 backdrop-brightness-125 pointer-events-none" />
+        
+        {children}
+      </body>
     </html>
   );
 }

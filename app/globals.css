@@ -1,34 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #1e2d28;
-  --muted: #4b635b;
-  --surface: #ffffff;
-  --surface-sub: #f0fdf4;
-  --surface-card: #f8faf9;
-  --border-rule: #d1e5dd;
-  --primary: #0d9488;
-  --primary-light: #ccfbf1;
-  --point: #f97316;
-  --point-light: #ffedd5;
-  --cta-line: #06c755;
+  --background: #0e6496;
+  --foreground: #ffffff;
+  --amacho-blue: #0082c4;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-surface: var(--surface);
-  --font-sans: var(--font-body);
-  --font-mono: var(--font-mono);
+  --color-amacho: var(--amacho-blue);
+  --font-sans: var(--font-zen);
+  --font-heading: var(--font-zen);
+  --font-en: var(--font-jakarta);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-body), "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+  font-family: var(--font-zen), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #ffffff;
   overflow-x: hidden;
+  background-color: #0e6496;
 }
 
 h1,
@@ -37,57 +28,67 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-heading), "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
-  letter-spacing: -0.02em;
+  font-family: var(--font-zen), sans-serif;
+  letter-spacing: 0.02em;
 }
 
-.font-mono-editorial {
-  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+.font-en {
+  font-family: var(--font-jakarta), sans-serif;
 }
 
-/* Section rhythm */
+/* Glassmorphism Card (Amanowa Style) */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 4px solid #ffffff;
+  border-radius: 1.5rem;
+}
+
+.glassmorphism-sm {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 2px solid #ffffff;
+  border-radius: 1rem;
+}
+
+/* White Solid Card */
+.card-white {
+  background: #ffffff;
+  color: #0082c4;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+}
+
+/* Section Spacing */
 .section-pad {
-  padding-block: clamp(4rem, 8vw, 6.5rem);
-  padding-inline: clamp(1.25rem, 4vw, 2rem);
+  padding-block: clamp(4.5rem, 9vw, 7.5rem);
+  padding-inline: clamp(1.25rem, 5vw, 2.5rem);
 }
 
-/* Clean LINE CTA Button */
-.cta-line {
+/* Primary Amanowa-Style CTA Button */
+.cta-amanowa {
   display: inline-flex;
-  width: 100%;
-  min-height: 3.25rem;
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  border-radius: 0.5rem;
-  background-color: #06c755;
-  padding: 0.95rem 1.75rem;
+  background-color: #ffffff;
+  color: #0082c4;
+  border: 4px solid #ffffff;
+  border-radius: 1rem;
+  padding: 1rem 2.25rem;
   font-weight: 700;
+  font-size: 1.125rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.25s ease;
+}
+
+.cta-amanowa:hover {
+  background-color: transparent;
   color: #ffffff;
-  transition: background-color 0.15s ease, transform 0.15s ease;
 }
 
-.cta-line:hover {
-  background-color: #05b34c;
-}
-
-.cta-line:active {
-  background-color: #049e45;
+.cta-amanowa:active {
   transform: translateY(1px);
-}
-
-.cta-line:focus-visible {
-  outline: 2px solid #0d9488;
-  outline-offset: 2px;
-}
-
-@media (min-width: 640px) {
-  .cta-line {
-    width: auto;
-  }
-
-  .cta-line--lg {
-    padding: 1.1rem 2.25rem;
-    font-size: 1rem;
-  }
 }
